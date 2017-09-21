@@ -1,2 +1,2 @@
 # pres-templates
-A Beamer -Latex templates for professional presentations
+Beamer - LaTeX \ XeLaTeX templates for professional presentations
