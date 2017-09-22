@@ -34,7 +34,7 @@ if [ $1 = $clean ]; then
 	rm -rf *.nav
 	rm -rf *.run.xml
 	rm -rf *.snm
-#	rm -rf $filename.pdf
+	rm -rf $filename.pdf
 	rm -rf $filename.ps
 	rm -rf $filename.dvi
 	rm -rf *#* 
@@ -77,12 +77,12 @@ if [ $1 = $clean ]; then
         rm -rf *.nav
         rm -rf *.run.xml
         rm -rf *.snm
-#	rm -rf $filename.pdf
-	rm -rf $filename.ps
-	rm -rf $filename.dvi
-	rm -rf *#* 
-	echo "Cleaning complete!"
-	exit
+        rm -rf $filename.pdf
+        rm -rf $filename.ps
+        rm -rf $filename.dvi
+        rm -rf *#* 
+        echo "Cleaning complete!"
+        exit
 #elif [ $1 = $compile ]; then
 #	echo "Compiling your PhD Thesis...please wait...!"
 #	pdflatex -interaction=nonstopmode $filename.tex
@@ -108,7 +108,7 @@ elif [ $1 = $xelatex ]; then
 #        latexmk -xelatex $filename.tex                          # <<-- NEW compilation after 26 May 17
 #        biber $filname.aux
 #        latexmk -xelatex -g $filename.tex
-xelatex $filename.tex
+        xelatex $filename.tex
         echo "Success!"
 	echo "LAST RUN:" $(date)
         exit

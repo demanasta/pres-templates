@@ -441,6 +441,10 @@
 % The name of your Department
 \newcommand{\@dept}{}
 \newcommand{\dept}[1]{\renewcommand{\@dept}{#1}}
+
+% The name of your Laboratory
+\newcommand{\@lab}{}
+\newcommand{\lab}[1]{\renewcommand{\@lab}{#1}}
 % 
 % The name of your Title in Greek
 \newcommand{\@eltitle}{}
@@ -487,14 +491,15 @@
 \@crestleft}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.79\textwidth}
-      \centering \vspace*{-0.4cm}{\large \textbf{\@university} \par}
-\vspace*{0.1cm}  {\small \@dept \par}
+  \centering \vspace*{-0.4cm}{\large \textbf{\@university} \par}
+  \vspace*{0.1cm}  {\small \@dept \par}
+  \vspace*{0.1cm}  {\small \@lab  \par}
 % \vspace*{0.4cm}
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
-\centering\raisebox{\dimexpr \topskip-\height}{%
-% \includegraphics[width=.85\textwidth]{Figs/DSOtrans.png}}
-\@crestright}
+  \centering\raisebox{\dimexpr \topskip-\height}{%
+%  \includegraphics[width=.85\textwidth]{Figs/DSOtrans.png}}
+  \@crestright}
 \end{minipage}\hfill
 \vfill
 
