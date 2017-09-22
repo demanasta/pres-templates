@@ -1,10 +1,42 @@
 \section{Επεξεργασία \& Ανάλυση}
 
-\graphicspath{{Chapter5/Figs/Vector/}{Chapter2/Figs/Vector/}}
+\graphicspath{{Chapter5/Figs/Vector/}{Chapter4/Figs/Vector/}}
 
-%\begin{frame}
-%  \frametitle{Επεξεργασία Επίγειων Παρατηρήσεων}
-%  \framesubtitle{Διάγραμμα Ροής}
-%  \label{fr5:proc_flowchart}
-%\end{frame}
-%\note{}
+\begin{frame}
+  \frametitle{Χρήση animation στο ίδιο Slide}
+  \framesubtitle{}
+  \label{fr6:terr_sat_ext}
+  \begin{columns}
+    \begin{column}{.5\textwidth}
+      \underline{Έμφαση σε συγκεκριμένη πρόταση:}
+      \begin{itemize}
+        \item<1>  Πρόταση 1 .618
+        \item<2>  Πρόταση 2 .718
+        \item<3-> Πρόταση 3 .141 
+      \end{itemize}
+      
+ 
+    \end{column}
+    \begin{column}{.5\textwidth}
+    \underline{Έμφαση με τη σειρά εμφάνισης:}
+     \begin{itemize}
+        \item<1-> Πρόταση 1 .6180339887
+        \item<2-> Πρόταση 2 .7182818284
+        \item<3-> Πρόταση 3 .1415926535
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  
+  \begin{center}
+    \vskip .5cm
+    \underline{Κάθε κείμενο υπερκαλύπτει το προηγούμενο:} \\
+    \vskip .5cm
+    \begin{overprint}\centering
+      \onslide<3-> {Εμφανίζεται μόνο στη Πρόταση 3} \\
+      \onslide<1> Πρόταση 1 .61803398874989484820...
+      \onslide<2> Πρόταση 2 .718281828459045235360287471352...
+      \onslide<3-> Πρόταση 3 .14159265358979323846264338327950288419716939937510...
+    \end{overprint}
+  \end{center}
+\end{frame}
+\note{}
