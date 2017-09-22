@@ -433,7 +433,7 @@
 
 
 
-% ******************************** Title Page **********************************
+% ***************************** Define info variables **************************
 % The name of your University
 \newcommand{\@university}{}
 \newcommand{\university}[1]{\renewcommand{\@university}{#1}}
@@ -482,7 +482,27 @@
 \newcommand{\@crestright}{}
 \newcommand{\crestright}[1]{\renewcommand{\@crestright}{#1}}
 
+% Thank u text
+\newcommand{\@thankutext}{}
+\newcommand{\thankutext}[1]{\renewcommand{\@thankutext}{#1}}
 
+% LinkedIn url
+\newcommand{\@urlin}{}
+\newcommand{\urlin}[1]{\renewcommand{\@urlin}{#1}}
+
+% GitHub Url
+\newcommand{\@urlgh}{}
+\newcommand{\urlgh}[1]{\renewcommand{\@urlgh}{#1}}
+
+% Google plus Url
+\newcommand{\@urlgp}{}
+\newcommand{\urlgp}[1]{\renewcommand{\@urlgp}{#1}}
+
+% TWitter Url
+\newcommand{\@urltw}{}
+\newcommand{\urltw}[1]{\renewcommand{\@urltw}{#1}}
+
+% ******************************** Title Page **********************************
 \renewcommand{\maketitle}{
 
 \begin{minipage}[t]{0.10\textwidth}
@@ -514,6 +534,49 @@
 \centering
 {\footnotesize\textbf{\@city, \@degreedate}}%\vfill
 }
+
+% ******************************** Title Page **********************************
+\newcommand{\makethanku}{
+\begin{frame}[plain,b]\frametitle{}\framesubtitle{}
+\vfill
+  \begin{center}
+%     \color{blue!90}\rule{0.02\textwidth}{1pt}\par
+%     \color{blue!85}\rule{0.05\textwidth}{1pt}\par
+    \color{blue!80}\rule{0.02\textwidth}{1pt}\par  
+    \color{blue!70}\rule{0.05\textwidth}{1pt}\par
+    \color{blue!60}\rule{0.1\textwidth}{1pt}\par
+    \color{blue!50}\rule{0.2\textwidth}{1pt}\par
+    \color{blue!40}\rule{0.3\textwidth}{1pt}\par
+    \color{blue!30}\rule{0.45\textwidth}{1pt}\par  
+    \color{blue!20}\rule{0.6\textwidth}{1pt}\par  
+    \vskip.2cm
+    \textcolor{red!85}{\Large\textbf{\@thankutext}}
+    \color{blue!20}\rule{0.7\textwidth}{1pt}\par
+    \color{blue!30}\rule{0.55\textwidth}{1pt}\par
+    \color{blue!40}\rule{0.4\textwidth}{1pt}\par
+    \color{blue!50}\rule{0.3\textwidth}{1pt}\par
+    \color{blue!60}\rule{0.2\textwidth}{1pt}\par
+    \color{blue!70}\rule{0.15\textwidth}{1pt}\par
+    \color{blue!80}\rule{0.1\textwidth}{1pt}\par
+    \color{blue!85}\rule{0.05\textwidth}{1pt}\par
+    \color{blue!90}\rule{0.02\textwidth}{1pt}\par
+  \end{center}
+\vskip-2cm
+\href{\@urlin}{\faLinkedin}\\
+\href{\@urlgh}{\faGithub}\\
+\href{\@urlgp}{\faGooglePlus}\\
+\href{\@urltw}{\faTwitter} \hfill \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
+\vfill
+\end{frame}
+
+
+
+
+
+
+}
+
+
 
 
 % \RequirePackage[backend=biber, style=authoryear, citestyle=alphabetic, sorting=nty, natbib=true]{biblatex}
