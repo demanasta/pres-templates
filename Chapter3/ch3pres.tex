@@ -1,0 +1,86 @@
+\section{Μεθοδολογία}
+
+\graphicspath{{Chapter3/Figs/Vector/}}
+
+\begin{frame}
+  \frametitle{Εισαγωγή εξισώσεων και εικόνων}
+  \framesubtitle{Ανάλυση τριγώνου - Ο αλγόριθμος του Frank}
+  \label{fr3:frank_tr}
+  \begin{columns}
+    \begin{column}{.65\textwidth}
+    \vskip.1cm
+      {\small Η διαφορά της γωνίας σε δύο χρονικές στιγμές:}
+      \[ \delta\phi_\alpha=\delta \theta_\beta - \delta \theta_\gamma \]
+ \vskip.1cm
+{\small Οι συνιστώσες της διάτμησης:}
+  \begin{tiny}
+  \begin{align*}
+  \gamma_1=\frac{\sin\left ( \theta_\gamma + \theta_\alpha \right )\left ( \delta\phi_\alpha/\sin\alpha_\alpha \right ) - \sin\left ( \theta_\beta + \theta_\gamma \right )\left ( \delta\phi_\beta/\sin\alpha_\beta \right )}{\sin\phi_\gamma} \\
+  \gamma_2=\frac{\cos\left ( \theta_\gamma + \theta_\alpha \right )\left ( \delta\phi_\alpha/\sin\alpha_\alpha \right ) - \cos\left ( \theta_\beta + \theta_\gamma \right )\left ( \delta\phi_\beta/\sin\alpha_\beta \right )}{\sin\phi_\gamma}
+  \end{align*}
+  \end{tiny}
+   {\small Η τιμή της ολικής διάτμησης και το αζιμούθιο των κύριων αξόνων της έλλειψης της ανηγμένης παραμόρφωσης:}
+    \end{column}
+    \begin{column}{.34\textwidth}
+      \centering
+          \adjincludegraphics[width=.98\linewidth, valign=t]{FrankTR.jpg}
+          
+          {\tiny \parencite{Frank1966}}
+    \end{column}
+  \end{columns}
+\vskip-.5cm  
+\begin{columns}
+  \begin{column}{.3\textwidth}
+    \begin{small}
+  \vskip-1cm
+      \begin{equation*}
+        E=\begin{bmatrix}
+        \varepsilon_{11} & \varepsilon_{12}\\ 
+        \varepsilon_{21} & \varepsilon_{22}
+        \end{bmatrix}
+      \end{equation*}
+    \end{small}
+  \end{column}
+  \begin{column}{.03\textwidth}
+    \vskip-1cm
+    \textbf{$\Rightarrow$}
+  \end{column}
+  \begin{column}{.3\textwidth}
+    \begin{scriptsize}
+      \begin{align*}
+        \gamma _1=\varepsilon_{11} - \varepsilon_{22}, \\
+        \gamma _2=\varepsilon_{12} + \varepsilon_{21}, \\ 
+        \omega = \frac{1}{2} \left (\varepsilon_{12} - \varepsilon_{21}  \right )\\
+      \end{align*}
+    \end{scriptsize}
+  \end{column}
+   \begin{column}{.03\textwidth}
+     \vskip-1cm
+    \textbf{$\Rightarrow$}
+  \end{column}
+  \begin{column}{.3\textwidth}
+  
+%   \begin{tcolorbox}[height=1.5cm, width=2.5cm]
+%     \begin{scriptsize}
+%       \begin{align*} 
+%         \gamma = \sqrt{{\gamma_{1}}^{2}+{\gamma_{2}}^{2}}\\
+%         \tan 2\psi = \frac{\gamma_1}{\gamma_2} \\
+%       \end{align*}
+%     \end{scriptsize}
+%     \end{tcolorbox}
+    
+% \begin{varblock}[2.5cm]{}
+  \centering
+    \begin{scriptsize}
+      \begin{align*} 
+        \gamma = \sqrt{{\gamma_{1}}^{2}+{\gamma_{2}}^{2}}\\
+        \tan 2\psi = \frac{\gamma_1}{\gamma_2} \\
+      \end{align*}
+    \end{scriptsize}
+% \end{varblock}
+  \end{column}
+\end{columns}
+
+
+\end{frame}
+\note{} % Add notes for this slide

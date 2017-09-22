@@ -1,0 +1,82 @@
+% ******************* PhD Thesis Presentation Template *************************
+% Please have a look at the README.md file for info on how to use the template
+\PassOptionsToPackage{table}{xcolor} % <-μονο εδω δουλεύει!!
+
+\documentclass{Classes/beamerPhD}               %%  
+% \documentclass[chapter]{Classes/beamerPhD}      %% chapter mode, print only one chapter
+% \documentclass[draft]{Classes/beamerPhD}        %% draft mode, figures not loading   
+% \documentclass[notes]{Classes/beamerPhD}        %% print frame + notes
+% \documentclass[notes=only]{Classes/beamerPhD}   %% only notes
+
+% ********************************** Preamble **********************************
+% Preamble: Contains packages and user-defined commands and settings
+\include{Preample/preample}
+
+% ************************ Thesis Information & Meta-data **********************
+% Thesis title and author information, refernce file for biblatex
+\input{thesis-info}
+
+% ***************************** Chapter Mode ***********************************
+% The chapter mode allows user to only print particular chapters with references
+
+\ifdefineChapter
+% \includeonly{Chapter1/ch1pres}
+% \includeonly{Chapter2/ch2pres}
+% \includeonly{Chapter3/ch3pres}
+% \includeonly{Chapter4/ch4pres}
+% \includeonly{Chapter5/ch5pres}
+\includeonly{Chapter6/ch6pres}
+% \includeonly{Chapter7/ch7pres}
+% \includeonly{Chapter8/ch8pres}
+% \includeonly{Appendix/ap_refs}
+% \includeonly{Appendix/ap_soft}
+% \includeonly{Appendix/cut01.tex}
+\fi
+
+% ***********************  Start the document  ***********************************
+\begin{document}
+
+% *****************************  Make title  *************************************
+\begin{frame}[plain]
+  \maketitle
+\end{frame}
+
+% *****************************  TOC  *************************************
+\begin{frame}
+  \frametitle{Δομή Παρουσίασης}
+  \tableofcontents
+\end{frame}
+
+
+% ************************  Include Chapters  *************************************
+\include{Chapter1/ch1pres}
+\include{Chapter2/ch2pres}
+\include{Chapter3/ch3pres}
+\include{Chapter4/ch4pres}
+\include{Chapter5/ch5pres}
+\include{Chapter6/ch6pres}
+% \include{Appendix/ap_refs}
+% \include{Appendix/ap_soft}
+
+%%-----------------------------------------------------------------------------
+%% END OF PRESENTATION ... bib
+%-----------------------------------------------------------------------------
+
+% ************************  Thank you frame  **********************************
+% include Thank U last frame
+\makethanku % Ιncluded to class file
+
+% ************************  Bibliography  *************************************
+% % % Include Bibliography
+\begin{frame}[t,allowframebreaks]
+  \frametitle{Βιβλιογραφία}
+  \printbibliography
+\end{frame}
+
+% ************************  Cut Frames  *************************************
+% Add back up cut frames
+% \include{Appendix/cut01}
+
+
+% ********************************** end of document ***************************
+\end{document}
