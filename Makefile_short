@@ -1,3 +1,5 @@
+# Simple Makefile for latexmk build presentation
+
 PROJECT=phd_pres
 
 ${PROJECT}.pdf: ${PROJECT}.bbl
