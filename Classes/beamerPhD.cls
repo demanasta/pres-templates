@@ -419,8 +419,8 @@
 \ifPRES@chapter
     \defineChaptertrue
     % Disable the table of contents, figures, tables, index and nomenclature
-%     \renewcommand{\maketitle}{}
-%     \renewcommand{\tableofcontents}{}
+     \renewcommand{\maketitle}{}
+     \renewcommand{\tableofcontents}{}
 %     \renewcommand{\listoffigures}{}
 %     \renewcommand{\listoftables}{}
 %     \renewcommand{\printnomencl}{}
@@ -430,8 +430,33 @@
     \defineChapterfalse
 \fi
 
+% ****************** Chapter Mode - To print only selected chapters ************
+\newif \ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
 
+\newif\ifPRES@printbib\PRES@printbibfalse % Enable Separate Abstract
+\DeclareOption{printbib}{
+  \PRES@printbibtrue
+  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
+    selected chapters with references, if this was intentional, ignore this
+    warning. If not, please remove the option `chapter' from the document class
+    and recompile. Good luck with your writing!}
+}
 
+\ProcessOptions\relax%
+
+\ifPRES@printbib
+    \definePrintbibtrue
+    % Disable the table of contents, figures, tables, index and nomenclature
+%     \renewcommand{\maketitle}{}
+%     \renewcommand{\tableofcontents}{}
+%     \renewcommand{\listoffigures}{}
+%     \renewcommand{\listoftables}{}
+%     \renewcommand{\printnomencl}{}
+%     \renewcommand{\printthesisindex}{}
+%     \renewcommand{\makethanku}{}
+\else
+    \definePrintbibfalse
+\fi
 
 
 % ***************************** Define info variables **************************
