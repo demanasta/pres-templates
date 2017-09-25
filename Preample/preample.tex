@@ -1,6 +1,6 @@
 % ********************************** Preamble **********************************
 % Preamble: Contains packages and user-defined commands and settings
-
+%\usepackage{../sty/beamerthemesimpledso}
 %%-----------------------------------------------------------------------------
 % % USE THEME
 %%-----------------------------------------------------------------------------
@@ -80,12 +80,50 @@
 %%-----------------------------------------------------------------------------
 % Fonts
 %-----------------------------------------------------------------------------
+%\usefonttheme{professionalfonts} % using non standard fonts for beamer
+%\usefonttheme{serif} % default family is serif
 \usepackage{fontspec}
+%\setmainfont{Liberation Serif}
+% ******************* Fonts (like different typewriter fonts etc.)*************
+
+% Add `customfont' in the document class option to use this section
+
+%\ifsetCustomFont
+  % Set your custom font here and use `customfont' in options. Leave empty to
+  % load computer modern font (default LaTeX font).
+%   \RequirePackage{helvet}
+
+% \setmainfont[Mapping=tex-text]{GFS Didot}
+% \setmainfont[Mapping=tex-text]{GFS Bodoni}
+% \setmainfont[Mapping=tex-text]{GFS Olga} % είναι λίγο ότι να ναι αυτή!!πλάγια
+% \setmainfont[Mapping=tex-text]{GFS Neohellenic}
+% \setmainfont[Mapping=tex-text]{GFS Artemisia}
+% \setmainfont[Mapping=tex-text]{GFS Elpis} %low resolution printing
+% \setmainfont[Mapping=tex-text]{Linux Libertine T}
+% \setmainfont[Mapping=tex-text]{Linux Libertine O}
+
+%  % For use with XeLaTeX
+%    \setmainfont[
+%      Path              = /usr/share/texlive/texmf-dist/fonts/opentype/public/libertine/, %./libertine/opentype/,
+%      Extension         = .otf,
+%      UprightFont = LinLibertine_R,
+%      BoldFont = LinLibertine_RZ, % Linux Libertine O Regular Semibold
+%      ItalicFont = LinLibertine_RI,
+%      BoldItalicFont = LinLibertine_RZI, % Linux Libertine O Regular Semibold Italic
+%    ]
+%    {LGR}
+%  %  % load font from system font
+%     \newfontfamily\libertinesystemfont{Linux Libertine O}
+%\fi
+
+
+% \usepackage{fontspec}
 % \setmainfont{TeX Gyre Pagella}
 % \setsansfont{TeX Gyre Heros}
 % \setmonofont{Inconsolata}
-\setmainfont{Times New Roman}
-\setsansfont{Arial}
+% \setmainfont{Times New Roman}
+%\setmainfont{Augie}
+ \setsansfont{Arial}
 % \setsansfont{Tapir}
 % \newfontfamily\greekfont[Script=Greek]{Linux Libertine O}
 % \setmainfont{Minion Pro} % substitute with any font that exists on your system

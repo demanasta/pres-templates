@@ -1,10 +1,11 @@
 #!/bin/bash
 # A script to compile the PhD Thesis - Krishna Kumar 
-# Updated to use xelatex Demitris G. Anastasiou 
+# 24-01-2016: Updated to use xelatex Demitris G. Anastasiou
+# 04-06-2017: Convert to compile presentations templates
 # Distributed under GPLv2.0 License
 
 #compile="compile";
-xelatex="xelatex";
+xelatex="xelatex"; 
 xelatexf="xelatexf";
 clean="clean";
 

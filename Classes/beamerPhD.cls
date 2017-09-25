@@ -425,6 +425,7 @@
 %     \renewcommand{\listoftables}{}
 %     \renewcommand{\printnomencl}{}
 %     \renewcommand{\printthesisindex}{}
+%     \renewcommand{\makethanku}{}
 \else
     \defineChapterfalse
 \fi
