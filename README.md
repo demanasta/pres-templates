@@ -71,11 +71,25 @@ __Note__: the `Makefile` itself is take from and maintained at
 
 Thesis information such as title, author, year, degree, etc., and other meta-data can be modified in `thesis-info.tex`
 
+### Style file
+All style files `.sty` placed at `sty` directory.
+> Install Beamer custom style:
+
+> * Run: `$ tlmgr conf | grep "TEXMFHOME"
+
+> * Add style file at `${TEXMFHOME}/tex/latex/beamer/themes/`
+
+> * Run: `$ [sudo] texhash`
+
+Otherwise you can place `.sty` file at the same directory with `.tex` file.
+ 
+
 ###Class files
 
 * `beamerPhD`: Class file for thesis presentations
 
 ### Class options
+
 * `aspectration=169`: reduce ratio to 16:9
 
 * `draft`: Special draft mode with line numbers, images, and water mark with timestamp and custom text. Position of the text can also be modified.
@@ -88,6 +102,15 @@ Thesis information such as title, author, year, degree, etc., and other meta-dat
 
 * `printbib`: Include bibliography at the end of the presentation (__bug__: not working with makefile!)
 
+## Contributing
+
+1. Create an issue and describe your idea
+2. [Fork it](https://github.com/demanasta/pres_templates/fork)
+3. Create your feature branch (`git checkout -b my-new-idea`)
+4. Commit your changes (`git commit -am 'Add some feature'`)
+5. Publish the branch (`git push origin my-new-idea`)
+6. Create a new Pull Request
+7. Profit! :white_check_mark:
 
 ## ChangeLog
 
