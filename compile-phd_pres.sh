@@ -1,10 +1,11 @@
 #!/bin/bash
 # A script to compile the PhD Thesis - Krishna Kumar 
-# Updated to use xelatex Demitris G. Anastasiou 
+# 24-01-2016: Updated to use xelatex Demitris G. Anastasiou
+# 04-06-2017: Convert to compile presentations templates
 # Distributed under GPLv2.0 License
 
 #compile="compile";
-xelatex="xelatex";
+xelatex="xelatex"; 
 xelatexf="xelatexf";
 clean="clean";
 
@@ -83,18 +84,6 @@ if [ $1 = $clean ]; then
         rm -rf *#* 
         echo "Cleaning complete!"
         exit
-#elif [ $1 = $compile ]; then
-#	echo "Compiling your PhD Thesis...please wait...!"
-#	pdflatex -interaction=nonstopmode $filename.tex
-#	bibtex $filename.aux 	
-#	makeindex $filename.aux
-#	makeindex $filename.idx
-#	makeindex $filename.nlo -s nomencl.ist -o $filename.nls
-#	pdflatex -interaction=nonstopmode $filename.tex
-#	makeindex $filename.nlo -s nomencl.ist -o $filename.nls
-#	pdflatex -interaction=nonstopmode $filename.tex
-#	echo "Success!"
-#	exit
 elif [ $1 = $xelatexf ]; then
 	echo "Compiling your PhD Thesis...please wait...!"
 	latexmk -xelatex $filename.tex				# <<-- NEW compilation after 26 May 17
