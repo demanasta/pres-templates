@@ -2769,7 +2769,9 @@ show: all
 
 .PHONY: ltxmk
 ltxmk:
-	$(QUIT)latexmk -xelatex -g $(default_stems_ss).tex ;
+	$(QUIT)latexmk -xelatex -g -interaction=batchmode -file-line-error $(default_stems_ss).tex > /dev/null ; \
+#	$(call transcript,latex,$1)
+
 
 all-beamer: ltxmk ;
 
