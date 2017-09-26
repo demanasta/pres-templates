@@ -5,12 +5,11 @@ Templates for academic presentations
 
 [![Build Status](https://api.travis-ci.org/demanasta/pres-templates.svg)](https://travis-ci.org/demanasta/pres-templates)
 [![License MIT](http://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENCE)
-[![Version](http://img.shields.io/badge/version-v1.0_beta2-brightgreen.svg)](https://github.com/demanasta/pres-templates/releases/latest)
+[![](https://img.shields.io/github/release/demanasta/pres-templates.svg)](https://github.com/demanasta/pres-templates/releases/latest)
+[![](https://img.shields.io/github/tag/demanasta/pres-templates.svg)](https://github.com/demanasta/pres-templates/tags)
 
 [![](https://img.shields.io/github/stars/demanasta/pres-templates.svg)](https://github.com/demanasta/pres-templates/stargazers)
 [![](https://img.shields.io/github/forks/demanasta/pres-templates.svg)](https://github.com/demanasta/pres-templates/network)
-[![](https://img.shields.io/github/tag/demanasta/pres-templates.svg)](https://github.com/demanasta/pres-templates/tags)
-[![](https://img.shields.io/github/release/demanasta/pres-templates.svg)](https://github.com/demanasta/pres-templates/releases/latest)
 [![](https://img.shields.io/github/issues/demanasta/pres-templates.svg)](https://github.com/demanasta/pres-templates/issues)
 
 
@@ -23,7 +22,49 @@ Templates for academic presentations
 --------------------------------------------------------------------------------
 
 ## Building your thesis - XeLaTeX
+### Using latexmk (Unix/Linux/Windows)
 
+This template supports `XeLaTeX` compilation chain. To generate  PDF run
+
+    latexmk -xelatex phd_pres.tex
+    biber phd_pres.tex
+    latexmk -xelatex -g phd_pres.tex
+    
+### Shell script for XeLaTeX (Unix/Linux) (Recommended)
+
+Usage: `sh ./compile-thesis.sh [OPTIONS] [filename]`
+
+[option]  xelatex: Compile the PhD thesis using xelatex
+
+[option]  xelatexf: Compile xelatex and biber, full copilation
+
+[option]  clean: removes temporary files no filename required
+
+### Using the make file (Unix/Linux)  still some bugs
+
+The template supports PDF, DVI and PS formats. All three formats can be generated
+with the provided `Makefile`.
+
+To build the `PDF` version of your thesis, run:
+
+    make
+
+
+This build procedure uses `latexmk` and will produce `phd_pres.pdf`.
+
+Use `Variables.ini` to change options:
+
+Clean unwanted files
+
+To clean unwanted clutter (all LaTeX auto-generated files), run:
+
+    make clean
+
+__Bug__: You cannot use `printbib` option on Class file!! 
+
+__Note__: the `Makefile` itself is take from and maintained at
+[here](http://code.google.com/p/latex-makefile/).
+ 
 -------------------------------------------------------------------------------
 
 ## Usage details
@@ -32,9 +73,26 @@ Thesis information such as title, author, year, degree, etc., and other meta-dat
 
 ###Class files
 
+* `beamerPhD`: Class file for thesis presentations
+
 ### Class options
+* `aspectration=169`: reduce ratio to 16:9
+
+* `draft`: Special draft mode with line numbers, images, and water mark with timestamp and custom text. Position of the text can also be modified.
+
+* `chapter`: This option enables only the specified chapter and it's references. Useful for review and corrections.
+
+* `notes`: Prints frames and notes 
+
+* `notes=only`: Prints only notes of each frame
+
+* `printbib`: Include bibliography at the end of the presentation (__bug__: not working with makefile!)
 
 
+## ChangeLog
 
+The history of releases can be viewed at [ChangeLog](ChangeLog.md)
 
 ## Acknowlegments
+
+* Xanthos Papnikolaou [@xanthospap](https://github.com/xanthospap) - Original design idea of presentation style 
