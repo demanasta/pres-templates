@@ -74,17 +74,16 @@ Thesis information such as title, author, year, degree, etc., and other meta-dat
 ### Style file
 All style files `.sty` placed at `sty` directory.
 > Install Beamer custom style:
-
+> 
 > * Run: `$ tlmgr conf | grep "TEXMFHOME"
-
+> 
 > * Add style file at `${TEXMFHOME}/tex/latex/beamer/themes/`
-
+> 
 > * Run: `$ [sudo] texhash`
 
 Otherwise you can place `.sty` file at the same directory with `.tex` file.
  
-
-###Class files
+### Class files
 
 * `beamerPhD`: Class file for thesis presentations
 
