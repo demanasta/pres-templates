@@ -32,7 +32,7 @@ fileinfo	:= LaTeX Makefile
 author		:= Chris Monson
 version		:= 2.2.1-alpha9
 #
-.DEFAULT_GOAL	:= all
+.DEFAULT_GOAL	:= all-beamer
 # Note that the user-global version is imported *after* the source directory,
 # so that you can use stuff like ?= to get proper override behavior.
 .PHONY: Makefile GNUmakefile Makefile.ini $(HOME)/.latex-makefile/Makefile.ini
@@ -752,7 +752,6 @@ DVIPS		?= dvips
 LATEX		?= latex
 PDFLATEX	?= pdflatex
 XELATEX		?= xelatex
-LATEXMK		?= latexmk
 EPSTOPDF	?= epstopdf
 MAKEINDEX	?= makeindex
 XINDY		?= xindy
@@ -1181,14 +1180,6 @@ hyperref_driver_pattern		?= hdvipdf.*
 hyperref_driver_error		?= Using pdflatex: specify pdftex in the hyperref options (or leave it blank).
 endif
 
-ifeq "$(strip $(BUILD_STRATEGY))" "latexmk"
-default_graphic_extension	?= pdf
-latex_build_program		?= $(LATEXMK)
-build_target_extension		?= pdf
-hyperref_driver_pattern		?= hdvipdf.*
-hyperref_driver_error		?= Using pdflatex: specify pdftex in the hyperref options (or leave it blank).
-endif
-
 # Files of interest
 all_files.tex		?= $(wildcard *.tex)
 all_files.tex.sh	?= $(wildcard *.tex.sh)
@@ -1391,11 +1382,6 @@ graphic_target_extensions	:= pdf png jpg jpeg mps tif
 endif
 
 ifeq "$(strip $(BUILD_STRATEGY))" "xelatex"
-graphic_source_extensions	+= eps
-graphic_target_extensions	:= pdf png jpg jpeg mps tif
-endif
-
-ifeq "$(strip $(BUILD_STRATEGY))" "latexmk"
 graphic_source_extensions	+= eps
 graphic_target_extensions	:= pdf png jpg jpeg mps tif
 endif
@@ -2781,13 +2767,13 @@ show: all
 	done
 
 
-# .PHONY: ltxmk
-# ltxmk:
-# 	$(QUIT)latexmk -xelatex -g -interaction=batchmode -file-line-error $(default_stems_ss).tex > /dev/null ; \
-# #	$(call transcript,latex,$1)
-# 
-# 
-# all-beamer: ltxmk ;
+.PHONY: ltxmk
+ltxmk:
+	$(QUIT)latexmk -xelatex -g -interaction=batchmode -file-line-error $(default_stems_ss).tex > /dev/null ; \
+#	$(call transcript,latex,$1)
+
+
+all-beamer: ltxmk ;
 
 #
 # INCLUDES
@@ -3129,22 +3115,6 @@ endif
 
 endif
 
-ifeq "$(strip $(BUILD_STRATEGY))" "latexmk"
-%.pdf: %.eps $(if $(GRAY),$(gray_eps_file))
-	$(QUIET)$(call echo-graphic,$^,$@)
-	$(QUIET)$(call convert-eps-to-pdf,$<,$@,$(GRAY))
-
-ifeq "$(strip $(GPI_OUTPUT_EXTENSION))" "pdf"
-%.pdf:	%.gpi %.gpi.d $(gpi_sed) $(gpi_global)
-	$(QUIET)$(call echo-graphic,$^,$@)
-	$(QUIET)$(call convert-gpi,$<,$@,$(GRAY))
-endif
-
-%.pdf:	%.fig
-	$(QUIET)$(call echo-graphic,$^,$@)
-	$(QUIET)$(call convert-fig,$<,$@,$(GRAY))
-
-endif
 
 # TODO: capture mpost output and display errors
 # TODO: figure out why pdf generation is erroring out (but working anyway)

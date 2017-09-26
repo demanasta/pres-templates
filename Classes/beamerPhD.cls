@@ -1,3 +1,22 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                            %%
+%% Class ``beamerPhD''                                                        %%
+%%                                                                            %%
+%% A beamer template for thesis presentations                                 %%
+%%                                                                            %%
+%% Version: v1.0                                                              %%
+%% Authors: Demitris G. Anastasiou                                            %%
+%% License: MIT License (c) 2017 Demitris G. Anastasiou                       %%
+%% GitHub Repo: https://github.com/demanasta/pres-templates/                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ************************** Class Identification ******************************
+\newcommand\fileversion{1.0}
+\newcommand\filedate{2017/06/25}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{Classes/beamerPhD}[\filedate\space A beamer template for thesis presentations by D. G. Anastasiou (v\fileversion)]
+\typeout{https://github.com/demanasta/pres-template/}
+
 % Copyright 2003--2007 by Till Tantau
 % Copyright 2010 by Vedran Mileti\'c
 % Copyright 2011 by Vedran Mileti\'c, Joseph Wright,
@@ -11,8 +30,8 @@
 % See the file doc/licenses/LICENSE for more details.
 
 \RequirePackage{beamerbasercs}
-\ProvidesClassRCS $Header: /Users/joseph/Documents/LaTeX/beamer/base/beamer.cls,v 332bfd3ce558 2013/12/02 16:41:31 joseph $
-[\beamer@version\space A class for typesetting presentations]
+%\ProvidesClassRCS $Header: /Users/joseph/Documents/LaTeX/beamer/base/beamer.cls,v 332bfd3ce558 2013/12/02 16:41:31 joseph $
+%[\beamer@version\space A class for typesetting presentations]
 
 
 \RequirePackage{beamerbasemodes}

@@ -47,7 +47,7 @@ version		:= 2.2.1-alpha9
 # BUILD_STRATEGY := latex
 BUILD_STRATEGY		?= latex
 # This can be used to pass extra options to latex.
-LATEX_OPTS		?= 
+LATEX_OPTS		?=
 #
 # Sets LC_ALL=C, by default, so that the locale-aware tools, like sort, be
 # # immune to changes to the locale in the user environment.
@@ -1188,7 +1188,6 @@ build_target_extension		?= pdf
 hyperref_driver_pattern		?= hdvipdf.*
 hyperref_driver_error		?= Using pdflatex: specify pdftex in the hyperref options (or leave it blank).
 endif
-
 
 # Files of interest
 all_files.tex		?= $(wildcard *.tex)
@@ -2784,7 +2783,9 @@ show: all
 
 # .PHONY: ltxmk
 # ltxmk:
-# 	$(QUIT)latexmk -xelatex -g $(default_stems_ss).tex ;
+# 	$(QUIT)latexmk -xelatex -g -interaction=batchmode -file-line-error $(default_stems_ss).tex > /dev/null ; \
+# #	$(call transcript,latex,$1)
+# 
 # 
 # all-beamer: ltxmk ;
 
@@ -3115,12 +3116,6 @@ ifeq "$(strip $(BUILD_STRATEGY))" "xelatex"
 %.pdf: %.eps $(if $(GRAY),$(gray_eps_file))
 	$(QUIET)$(call echo-graphic,$^,$@)
 	$(QUIET)$(call convert-eps-to-pdf,$<,$@,$(GRAY))
-	
-ifeq "$(strip $(BUILD_STRATEGY))" "latexmk"
-%.pdf: %.eps $(if $(GRAY),$(gray_eps_file))
-	$(QUIET)$(call echo-graphic,$^,$@)
-	$(QUIET)$(call convert-eps-to-pdf,$<,$@,$(GRAY))
-endif
 
 ifeq "$(strip $(GPI_OUTPUT_EXTENSION))" "pdf"
 %.pdf:	%.gpi %.gpi.d $(gpi_sed) $(gpi_global)
@@ -3134,6 +3129,22 @@ endif
 
 endif
 
+ifeq "$(strip $(BUILD_STRATEGY))" "latexmk"
+%.pdf: %.eps $(if $(GRAY),$(gray_eps_file))
+	$(QUIET)$(call echo-graphic,$^,$@)
+	$(QUIET)$(call convert-eps-to-pdf,$<,$@,$(GRAY))
+
+ifeq "$(strip $(GPI_OUTPUT_EXTENSION))" "pdf"
+%.pdf:	%.gpi %.gpi.d $(gpi_sed) $(gpi_global)
+	$(QUIET)$(call echo-graphic,$^,$@)
+	$(QUIET)$(call convert-gpi,$<,$@,$(GRAY))
+endif
+
+%.pdf:	%.fig
+	$(QUIET)$(call echo-graphic,$^,$@)
+	$(QUIET)$(call convert-fig,$<,$@,$(GRAY))
+
+endif
 
 # TODO: capture mpost output and display errors
 # TODO: figure out why pdf generation is erroring out (but working anyway)
