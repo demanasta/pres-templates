@@ -15,8 +15,7 @@
 
 \input xkeyval
 
-\newcommand<>{\includeoverlaygraphics}[2][]
-{
+\newcommand<>{\includeoverlaygraphics}[2][]{%
   \begin{tikzpicture}
     \alt#3{\node[opacity=1] {\includegraphics[#1]{#2}};}
           {\node[opacity=.15] {\includegraphics[#1]{#2}};}
@@ -64,13 +63,12 @@
 
 \addtoheadtemplate{\pgfuseshading{beamer@headfade}\vskip-1.25cm}{}
 
-  % overlays semitransparentes
-  \setbeamercovered{transparent}
+% overlays semitransparentes
+\setbeamercovered{transparent}
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
 
-  \setbeamertemplate{navigation symbols}{}%remove navigation symbols
-
-  % SET footline options
-  \setbeamertemplate{footline}[frame number]
+% SET footline options
+\setbeamertemplate{footline}[frame number]
 
 % % SET fooline \w coolorox options
 % \setbeamercolor{footlinecolor}{bg=blue!30,fg=white}
@@ -97,11 +95,11 @@
   
 % %**************************************************************************
 % % set block parameters theme
-  \setbeamertemplate{blocks}[rounded][shadow=true]
-  \setbeamercolor{block title}{fg=blue,bg=structure.fg!20!bg!50!bg}
-  \setbeamercolor{block body}{use=block title,bg=block title.bg}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{fg=blue,bg=structure.fg!20!bg!50!bg}
+\setbeamercolor{block body}{use=block title,bg=block title.bg}
   
-  \usepackage{etoolbox}
+\usepackage{etoolbox}
 
 \setbeamercolor{block title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
 \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!50!bg}
@@ -146,7 +144,7 @@
 \setbeamercolor{note title}{bg=black!15}
 \setbeamercolor{note date}{fg=white}
 
-
+% % Block with variable length
 \newenvironment<>{varblock}[2][.9\textwidth]{%
   \setlength{\textwidth}{#1}
   \begin{actionenv}#3%
@@ -160,7 +158,7 @@
 
 \beamertemplatedotitem
 
-  \setbeamertemplate{background}{
+\setbeamertemplate{background}{
   \parbox[c][\paperheight]{\paperwidth}{%
     \vfill \hfill 
     \begin{tikzpicture}

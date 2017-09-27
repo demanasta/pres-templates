@@ -413,70 +413,9 @@
 \csname beamer@loadlater\endcsname
 
 
-
-
-% ****************** Chapter Mode - To print only selected chapters ************
-\newif \ifdefineChapter\defineChapterfalse %To enable Separate abstract
-
-\newif\ifPRES@chapter\PRES@chapterfalse % Enable Separate Abstract
-\DeclareOption{chapter}{
-  \PRES@chaptertrue
-  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
-    selected chapters with references, if this was intentional, ignore this
-    warning. If not, please remove the option `chapter' from the document class
-    and recompile. Good luck with your writing!}
-}
-
-\ProcessOptions\relax%
-
-% ***************************** Chapter Mode ***********************************
-% The chapter mode allows user to only print particular chapters with references
-% All other options are disabled by default
-% To include only specific chapters without TOC, LOF, Title and Front Matter
-% To send it to supervisior for changes
-
-\ifPRES@chapter
-    \defineChaptertrue
-    % Disable the table of contents, figures, tables, index and nomenclature
-     \renewcommand{\maketitle}{}
-     \renewcommand{\tableofcontents}{}
-%     \renewcommand{\listoffigures}{}
-%     \renewcommand{\listoftables}{}
-%     \renewcommand{\printnomencl}{}
-%     \renewcommand{\printthesisindex}{}
-%     \renewcommand{\makethanku}{}
-\else
-    \defineChapterfalse
-\fi
-
-% ****************** Chapter Mode - To print only selected chapters ************
-\newif \ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
-
-\newif\ifPRES@printbib\PRES@printbibfalse % Enable Separate Abstract
-\DeclareOption{printbib}{
-  \PRES@printbibtrue
-  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
-    selected chapters with references, if this was intentional, ignore this
-    warning. If not, please remove the option `chapter' from the document class
-    and recompile. Good luck with your writing!}
-}
-
-\ProcessOptions\relax%
-
-\ifPRES@printbib
-    \definePrintbibtrue
-    % Disable the table of contents, figures, tables, index and nomenclature
-%     \renewcommand{\maketitle}{}
-%     \renewcommand{\tableofcontents}{}
-%     \renewcommand{\listoffigures}{}
-%     \renewcommand{\listoftables}{}
-%     \renewcommand{\printnomencl}{}
-%     \renewcommand{\printthesisindex}{}
-%     \renewcommand{\makethanku}{}
-\else
-    \definePrintbibfalse
-\fi
-
+%%------------------------------------------------------------------------------
+%% Options added on BeamerPhD Class file
+%%-----------------------------------------------------------------------------
 
 % ***************************** Define info variables **************************
 % The name of your University
@@ -549,38 +488,33 @@
 
 % ******************************** Title Page **********************************
 \renewcommand{\maketitle}{
+\begin{frame}[plain]
+  \begin{minipage}[t]{0.10\textwidth}
+    \centering\raisebox{\dimexpr \topskip-\height}{\@crestleft}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.79\textwidth}
+    \centering \vspace*{-0.4cm}{\large \textbf{\@university} \par}
+    \vspace*{0.1cm}  {\small \@dept \par}
+    \vspace*{0.1cm}  {\small \@lab  \par}
+  \end{minipage}
+  \begin{minipage}[t]{0.10\textwidth}
+    \centering\raisebox{\dimexpr \topskip-\height}{\@crestright}
+  \end{minipage}\hfill
+  \vfill
+  \centering
+  \vspace*{1cm}
+  \large\textbf{\textcolor{blue!90}{\@eltitle}}\par\vfill
+  \small{\@degreetitle}\par\vfill
 
-\begin{minipage}[t]{0.10\textwidth}
-\centering\raisebox{\dimexpr \topskip-\height}{%
-% \includegraphics[width=.98\textwidth]{Figs/ntua.png}}
-\@crestleft}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.79\textwidth}
-  \centering \vspace*{-0.4cm}{\large \textbf{\@university} \par}
-  \vspace*{0.1cm}  {\small \@dept \par}
-  \vspace*{0.1cm}  {\small \@lab  \par}
-% \vspace*{0.4cm}
-\end{minipage}
-\begin{minipage}[t]{0.10\textwidth}
-  \centering\raisebox{\dimexpr \topskip-\height}{%
-%  \includegraphics[width=.85\textwidth]{Figs/DSOtrans.png}}
-  \@crestright}
-\end{minipage}\hfill
-\vfill
-
-\centering
-\vspace*{1cm}
-\large\textbf{\textcolor{blue!90}{\@eltitle}}\par\vfill
-\small{\@degreetitle}\par\vfill
-
-\normalsize\textbf{\@authorname}\par
-\footnotesize{\@authortitle}\par\vfill
-\flushleft{\footnotesize{\textbf{ΕΠΙΒΛΕΠΩΝ:}\\ \@supervisor}}\par\vspace*{.3cm}
-\centering
-{\footnotesize\textbf{\@city, \@degreedate}}%\vfill
+  \normalsize\textbf{\@authorname}\par
+  \footnotesize{\@authortitle}\par\vfill
+  \flushleft{\footnotesize{\textbf{ΕΠΙΒΛΕΠΩΝ:}\\ \@supervisor}}\par\vspace*{.3cm}
+  \centering
+  {\footnotesize\textbf{\@city, \@degreedate}}%\vfill
+\end{frame}
 }
 
-% ******************************** Title Page **********************************
+% ****************************** Thank U Page **********************************
 \newcommand{\makethanku}{
 \begin{frame}[plain,b]\frametitle{}\framesubtitle{}
 \vfill
@@ -613,14 +547,57 @@
 \href{\@urltw}{\faTwitter} \hfill \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
 \vfill
 \end{frame}
-
-
-
-
-
-
 }
 
+% ****************** Chapter Mode - To print only selected chapters ************
+\newif \ifdefineChapter\defineChapterfalse %To enable Separate abstract
+
+\newif\ifPRES@chapter\PRES@chapterfalse % Enable Separate Abstract
+\DeclareOption{chapter}{
+  \PRES@chaptertrue
+  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
+    selected chapters with references, if this was intentional, ignore this
+    warning. If not, please remove the option `chapter' from the document class
+    and recompile. Good luck with your writing!}
+}
+
+\ProcessOptions\relax%
+
+% ***************************** Chapter Mode ***********************************
+% The chapter mode allows user to only print particular chapters with references
+% All other options are disabled by default
+% To include only specific chapters without TOC, LOF, Title and Front Matter
+% To send it to supervisior for changes
+
+\ifPRES@chapter
+  \defineChaptertrue
+  % Disable the table of contents, figures, tables, index and nomenclature
+     \renewcommand{\maketitle}{}
+%     \renewcommand{\tableofcontents}{}
+    \renewcommand{\makethanku}{}
+\else
+    \defineChapterfalse
+\fi
+
+% ****************** Print Bibliography option *********************************
+\newif \ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
+
+\newif\ifPRES@printbib\PRES@printbibfalse % Enable Separate Abstract
+\DeclareOption{printbib}{
+  \PRES@printbibtrue
+  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
+    selected chapters with references, if this was intentional, ignore this
+    warning. If not, please remove the option `chapter' from the document class
+    and recompile. Good luck with your writing!}
+}
+
+\ProcessOptions\relax%
+
+\ifPRES@printbib
+    \definePrintbibtrue
+\else
+    \definePrintbibfalse
+\fi
 
 
 

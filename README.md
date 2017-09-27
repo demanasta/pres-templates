@@ -104,7 +104,7 @@ Otherwise you can place `.sty` file at the same directory with `.tex` file.
 ## Contributing
 
 1. Create an issue and describe your idea
-2. [Fork it](https://github.com/demanasta/pres_templates/fork)
+2. [Fork it](https://github.com/demanasta/pres-templates/network#fork-destination-box)
 3. Create your feature branch (`git checkout -b my-new-idea`)
 4. Commit your changes (`git commit -am 'Add some feature'`)
 5. Publish the branch (`git push origin my-new-idea`)
