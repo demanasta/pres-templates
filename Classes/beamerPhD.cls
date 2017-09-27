@@ -415,7 +415,134 @@
 
 %%------------------------------------------------------------------------------
 %% Options added on BeamerPhD Class file
-%%-----------------------------------------------------------------------------
+%%------------------------------------------------------------------------------
+
+% ******************************* Time Stamp ***********************************
+% Compute the timestamp based on an idea of
+% Tim Piessens \texttt{<Tim.Piessens@esat.kuleuven.ac.be>}.
+
+\RequirePackage{datetime}
+
+\newcount\PRES@hour \newcount\PRES@minute
+\PRES@hour=\time
+\divide \PRES@hour by 60
+\PRES@minute=\time
+\count@=\PRES@hour
+\multiply \count@ by -60
+\advance \PRES@minute by \count@
+\newcommand{\PRES@daytime}{%
+  \today\space--\space%
+  \ifnum\PRES@hour=0 00\else\ifnum\PRES@hour<10 0\fi%
+  \number\PRES@hour\fi:\ifnum\PRES@minute<10 0\fi\number\PRES@minute
+}
+
+% ******************************* Draft Mode ***********************************
+
+\newif\ifsetDraft\setDrafttrue
+% If Draft Mode is active
+\ifsetDraft
+% Disable figures in `draftmode'\
+\setkeys{Gin}{draft=true}
+
+% Initializing Draft Text
+\newcommand\SetDraftText[1]{}
+% Initializing Draft Version
+\newcommand\SetDraftVersion[1]{}
+% Initializing Draft Content
+\newcommand\SetDraftWMPosition[1]{}
+% Initializing Draft Gray Scale
+\newcommand\SetDraftGrayScale[1]{}
+
+% Creates a Watermark Draft at the specified location.
+% The settings can be tweaked in the preamble
+
+% Draft text
+\newcommand\drafttext{Draft}
+\renewcommand\SetDraftText[1]{%
+  \renewcommand\drafttext{#1}
+}
+
+% Draft Version
+\newcommand\draftVersion{v1.0}
+\renewcommand\SetDraftVersion[1]{%
+  \renewcommand\draftVersion{#1}
+}
+
+% Draft Gray Scale
+\newcommand\draftGrayScale{0.65}
+\renewcommand\SetDraftGrayScale[1]{%
+  \renewcommand\draftGrayScale{#1}
+}
+
+% Draft Content
+\newcommand\DraftContent{%
+  \hspace*{\fill}
+  \Large
+  \textcolor[gray]{\draftGrayScale}{%
+    {\drafttext}\space-\space{\draftVersion}\hspace{\stretch{1}}{\PRES@daytime}
+    \hspace*{\fill}
+  }
+}
+
+%\RequirePackage{background}
+%\backgroundsetup{
+%    placement=center,
+%    scale=4,
+%    contents={DRAFT},
+%    opacity=1
+%}
+%\setbeamertemplate{background}{\BgMaterial}
+
+%% Adding watermark in draft mode with time stamp
+\RequirePackage{everypage}
+\RequirePackage[absolute]{textpos}
+% Default values for draft watermark
+\newcommand\draftposition{bottom}
+\newcommand\draftnodeanchor{1in+\voffset-\topmargin}
+\AddEverypageHook{%
+  \begin{textblock*}{\paperwidth}[0.,2.5](0\paperwidth,\draftnodeanchor)
+    \DraftContent
+  \end{textblock*}
+}
+
+% Conditional evaluation to position the draft water mark  (top / bottom)
+\renewcommand\SetDraftWMPosition[1]{%
+  \renewcommand\draftposition{#1}
+  \ifthenelse{\equal{\draftposition}{bottom}}
+    {\renewcommand\draftnodeanchor{\paperheight-\voffset}} %Bottom
+    {\ifthenelse{\equal{\draftposition}{top}}
+      {\renewcommand\draftnodeanchor{1in+\voffset-\topmargin}} %Top
+      {\ClassWarning{PDThesisPSnPDF}{Unrecognised draft position
+          using default value of top}
+        \renewcommand\draftnodeanchor{1in+\voffset-\topmargin}}} %Top
+    
+    \AddEverypageHook{%
+    \begin{textblock*}{\paperwidth}[0.,2.5](0\paperwidth,\draftnodeanchor)
+      \DraftContent
+    \end{textblock*}
+  }
+}
+
+% If NOT Draft Mode
+\else 
+
+\renewcommand\SetDraftText[1]{\ClassWarning{beamerPhD}{DraftMode is
+    inactive, to use SetDraftText include `draftmode' in the document 
+    class options.}}
+% Draft Version
+\renewcommand\SetDraftVersion[1]{\ClassWarning{beamerPhD}{DraftMode is
+    inactive, to use SetDraftVersion include `draftmode' in the document
+    class options.}}
+% Draft Content
+\renewcommand\SetDraftWMPosition[1]{\ClassWarning{beamerPhD}{DraftMode
+    is inactive, to use SetDraftWMPosition include `draftmode' in the document
+    class options.}}
+
+\renewcommand\SetDraftGrayScale[1]{\ClassWarning{beamerPhD}{DraftMode is
+    inactive, to use SetDraftWMPosition include `draftmode' in the document
+    class options.}}
+
+\fi 
 
 % ***************************** Define info variables **************************
 % The name of your University
@@ -500,6 +627,11 @@
   \begin{minipage}[t]{0.10\textwidth}
     \centering\raisebox{\dimexpr \topskip-\height}{\@crestright}
   \end{minipage}\hfill
+  \vfill
+  \ifsetDraft
+    \DraftContent
+    \vspace*{-1cm}
+  \fi
   \vfill
   \centering
   \vspace*{1cm}
