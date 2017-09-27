@@ -19,6 +19,25 @@ Templates for academic presentations
 --------------------------------------------------------------------------------
 ## Features
 
+* Supports LaTeX, XeLaTeX and LuaLaTeX
+
+* Support Greek Language and FOnts (GFS)
+
+* Adaptive Title Page: Title page adapts to title length
+
+* Pre-defined and custom fonts (Times / Fourier / Latin Modern) with math support
+
+* Option to generate only specific chapters and references without the frontmatter and title page. Useful for review and corrections.
+
+* Draft mode: Draft water mark, timestamp, version numbering
+ 
+* Different styles and Classfiles:
+    * `PhD`: A professional presentation for your thesis (PhD, Diploma etc)
+
+    * `~~Pub~~`:  Available soon!!
+    
+    * `~~Lecture~~`: Available Soon!!
+
 --------------------------------------------------------------------------------
 
 ## Building your thesis - XeLaTeX
@@ -69,7 +88,7 @@ __Note__: the `Makefile` itself is take from and maintained at
 
 ## Usage details
 
-Thesis information such as title, author, year, degree, etc., and other meta-data can be modified in `thesis-info.tex`
+Thesis information such as title, author, year, degree, etc., and other meta-data can be modified in `pres-info.tex`
 
 ### Style file
 All style files `.sty` placed at `sty` directory.
@@ -82,10 +101,16 @@ All style files `.sty` placed at `sty` directory.
 > * Run: `$ [sudo] texhash`
 
 Otherwise you can place `.sty` file at the same directory with `.tex` file.
+
+Then select you presentation style on `preample.tex` file
  
 ### Class files
 
 * `beamerPhD`: Class file for thesis presentations
+
+* `~~beamerPub~~`: under development!
+
+* `~~beamer Lecture~~`: under development!
 
 ### Class options
 
@@ -117,4 +142,4 @@ The history of releases can be viewed at [ChangeLog](ChangeLog.md)
 
 ## Acknowlegments
 
-* Xanthos Papnikolaou [@xanthospap](https://github.com/xanthospap) - Original design idea of presentation style 
+* Xanthos Papanikolaou [@xanthospap](https://github.com/xanthospap) - Original design idea of presentation style 
