@@ -174,7 +174,8 @@
 \DeclareOptionBeamer{17pt}{\def\beamer@size{{size17.clo}}}
 \DeclareOptionBeamer{20pt}{\def\beamer@size{{size20.clo}}}
 
-\DeclareOptionBeamer{draft}{\beamer@draftmodetrue}
+\newif\ifsetDraft\setDraftfalse
+\DeclareOptionBeamer{draft}{\setDrafttrue}
 \pagenumbering{arabic}
 \def\insertpagenumber{\thepage}
 
@@ -347,7 +348,7 @@
     \beamer@paperheight 9.00cm%
   \else\ifnum#1=141%
     \beamer@paperwidth 14.85cm%
-    \beamer@paperheight10.50cm%
+    \beamer@paperheight 10.50cm%
   \fi\fi\fi\fi\fi\fi\fi%
 }
 
@@ -383,7 +384,7 @@
 \RequirePackage{atbegshi}
 % Normally loaded by hyperref but to be on the safe side ...
 
-\RequirePackage[implicit=false]{hyperref}
+\RequirePackage[implicit=falsem, draft=false]{hyperref}
 % For hyperlinks
 
 \hypersetup{pdfcreator={LaTeX with Beamer class version \beamer@version}}
@@ -413,70 +414,129 @@
 \csname beamer@loadlater\endcsname
 
 
+%%------------------------------------------------------------------------------
+%% Options added on BeamerPhD Class file
+%%------------------------------------------------------------------------------
+
+% ******************************* Time Stamp ***********************************
+% Compute the timestamp based on an idea of
+% Tim Piessens \texttt{<Tim.Piessens@esat.kuleuven.ac.be>}.
+
+\RequirePackage{datetime}
 
 
-% ****************** Chapter Mode - To print only selected chapters ************
-\newif \ifdefineChapter\defineChapterfalse %To enable Separate abstract
+\newcommand{\timestamp}{compiled on \ifnum\day<10 0\fi\the\day.\,%
+\ifnum\month<10 0\fi\the\month.\,%
+\the\year\ at \xxivtime\,h}
+% ******************************* Draft Mode ***********************************
 
-\newif\ifPRES@chapter\PRES@chapterfalse % Enable Separate Abstract
-\DeclareOption{chapter}{
-  \PRES@chaptertrue
-  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
-    selected chapters with references, if this was intentional, ignore this
-    warning. If not, please remove the option `chapter' from the document class
-    and recompile. Good luck with your writing!}
+% Initializing Draft Text
+\newcommand\SetDraftText[1]{}
+% Initializing Draft Version
+\newcommand\SetDraftVersion[1]{}
+% Initializing Draft Content
+\newcommand\SetDraftWMPosition[1]{}
+% Initializing Draft Gray Scale
+\newcommand\SetDraftGrayScale[1]{}
+
+% If Draft Mode is active
+\ifsetDraft
+% Disable figures in `draftmode' Change on `preample.tex` this option
+\setkeys{Gin}{draft=false}
+
+% Creates a Watermark Draft at the specified location.
+% The settings can be tweaked in the preamble
+
+% Draft text
+\newcommand\drafttext{Draft}
+\renewcommand\SetDraftText[1]{%
+  \renewcommand\drafttext{#1}
 }
 
-\ProcessOptions\relax%
-
-% ***************************** Chapter Mode ***********************************
-% The chapter mode allows user to only print particular chapters with references
-% All other options are disabled by default
-% To include only specific chapters without TOC, LOF, Title and Front Matter
-% To send it to supervisior for changes
-
-\ifPRES@chapter
-    \defineChaptertrue
-    % Disable the table of contents, figures, tables, index and nomenclature
-     \renewcommand{\maketitle}{}
-     \renewcommand{\tableofcontents}{}
-%     \renewcommand{\listoffigures}{}
-%     \renewcommand{\listoftables}{}
-%     \renewcommand{\printnomencl}{}
-%     \renewcommand{\printthesisindex}{}
-%     \renewcommand{\makethanku}{}
-\else
-    \defineChapterfalse
-\fi
-
-% ****************** Chapter Mode - To print only selected chapters ************
-\newif \ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
-
-\newif\ifPRES@printbib\PRES@printbibfalse % Enable Separate Abstract
-\DeclareOption{printbib}{
-  \PRES@printbibtrue
-  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
-    selected chapters with references, if this was intentional, ignore this
-    warning. If not, please remove the option `chapter' from the document class
-    and recompile. Good luck with your writing!}
+% Draft Version
+\newcommand\draftVersion{v1.0}
+\renewcommand\SetDraftVersion[1]{%
+  \renewcommand\draftVersion{#1}
 }
 
-\ProcessOptions\relax%
+% Draft Gray Scale
+\newcommand\draftGrayScale{0.65}
+\renewcommand\SetDraftGrayScale[1]{%
+  \renewcommand\draftGrayScale{#1}
+}
 
-\ifPRES@printbib
-    \definePrintbibtrue
-    % Disable the table of contents, figures, tables, index and nomenclature
-%     \renewcommand{\maketitle}{}
-%     \renewcommand{\tableofcontents}{}
-%     \renewcommand{\listoffigures}{}
-%     \renewcommand{\listoftables}{}
-%     \renewcommand{\printnomencl}{}
-%     \renewcommand{\printthesisindex}{}
-%     \renewcommand{\makethanku}{}
-\else
-    \definePrintbibfalse
-\fi
+% Draft Content
+\newcommand\DraftContent{%
+  \hspace*{\fill}
+  \Large
+  %\textcolor[gray]{\draftGrayScale}{% change gray color to red
+  \textcolor[rgb]{1,0,0}{%
+    {\drafttext}\space-\space{\draftVersion}\hspace{\stretch{1}}{\timestamp}
+    \hspace*{\fill}
+  }
+}
 
+%\newcommand{\draftypos}{\topmargin - 4cm}
+%\RequirePackage{background}
+%\backgroundsetup{
+%    placement=center,
+%    scale=4,
+%    contents={DRAFT},
+%    opacity=1
+%}
+%\setbeamertemplate{background}{\BgMaterial}
+
+%%% Adding watermark in draft mode with time stamp
+%\RequirePackage{everypage}
+%\RequirePackage[absolute]{textpos}
+% Default values for draft watermark
+%\newcommand\draftposition{bottom}
+%\newcommand\draftnodeanchor{1in+\voffset-\topmargin}
+%\newcommand\draftnodeanchor{1in+\voffset-\topmargin}
+%\AddEverypageHook{%
+%  \begin{textblock*}{\paperwidth}[0.,2.5](0\paperwidth,\draftnodeanchor)
+%    \DraftContent
+%  \end{textblock*}
+%}
+%
+%% Conditional evaluation to position the draft water mark  (top / bottom)
+%\renewcommand\SetDraftWMPosition[1]{%
+%  \renewcommand\draftposition{#1}
+%  \ifthenelse{\equal{\draftposition}{bottom}}
+%    {\renewcommand\draftnodeanchor{\paperheight-\voffset}} %Bottom
+%    {\ifthenelse{\equal{\draftposition}{top}}
+%      {\renewcommand\draftnodeanchor{1in+\voffset-\topmargin}} %Top
+%      {\ClassWarning{PDThesisPSnPDF}{Unrecognised draft position
+%          using default value of top}
+%        \renewcommand\draftnodeanchor{1in+\voffset-\topmargin}}} %Top
+%    
+%    \AddEverypageHook{%
+%    \begin{textblock*}{\paperwidth}[0.,2.5](0\paperwidth,\draftnodeanchor)
+%      \DraftContent
+%    \end{textblock*}
+%  }
+%}
+
+% If NOT Draft Mode
+\else 
+
+\renewcommand\SetDraftText[1]{\ClassWarning{beamerPhD}{DraftMode is
+    inactive, to use SetDraftText include `draftmode' in the document 
+    class options.}}
+% Draft Version
+\renewcommand\SetDraftVersion[1]{\ClassWarning{beamerPhD}{DraftMode is
+    inactive, to use SetDraftVersion include `draftmode' in the document
+    class options.}}
+% Draft Content
+\renewcommand\SetDraftWMPosition[1]{\ClassWarning{beamerPhD}{DraftMode
+    is inactive, to use SetDraftWMPosition include `draftmode' in the document
+    class options.}}
+
+\renewcommand\SetDraftGrayScale[1]{\ClassWarning{beamerPhD}{DraftMode is
+    inactive, to use SetDraftWMPosition include `draftmode' in the document
+    class options.}}
+
+\fi 
 
 % ***************************** Define info variables **************************
 % The name of your University
@@ -549,38 +609,38 @@
 
 % ******************************** Title Page **********************************
 \renewcommand{\maketitle}{
+\begin{frame}[plain]
+  \begin{minipage}[t]{0.10\textwidth}
+    \centering\raisebox{\dimexpr \topskip-\height}{\@crestleft}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.79\textwidth}
+    \centering \vspace*{-0.4cm}{\large \textbf{\@university} \par}
+    \vspace*{0.1cm}  {\small \@dept \par}
+    \vspace*{0.1cm}  {\small \@lab  \par}
+  \end{minipage}
+  \begin{minipage}[t]{0.10\textwidth}
+    \centering\raisebox{\dimexpr \topskip-\height}{\@crestright}
+  \end{minipage}\hfill
+  \vfill
+  \ifsetDraft
+    \DraftContent
+    \vspace*{-1cm}
+  \fi
+  \vfill
+  \centering
+  \vspace*{1cm}
+  \large\textbf{\textcolor{blue!90}{\@eltitle}}\par\vfill
+  \small{\@degreetitle}\par\vfill
 
-\begin{minipage}[t]{0.10\textwidth}
-\centering\raisebox{\dimexpr \topskip-\height}{%
-% \includegraphics[width=.98\textwidth]{Figs/ntua.png}}
-\@crestleft}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.79\textwidth}
-  \centering \vspace*{-0.4cm}{\large \textbf{\@university} \par}
-  \vspace*{0.1cm}  {\small \@dept \par}
-  \vspace*{0.1cm}  {\small \@lab  \par}
-% \vspace*{0.4cm}
-\end{minipage}
-\begin{minipage}[t]{0.10\textwidth}
-  \centering\raisebox{\dimexpr \topskip-\height}{%
-%  \includegraphics[width=.85\textwidth]{Figs/DSOtrans.png}}
-  \@crestright}
-\end{minipage}\hfill
-\vfill
-
-\centering
-\vspace*{1cm}
-\large\textbf{\textcolor{blue!90}{\@eltitle}}\par\vfill
-\small{\@degreetitle}\par\vfill
-
-\normalsize\textbf{\@authorname}\par
-\footnotesize{\@authortitle}\par\vfill
-\flushleft{\footnotesize{\textbf{ΕΠΙΒΛΕΠΩΝ:}\\ \@supervisor}}\par\vspace*{.3cm}
-\centering
-{\footnotesize\textbf{\@city, \@degreedate}}%\vfill
+  \normalsize\textbf{\@authorname}\par
+  \footnotesize{\@authortitle}\par\vfill
+  \flushleft{\footnotesize{\textbf{ΕΠΙΒΛΕΠΩΝ:}\\ \@supervisor}}\par\vspace*{.3cm}
+  \centering
+  {\footnotesize\textbf{\@city, \@degreedate}}%\vfill
+\end{frame}
 }
 
-% ******************************** Title Page **********************************
+% ****************************** Thank U Page **********************************
 \newcommand{\makethanku}{
 \begin{frame}[plain,b]\frametitle{}\framesubtitle{}
 \vfill
@@ -613,14 +673,57 @@
 \href{\@urltw}{\faTwitter} \hfill \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
 \vfill
 \end{frame}
-
-
-
-
-
-
 }
 
+% ****************** Chapter Mode - To print only selected chapters ************
+\newif \ifdefineChapter\defineChapterfalse %To enable Separate abstract
+
+\newif\ifPRES@chapter\PRES@chapterfalse % Enable Separate Abstract
+\DeclareOption{chapter}{
+  \PRES@chaptertrue
+  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
+    selected chapters with references, if this was intentional, ignore this
+    warning. If not, please remove the option `chapter' from the document class
+    and recompile. Good luck with your writing!}
+}
+
+\ProcessOptions\relax%
+
+% ***************************** Chapter Mode ***********************************
+% The chapter mode allows user to only print particular chapters with references
+% All other options are disabled by default
+% To include only specific chapters without TOC, LOF, Title and Front Matter
+% To send it to supervisior for changes
+
+\ifPRES@chapter
+  \defineChaptertrue
+  % Disable the table of contents, figures, tables, index and nomenclature
+     \renewcommand{\maketitle}{}
+%     \renewcommand{\tableofcontents}{}
+    \renewcommand{\makethanku}{}
+\else
+    \defineChapterfalse
+\fi
+
+% ****************** Print Bibliography option *********************************
+\newif \ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
+
+\newif\ifPRES@printbib\PRES@printbibfalse % Enable Separate Abstract
+\DeclareOption{printbib}{
+  \PRES@printbibtrue
+  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
+    selected chapters with references, if this was intentional, ignore this
+    warning. If not, please remove the option `chapter' from the document class
+    and recompile. Good luck with your writing!}
+}
+
+\ProcessOptions\relax%
+
+\ifPRES@printbib
+    \definePrintbibtrue
+\else
+    \definePrintbibfalse
+\fi
 
 
 

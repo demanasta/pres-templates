@@ -1,4 +1,4 @@
-Templates for academic presentations
+Templates for academic presentations -- pre-released
 ======================
 
 > Beamer - LaTeX \ XeLaTeX templates for professional presentations
@@ -18,6 +18,25 @@ Templates for academic presentations
 
 --------------------------------------------------------------------------------
 ## Features
+
+* Supports LaTeX, XeLaTeX and LuaLaTeX
+
+* Support Greek Language and Fonts (GFS)
+
+* Adaptive Title Page: Title page adapts to title length
+
+* Pre-defined and custom fonts (Arial / Professional fonts) with math support
+
+* Option to generate only specific chapters and references without the frontmatter and title page. Useful for review and corrections.
+
+* Draft mode: Draft water mark, timestamp, version numbering
+ 
+* Different styles and Classfiles:
+    * `PhD`: A professional presentation for your thesis (PhD, Diploma etc)
+
+    * `~~Pub~~`:  Available soon!!
+    
+    * `~~Lecture~~`: Available Soon!!
 
 --------------------------------------------------------------------------------
 
@@ -69,7 +88,7 @@ __Note__: the `Makefile` itself is take from and maintained at
 
 ## Usage details
 
-Thesis information such as title, author, year, degree, etc., and other meta-data can be modified in `thesis-info.tex`
+Thesis information such as title, author, year, degree, etc., and other meta-data can be modified in `pres-info.tex`
 
 ### Style file
 All style files `.sty` placed at `sty` directory.
@@ -82,16 +101,22 @@ All style files `.sty` placed at `sty` directory.
 > * Run: `$ [sudo] texhash`
 
 Otherwise you can place `.sty` file at the same directory with `.tex` file.
+
+Then select you presentation style on `preample.tex` file
  
 ### Class files
 
 * `beamerPhD`: Class file for thesis presentations
 
+* `~~beamerPub~~`: under development!
+
+* `~~beamer Lecture~~`: under development!
+
 ### Class options
 
-* `aspectration=169`: reduce ratio to 16:9
+* `aspectratio=169`: reduce ratio to 16:9
 
-* `draft`: Special draft mode with line numbers, images, and water mark with timestamp and custom text. Position of the text can also be modified.
+* `draft`: Special draft mode with line numbers, images, and water mark with timestamp and custom text. Position of the text can also be modified. To disable figures see on `preample.tex` the Draftmode section.
 
 * `chapter`: This option enables only the specified chapter and it's references. Useful for review and corrections.
 
@@ -104,7 +129,7 @@ Otherwise you can place `.sty` file at the same directory with `.tex` file.
 ## Contributing
 
 1. Create an issue and describe your idea
-2. [Fork it](https://github.com/demanasta/pres_templates/fork)
+2. [Fork it](https://github.com/demanasta/pres-templates/network#fork-destination-box)
 3. Create your feature branch (`git checkout -b my-new-idea`)
 4. Commit your changes (`git commit -am 'Add some feature'`)
 5. Publish the branch (`git push origin my-new-idea`)
@@ -117,4 +142,4 @@ The history of releases can be viewed at [ChangeLog](ChangeLog.md)
 
 ## Acknowlegments
 
-* Xanthos Papnikolaou [@xanthospap](https://github.com/xanthospap) - Original design idea of presentation style 
+* Xanthos Papanikolaou [@xanthospap](https://github.com/xanthospap) - Original design idea of presentation style 
