@@ -66,10 +66,10 @@
 \usepackage{xgreek}
 \usepackage[Greek,Latin]{ucharclasses}
 \setTransitionsForGreek{\setlanguage{greek}}{\setlanguage{english}}
-%\usepackage{xunicode}
-%\usepackage{xltxtra}
+% \usepackage{xunicode}
+% \usepackage{xltxtra}
 % \usepackage[monogreek]{xgreek}
-%\usepackage{tabu}
+% \usepackage{tabu}
 
 %%-----------------------------------------------------------------------------
 % Tables
@@ -318,11 +318,34 @@
 }
 
 % -----------------------------------------------------------------------------
-% Set Draft mode
+% Configure Draft mode
 %-----------------------------------------------------------------------------
+% *********************** Configure Draft Mode **********************************
+\ifsetDraft
+  \usepackage[printwatermark]{xwatermark}
+  \newwatermark*[pages=2-,color=red!50,angle=0,scale=.3,xpos=0cm,ypos=3.5cm,fontseries=b]{\fcolorbox{red!50}{blue!0}{{\drafttext}\space-\space{\draftVersion}\space{\timestamp}}}
+\fi 
+
+% Uncomment to disable figures in `draftmode'
+%\setkeys{Gin}{draft=true}  % set draft to false to enable figures in `draft'
+
+% These options are active only during the draft mode
+% Default text is "Draft"
+\SetDraftText{DRAFT}
+
+% Default Watermark location is top. Location (top/bottom)
+%\SetDraftWMPosition{bottom}
+
+% Draft Version - default is v1.0
+\SetDraftVersion{v1.0}
+
+% Draft Text grayscale value (should be between 0-black and 1-white)
+% Default value is 0.75
+% \SetDraftGrayScale{0.8}
+
 % Set Draft water mark in print mode. Uncomment next lines
 % \usepackage{draftwatermark}
-% \SetWatermarkText{\parbox{15cm}{%54 
+% \SetWatermarkText{\parbox{46cm}{%54 
 %   * D R A F T - v0.9.7 * \\ \\
 %   * \today * \\ \\
 %   compiled via \LaTeX}}

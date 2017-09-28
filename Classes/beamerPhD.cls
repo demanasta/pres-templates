@@ -174,7 +174,8 @@
 \DeclareOptionBeamer{17pt}{\def\beamer@size{{size17.clo}}}
 \DeclareOptionBeamer{20pt}{\def\beamer@size{{size20.clo}}}
 
-\DeclareOptionBeamer{draft}{\beamer@draftmodetrue}
+\newif\ifsetDraft\setDraftfalse
+\DeclareOptionBeamer{draft}{\setDrafttrue}
 \pagenumbering{arabic}
 \def\insertpagenumber{\thepage}
 
@@ -423,26 +424,23 @@
 
 \RequirePackage{datetime}
 
-\newcount\PRES@hour \newcount\PRES@minute
-\PRES@hour=\time
-\divide \PRES@hour by 60
-\PRES@minute=\time
-\count@=\PRES@hour
-\multiply \count@ by -60
-\advance \PRES@minute by \count@
-\newcommand{\PRES@daytime}{%
-  \today\space--\space%
-  \ifnum\PRES@hour=0 00\else\ifnum\PRES@hour<10 0\fi%
-  \number\PRES@hour\fi:\ifnum\PRES@minute<10 0\fi\number\PRES@minute
-}
+%\newcount\PRES@hour \newcount\PRES@minute
+%\PRES@hour=\time
+%\divide \PRES@hour by 60
+%\PRES@minute=\time
+%\count@=\PRES@hour
+%\multiply \count@ by -60
+%\advance \PRES@minute by \count@
+%\newcommand{\PRES@daytime}{%
+%  \today\space--\space%
+%  \ifnum\PRES@hour=0 00\else\ifnum\PRES@hour<10 0\fi%
+%  \number\PRES@hour\fi:\ifnum\PRES@minute<10 0\fi\number\PRES@minute
+%}
 
+\newcommand{\timestamp}{compiled on \ifnum\day<10 0\fi\the\day.\,%
+\ifnum\month<10 0\fi\the\month.\,%
+\the\year\ at \xxivtime\,h}
 % ******************************* Draft Mode ***********************************
-
-\newif\ifsetDraft\setDrafttrue
-% If Draft Mode is active
-\ifsetDraft
-% Disable figures in `draftmode'\
-\setkeys{Gin}{draft=true}
 
 % Initializing Draft Text
 \newcommand\SetDraftText[1]{}
@@ -452,6 +450,11 @@
 \newcommand\SetDraftWMPosition[1]{}
 % Initializing Draft Gray Scale
 \newcommand\SetDraftGrayScale[1]{}
+
+% If Draft Mode is active
+\ifsetDraft
+% Disable figures in `draftmode' Change on `preample.tex` this option
+\setkeys{Gin}{draft=true}
 
 % Creates a Watermark Draft at the specified location.
 % The settings can be tweaked in the preamble
@@ -478,8 +481,9 @@
 \newcommand\DraftContent{%
   \hspace*{\fill}
   \Large
-  \textcolor[gray]{\draftGrayScale}{%
-    {\drafttext}\space-\space{\draftVersion}\hspace{\stretch{1}}{\PRES@daytime}
+  %\textcolor[gray]{\draftGrayScale}{% change gray color to red
+  \textcolor[rgb]{1,0,0}{%
+    {\drafttext}\space-\space{\draftVersion}\hspace{\stretch{1}}{\timestamp}
     \hspace*{\fill}
   }
 }
@@ -493,35 +497,35 @@
 %}
 %\setbeamertemplate{background}{\BgMaterial}
 
-%% Adding watermark in draft mode with time stamp
-\RequirePackage{everypage}
-\RequirePackage[absolute]{textpos}
-% Default values for draft watermark
-\newcommand\draftposition{bottom}
-\newcommand\draftnodeanchor{1in+\voffset-\topmargin}
-\AddEverypageHook{%
-  \begin{textblock*}{\paperwidth}[0.,2.5](0\paperwidth,\draftnodeanchor)
-    \DraftContent
-  \end{textblock*}
-}
-
-% Conditional evaluation to position the draft water mark  (top / bottom)
-\renewcommand\SetDraftWMPosition[1]{%
-  \renewcommand\draftposition{#1}
-  \ifthenelse{\equal{\draftposition}{bottom}}
-    {\renewcommand\draftnodeanchor{\paperheight-\voffset}} %Bottom
-    {\ifthenelse{\equal{\draftposition}{top}}
-      {\renewcommand\draftnodeanchor{1in+\voffset-\topmargin}} %Top
-      {\ClassWarning{PDThesisPSnPDF}{Unrecognised draft position
-          using default value of top}
-        \renewcommand\draftnodeanchor{1in+\voffset-\topmargin}}} %Top
-    
-    \AddEverypageHook{%
-    \begin{textblock*}{\paperwidth}[0.,2.5](0\paperwidth,\draftnodeanchor)
-      \DraftContent
-    \end{textblock*}
-  }
-}
+%%% Adding watermark in draft mode with time stamp
+%\RequirePackage{everypage}
+%\RequirePackage[absolute]{textpos}
+%% Default values for draft watermark
+%\newcommand\draftposition{bottom}
+%\newcommand\draftnodeanchor{1in+\voffset-\topmargin}
+%\AddEverypageHook{%
+%  \begin{textblock*}{\paperwidth}[0.,2.5](0\paperwidth,\draftnodeanchor)
+%    \DraftContent
+%  \end{textblock*}
+%}
+%
+%% Conditional evaluation to position the draft water mark  (top / bottom)
+%\renewcommand\SetDraftWMPosition[1]{%
+%  \renewcommand\draftposition{#1}
+%  \ifthenelse{\equal{\draftposition}{bottom}}
+%    {\renewcommand\draftnodeanchor{\paperheight-\voffset}} %Bottom
+%    {\ifthenelse{\equal{\draftposition}{top}}
+%      {\renewcommand\draftnodeanchor{1in+\voffset-\topmargin}} %Top
+%      {\ClassWarning{PDThesisPSnPDF}{Unrecognised draft position
+%          using default value of top}
+%        \renewcommand\draftnodeanchor{1in+\voffset-\topmargin}}} %Top
+%    
+%    \AddEverypageHook{%
+%    \begin{textblock*}{\paperwidth}[0.,2.5](0\paperwidth,\draftnodeanchor)
+%      \DraftContent
+%    \end{textblock*}
+%  }
+%}
 
 % If NOT Draft Mode
 \else 
