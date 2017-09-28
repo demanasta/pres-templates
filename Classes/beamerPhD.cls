@@ -348,7 +348,7 @@
     \beamer@paperheight 9.00cm%
   \else\ifnum#1=141%
     \beamer@paperwidth 14.85cm%
-    \beamer@paperheight10.50cm%
+    \beamer@paperheight 10.50cm%
   \fi\fi\fi\fi\fi\fi\fi%
 }
 
@@ -488,6 +488,7 @@
   }
 }
 
+%\newcommand{\draftypos}{\topmargin - 4cm}
 %\RequirePackage{background}
 %\backgroundsetup{
 %    placement=center,
@@ -500,8 +501,9 @@
 %%% Adding watermark in draft mode with time stamp
 %\RequirePackage{everypage}
 %\RequirePackage[absolute]{textpos}
-%% Default values for draft watermark
+% Default values for draft watermark
 %\newcommand\draftposition{bottom}
+%\newcommand\draftnodeanchor{1in+\voffset-\topmargin}
 %\newcommand\draftnodeanchor{1in+\voffset-\topmargin}
 %\AddEverypageHook{%
 %  \begin{textblock*}{\paperwidth}[0.,2.5](0\paperwidth,\draftnodeanchor)

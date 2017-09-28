@@ -114,7 +114,7 @@ Then select you presentation style on `preample.tex` file
 
 ### Class options
 
-* `aspectration=169`: reduce ratio to 16:9
+* `aspectratio=169`: reduce ratio to 16:9
 
 * `draft`: Special draft mode with line numbers, images, and water mark with timestamp and custom text. Position of the text can also be modified.
 
