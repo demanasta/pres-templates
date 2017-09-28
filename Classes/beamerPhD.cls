@@ -384,7 +384,7 @@
 \RequirePackage{atbegshi}
 % Normally loaded by hyperref but to be on the safe side ...
 
-\RequirePackage[implicit=false]{hyperref}
+\RequirePackage[implicit=falsem, draft=false]{hyperref}
 % For hyperlinks
 
 \hypersetup{pdfcreator={LaTeX with Beamer class version \beamer@version}}
@@ -424,18 +424,6 @@
 
 \RequirePackage{datetime}
 
-%\newcount\PRES@hour \newcount\PRES@minute
-%\PRES@hour=\time
-%\divide \PRES@hour by 60
-%\PRES@minute=\time
-%\count@=\PRES@hour
-%\multiply \count@ by -60
-%\advance \PRES@minute by \count@
-%\newcommand{\PRES@daytime}{%
-%  \today\space--\space%
-%  \ifnum\PRES@hour=0 00\else\ifnum\PRES@hour<10 0\fi%
-%  \number\PRES@hour\fi:\ifnum\PRES@minute<10 0\fi\number\PRES@minute
-%}
 
 \newcommand{\timestamp}{compiled on \ifnum\day<10 0\fi\the\day.\,%
 \ifnum\month<10 0\fi\the\month.\,%
@@ -454,7 +442,7 @@
 % If Draft Mode is active
 \ifsetDraft
 % Disable figures in `draftmode' Change on `preample.tex` this option
-\setkeys{Gin}{draft=true}
+\setkeys{Gin}{draft=false}
 
 % Creates a Watermark Draft at the specified location.
 % The settings can be tweaked in the preamble
