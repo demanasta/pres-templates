@@ -34,9 +34,7 @@
 % %  double slides left presentation // right notes NOT WORK WELL!!!
 %%-----------------------------------------------------------------------------
 % \usepackage{pgfpages}
-% \setbeameroption{show notes}
 % \setbeameroption{show notes on second screen=right}
-
 
 %%-----------------------------------------------------------------------------
 % %  margins
@@ -44,7 +42,7 @@
 \setbeamersize{text margin left=0.4cm}  % <- like this
 \setbeamersize{text margin right=0.4cm} % <- like this
 % \setbeamersize{text margin top=0.2cm} % <- like this
-% \setbeamersize{text margin bottm=0.2cm} % <- like this
+% \setbeamersize{text margin bottom=0.2cm} % <- like this
 
 %%-----------------------------------------------------------------------------
 % %  SET RATIO TO 16:9 uncoment next line
@@ -56,7 +54,6 @@
 % % Set background for simpledso theme
 %%-----------------------------------------------------------------------------
 %\graphicspath{{Chapter3/Figs/Vector/}{Chapter3/Figs/}}
-% \setwatermark{\includegraphics[height=8cm]{Figs/trianglesALL.jpg}}
 \setwatermark{\includegraphics[height=8cm,draft=false]{Figs/backgr01.png}}
 
 %%-----------------------------------------------------------------------------
@@ -79,12 +76,16 @@
 \usepackage{multirow}
 
 %%-----------------------------------------------------------------------------
-% Fonts
+% Fonts - many bugs
 %-----------------------------------------------------------------------------
-%\usefonttheme{professionalfonts} % using non standard fonts for beamer
-%\usefonttheme{serif} % default family is serif
+% % To use system fonts uncomment the next two lines
+% \usefonttheme{professionalfonts} % using non standard fonts for beamer
+% \usefonttheme{serif} % default family is serif
+
 \usepackage{fontspec}
-%\setmainfont{Liberation Serif}
+\setsansfont{Arial}
+
+% \setmainfont{Liberation Serif}
 % ******************* Fonts (like different typewriter fonts etc.)*************
 
 % Add `customfont' in the document class option to use this section
@@ -96,7 +97,7 @@
 
 % \setmainfont[Mapping=tex-text]{GFS Didot}
 % \setmainfont[Mapping=tex-text]{GFS Bodoni}
-% \setmainfont[Mapping=tex-text]{GFS Olga} % είναι λίγο ότι να ναι αυτή!!πλάγια
+% \setmainfont[Mapping=tex-text]{GFS Olga} % ότι να ναι αυτή!!πλάγια NOT support English
 % \setmainfont[Mapping=tex-text]{GFS Neohellenic}
 % \setmainfont[Mapping=tex-text]{GFS Artemisia}
 % \setmainfont[Mapping=tex-text]{GFS Elpis} %low resolution printing
@@ -115,16 +116,15 @@
 %    {LGR}
 %  %  % load font from system font
 %     \newfontfamily\libertinesystemfont{Linux Libertine O}
-%\fi
 
+% \fi % custom font class
 
-% \usepackage{fontspec}
 % \setmainfont{TeX Gyre Pagella}
 % \setsansfont{TeX Gyre Heros}
 % \setmonofont{Inconsolata}
 % \setmainfont{Times New Roman}
-%\setmainfont{Augie}
- \setsansfont{Arial}
+% \setmainfont{Augie}
+% \setsansfont{Arial}
 % \setsansfont{Tapir}
 % \newfontfamily\greekfont[Script=Greek]{Linux Libertine O}
 % \setmainfont{Minion Pro} % substitute with any font that exists on your system

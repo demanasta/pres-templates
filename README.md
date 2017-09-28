@@ -1,4 +1,4 @@
-Templates for academic presentations
+Templates for academic presentations -- pre-released
 ======================
 
 > Beamer - LaTeX \ XeLaTeX templates for professional presentations
@@ -21,11 +21,11 @@ Templates for academic presentations
 
 * Supports LaTeX, XeLaTeX and LuaLaTeX
 
-* Support Greek Language and FOnts (GFS)
+* Support Greek Language and Fonts (GFS)
 
 * Adaptive Title Page: Title page adapts to title length
 
-* Pre-defined and custom fonts (Times / Fourier / Latin Modern) with math support
+* Pre-defined and custom fonts (Arial / Professional fonts) with math support
 
 * Option to generate only specific chapters and references without the frontmatter and title page. Useful for review and corrections.
 
