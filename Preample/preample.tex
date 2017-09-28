@@ -323,7 +323,7 @@
 % *********************** Configure Draft Mode **********************************
 \ifsetDraft
   \usepackage[printwatermark]{xwatermark}
-  \newwatermark*[pages=2-,color=red!50,angle=0,scale=.3,xpos=0cm,ypos=3.5cm,fontseries=b]{\fcolorbox{red!50}{blue!0}{{\drafttext}\space-\space{\draftVersion}\space{\timestamp}}}
+  \newwatermark*[pages=2-,color=red!50,angle=0,scale=.3,xpos=0cm,ypos=3.5cm]{\parbox{\paperwidth}{{\drafttext}\space-\space{\draftVersion}\space{\timestamp}}
 \fi 
 
 % Uncomment to disable figures in `draftmode'
