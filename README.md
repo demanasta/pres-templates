@@ -34,7 +34,7 @@ Templates for academic presentations -- pre-released
 * Different styles and Classfiles:
     * `PhD`: A professional presentation for your thesis (PhD, Diploma etc)
 
-    * `~~Pub~~`:  Available soon!!
+    * `Pub`: Professional presentaions for your research work on conferences, meetings etc.
     
     * `~~Lecture~~`: Available Soon!!
 
@@ -90,6 +90,11 @@ __Note__: the `Makefile` itself is take from and maintained at
 
 Thesis information such as title, author, year, degree, etc., and other meta-data can be modified in `pres-info.tex`
 
+###Information file
+All available informations can be modified in `pres-info.tex`
+
+For each presentation (PhD, Pub, Lecture) there is a specific section in this file.
+
 ### Style file
 All style files `.sty` placed at `sty` directory.
 > Install Beamer custom style:
@@ -108,7 +113,7 @@ Then select you presentation style on `preample.tex` file
 
 * `beamerPhD`: Class file for thesis presentations
 
-* `~~beamerPub~~`: under development!
+* `beamerPub`: Class file for conference presentations!
 
 * `~~beamer Lecture~~`: under development!
 
