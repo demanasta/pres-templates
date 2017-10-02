@@ -650,7 +650,7 @@
 %  \end{minipage}\hfill
 
   \centering
-  \vspace*{.7cm}
+  %\vspace*{.7cm}
   {\Large\textbf{\textcolor{blue!70}{\@prestitle}}}\par
   \vfill
 %  \small{\@degreetitle}\par\vfill  
@@ -665,7 +665,7 @@
   {\footnotesize{\@presorgn}}\par 
 
   \vfill
-  {\hfill \scriptsize\href{\@presweb}{\faHome \textit{\@presweb}} \hfill  \href{\@presmail}{\faEnvelope \textit{\@presmail}} \hfill}
+  {\hfill \scriptsize\href{\@presweb}{\faHome \@presweb} \hfill  \href{\@presmail}{\faEnvelope \@presmail} \hfill}
   \begin{block}{}
     \begin{center}
       \ifPRES@conflogo%
@@ -706,22 +706,23 @@
     \color{blue!85}\rule{0.05\textwidth}{1pt}\par
     \color{blue!90}\rule{0.02\textwidth}{1pt}\par
   \end{center}
-\vskip-2cm
-\href{\@urlin}{\faLinkedin}\\
-\href{\@urlgh}{\faGithub}\\
-\href{\@urlgp}{\faGooglePlus}\\
-\href{\@urltw}{\faTwitter} \hfill \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
+\vskip-.7cm
+%\href{\@urlin}{\faLinkedin}\\
+%\href{\@urlgh}{\faGithub}\\
+%\href{\@urlgp}{\faGooglePlus}\\
+%\href{\@urltw}{\faTwitter} 
+\hfill \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
 \vfill
 \end{frame}
 }
 
 % ****************** Chapter Mode - To print only selected chapters ************
-\newif \ifdefineChapter\defineChapterfalse %To enable Separate abstract
+\newif\ifdefineChapter\defineChapterfalse %To enable Separate abstract
 
 \newif\ifPRES@chapter\PRES@chapterfalse % Enable Separate Abstract
 \DeclareOption{chapter}{
   \PRES@chaptertrue
-  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
+  \ClassWarning{beamerPub}{You have chosen an option that generates only 
     selected chapters with references, if this was intentional, ignore this
     warning. If not, please remove the option `chapter' from the document class
     and recompile. Good luck with your writing!}
