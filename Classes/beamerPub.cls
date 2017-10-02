@@ -636,7 +636,7 @@
 
 % ******************************** Title Page **********************************
 \renewcommand{\maketitle}{
-\begin{frame}[plain]
+\begin{frame}[plain,b]
 %  \begin{minipage}[t]{0.10\textwidth}
 %    \centering\raisebox{\dimexpr \topskip-\height}{\@crestleft}
 %  \end{minipage}\hfill
@@ -676,6 +676,7 @@
       \fi
     \end{center}
 \end{block}
+\vspace*{.2cm}
 \end{frame}
 }
 
