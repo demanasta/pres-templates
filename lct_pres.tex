@@ -36,7 +36,7 @@
 
 % ***************************** Chapter Mode ***********************************
 \ifdefineChapter
-% \includeonly{Chapter1/ch1presPub}
+% \includeonly{Chapter1/ch1presLct}
 \includeonly{Chapter2/ch2pres}
 % \includeonly{Chapter3/ch3pres}
 % \includeonly{Chapter4/ch4pres}
@@ -61,12 +61,12 @@
 
 
 % ************************  Include Chapters  *************************************
-\include{Chapter1/ch1presPub}
+\include{Chapter1/ch1presLct}
 \include{Chapter2/ch2pres}
 \include{Chapter3/ch3pres}
 \include{Chapter4/ch4pres}
 \include{Chapter5/ch5pres}
-\include{Chapter6/ch6pres}
+%\include{Chapter6/ch6pres}
 % \include{Appendix/ap_refs}
 % \include{Appendix/ap_soft}
 
@@ -74,9 +74,13 @@
 %% END OF PRESENTATION ...
 %%-----------------------------------------------------------------------------
 
+% ************************  Q & A frame ***************************************
+% include Q&A frame at the end of presentation
+\makeqahour
+
 % ************************  Thank you frame  **********************************
 % include Thank U last frame
-\makethanku % Ιncluded to class file
+% \makethanku % Ιncluded to class file
 
 % ************************  Bibliography  *************************************
 % % % Add 'printbib' option in Class file to Include Bibliography

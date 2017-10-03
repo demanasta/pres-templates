@@ -37,6 +37,8 @@ Templates for academic presentations -- pre-released
     * `Pub`: Professional presentaions for your research work on conferences, meetings etc.
     
     * `Lct`: Academic presentation for university courses, lecture.
+    
+  * Special pre-defined frames for each style (thanku, Q&A)
 
 --------------------------------------------------------------------------------
 

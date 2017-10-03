@@ -698,6 +698,26 @@
 \end{frame}
 }
 
+% ****************************** Q&A section ***********************************
+\newcommand{\makeqahour}{
+\begin{frame}[plain,b]\frametitle{}\framesubtitle{}
+\vfill
+  \begin{center}
+    \includegraphics[height=.8\paperheight,draft=false]{Figs/darktableQA1.jpg}
+  \end{center}
+%\vskip-2cm
+
+\begin{flushright}
+\hfill\href{\@urlin}{\faLinkedin}
+\href{\@urlgh}{\faGithub}
+\href{\@urlgp}{\faGooglePlus}
+\href{\@urltw}{\faTwitter}
+\end{flushright}
+
+%\textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
+\vfill
+\end{frame}
+}
 % ****************** Chapter Mode - To print only selected chapters ************
 \newif\ifdefineChapter\defineChapterfalse %To enable Separate abstract
 
