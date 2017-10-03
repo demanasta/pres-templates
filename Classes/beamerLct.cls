@@ -555,8 +555,16 @@
 \newcommand{\lab}[1]{\renewcommand{\@lab}{#1}}
 % 
 % The name of your Title in Greek
-\newcommand{\@eltitle}{}
-\newcommand{\eltitle}[1]{\renewcommand{\@eltitle}{#1}}
+\newcommand{\@lcttitle}{}
+\newcommand{\lcttitle}[1]{\renewcommand{\@lcttitle}{#1}}
+
+% The name of your Title in Greek
+\newcommand{\@coursetitle}{}
+\newcommand{\coursetitle}[1]{\renewcommand{\@coursetitle}{#1}}
+
+% The name of your Title in Greek
+\newcommand{\@courseinfo}{}
+\newcommand{\courseinfo}[1]{\renewcommand{\@courseinfo}{#1}}
 
 % The name of your degree title
 \newcommand{\@degreetitle}{}
@@ -611,6 +619,10 @@
 \newcommand{\urltw}[1]{\renewcommand{\@urltw}{#1}}
 
 % ******************************** Title Page **********************************
+\definecolor{goldenyellow}{rgb}{1.0, 0.87, 0.0}
+\definecolor{lava}{rgb}{0.81, 0.06, 0.13}
+\definecolor{auburn}{rgb}{0.43, 0.21, 0.1}
+\setbeamercolor{coursebox}{fg=auburn, bg=goldenyellow}
 \renewcommand{\maketitle}{
 \begin{frame}[plain]
   \begin{minipage}[t]{0.10\textwidth}
@@ -625,19 +637,27 @@
     \centering\raisebox{\dimexpr \topskip-\height}{\@crestright}
   \end{minipage}\hfill
   \vfill
+
+  \hfill \begin{beamercolorbox}[wd=.5\paperwidth,leftskip=2cm,sep=1.5pt,center,rounded=false]{coursebox}
+     \@coursetitle \par
+     
+     \footnotesize{\@courseinfo}
+  \end{beamercolorbox}
+  
+  \centering
+  \vspace*{.3cm}
+  \Large\textbf{\textcolor{red!90!blue}{\@lcttitle}}\par\vfill
+  %\small{\@degreetitle}\par\vfill
   \ifsetDraft
     \DraftContent
-    \vspace*{-1cm}
+    \vspace*{-.5cm}
   \fi
   \vfill
-  \centering
-  \vspace*{1cm}
-  \large\textbf{\textcolor{red!90}{\@eltitle}}\par\vfill
-  \small{\@degreetitle}\par\vfill
 
+\begin{flushleft}
   \normalsize\textbf{\@authorname}\par
   \footnotesize{\@authortitle}\par\vfill
-  \flushleft{\footnotesize{\textbf{ΕΠΙΒΛΕΠΩΝ:}\\ \@supervisor}}\par\vspace*{.3cm}
+\end{flushleft}
   \centering
   {\footnotesize\textbf{\@city, \@degreedate}}%\vfill
 \end{frame}
