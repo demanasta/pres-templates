@@ -418,6 +418,9 @@
 %% Options added on BeamerPhD Class file
 %%------------------------------------------------------------------------------
 
+\RequirePackage{tikz}
+%\usetikzlibrary{calc}
+\RequirePackage{xifthen}
 % ******************************* Time Stamp ***********************************
 % Compute the timestamp based on an idea of
 % Tim Piessens \texttt{<Tim.Piessens@esat.kuleuven.ac.be>}.
@@ -676,12 +679,12 @@
 }
 
 % ****************** Chapter Mode - To print only selected chapters ************
-\newif \ifdefineChapter\defineChapterfalse %To enable Separate abstract
+\newif\ifdefineChapter\defineChapterfalse %To enable Separate abstract
 
 \newif\ifPRES@chapter\PRES@chapterfalse % Enable Separate Abstract
 \DeclareOption{chapter}{
   \PRES@chaptertrue
-  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
+  \ClassWarning{beamerLct}{You have chosen an option that generates only 
     selected chapters with references, if this was intentional, ignore this
     warning. If not, please remove the option `chapter' from the document class
     and recompile. Good luck with your writing!}
@@ -706,14 +709,14 @@
 \fi
 
 % ****************** Print Bibliography option *********************************
-\newif \ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
+\newif\ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
 
 \newif\ifPRES@printbib\PRES@printbibfalse % Enable Separate Abstract
 \DeclareOption{printbib}{
   \PRES@printbibtrue
-  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
+  \ClassWarning{beamerLct}{You have chosen an option that generates only 
     selected chapters with references, if this was intentional, ignore this
-    warning. If not, please remove the option `chapter' from the document class
+    warning. If not, please remove the option `printbib' from the document class
     and recompile. Good luck with your writing!}
 }
 
@@ -725,15 +728,24 @@
     \definePrintbibfalse
 \fi
 
-
-
 % \RequirePackage[backend=biber, style=authoryear, citestyle=alphabetic, sorting=nty, natbib=true]{biblatex}
 
-% ****************** Print Bibliography option *********************************
+% ********************* Progress Bar option ************************************
+\newif\ifdefineProgrbar\defineProgrbarfalse %To enable Separate abstract
 
-\usepackage{tikz}
-\usetikzlibrary{calc}
-\usepackage{xifthen}
+\newif\ifPRES@progrbar\PRES@progrbarfalse % Enable Separate Abstract
+\DeclareOption{progrbar}{
+  \PRES@progrbartrue
+  \ClassWarning{beamerLct}{Υou have chosen an option that generates Progress bar
+    in all frames of the presentation, if this was intentional, ignore this
+    warning. If not, please remove the option `progrbar' from the document class
+    and recompile. Good luck with your writing!}
+}
+
+\ProcessOptions\relax%
+
+\ifPRES@progrbar
+    \defineProgrbartrue
 
 \makeatletter
     \newcommand{\Progressbar@LabelColor}{black}
@@ -784,7 +796,7 @@
         % Progress Bars --------------------------------------------------
         \begin{tikzpicture}[overlay, remember picture,shift={($(current page.south west)+(0,0.05)$)}]
 
-            \ifthenelse{ \( \Progressbar@Completion = 0 \) \or \( \Progressbar@Completion = 100 \) }
+            \ifthenelse{ \( \Progressbar@Completion = 0 \) or \( \Progressbar@Completion = 100 \) }
                 {   \newcommand{\TCA}{\Progressbar@TodoA}
                     \newcommand{\TCB}{\Progressbar@TodoB}
                     \newcommand{\DCA}{\Progressbar@DoneA}
@@ -831,10 +843,14 @@
                                             BarHeight=0.18,%
                                             BarColor=green,%
                                             BarBorder=black,%
-                                            TodoA=red!20!gray,%
-                                            TodoB=red!80!gray,%
-                                            DoneA=blue!80!cyan,%
-                                            DoneB=blue!20!cyan,%
+                                            TodoA=red!20!white,%
+                                            TodoB=red!70!gray,%
+                                            DoneA=blue!70!cyan,%
+                                            DoneB=blue!20!white,%
                                             Completion=\prog%
                                         }
             }
+
+\else
+    \defineProgrbarfalse
+\fi

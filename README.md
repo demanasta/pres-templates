@@ -36,7 +36,7 @@ Templates for academic presentations -- pre-released
 
     * `Pub`: Professional presentaions for your research work on conferences, meetings etc.
     
-    * `~~Lecture~~`: Available Soon!!
+    * `Lct`: Academic presentation for university courses, lecture.
 
 --------------------------------------------------------------------------------
 
@@ -115,7 +115,7 @@ Then select you presentation style on `preample.tex` file
 
 * `beamerPub`: Class file for conference presentations!
 
-* `~~beamer Lecture~~`: under development!
+* `beamerLct`: Class file for conference presentation!
 
 ### Class options
 
@@ -130,6 +130,8 @@ Then select you presentation style on `preample.tex` file
 * `notes=only`: Prints only notes of each frame
 
 * `printbib`: Include bibliography at the end of the presentation (__bug__: not working with makefile!)
+
+* `progrbar`: Enable progress bar in the frame. Chose this option after your  first compilation.
 
 ## Contributing
 
