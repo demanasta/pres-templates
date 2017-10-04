@@ -457,10 +457,6 @@
 \newcommand\SetDraftText[1]{}
 % Initializing Draft Version
 \newcommand\SetDraftVersion[1]{}
-% Initializing Draft Content
-\newcommand\SetDraftWMPosition[1]{}
-% Initializing Draft Gray Scale
-\newcommand\SetDraftGrayScale[1]{}
 
 % If Draft Mode is active
 \ifsetDraft
@@ -482,12 +478,6 @@
   \renewcommand\draftVersion{#1}
 }
 
-% Draft Gray Scale
-\newcommand\draftGrayScale{0.65}
-\renewcommand\SetDraftGrayScale[1]{%
-  \renewcommand\draftGrayScale{#1}
-}
-
 % Draft Content
 \newcommand\DraftContent{%
   \hspace*{\fill}
@@ -499,46 +489,6 @@
   }
 }
 
-%\newcommand{\draftypos}{\topmargin - 4cm}
-%\RequirePackage{background}
-%\backgroundsetup{
-%    placement=center,
-%    scale=4,
-%    contents={DRAFT},
-%    opacity=1
-%}
-%\setbeamertemplate{background}{\BgMaterial}
-
-%%% Adding watermark in draft mode with time stamp
-%\RequirePackage{everypage}
-%\RequirePackage[absolute]{textpos}
-% Default values for draft watermark
-%\newcommand\draftposition{bottom}
-%\newcommand\draftnodeanchor{1in+\voffset-\topmargin}
-%\newcommand\draftnodeanchor{1in+\voffset-\topmargin}
-%\AddEverypageHook{%
-%  \begin{textblock*}{\paperwidth}[0.,2.5](0\paperwidth,\draftnodeanchor)
-%    \DraftContent
-%  \end{textblock*}
-%}
-%
-%% Conditional evaluation to position the draft water mark  (top / bottom)
-%\renewcommand\SetDraftWMPosition[1]{%
-%  \renewcommand\draftposition{#1}
-%  \ifthenelse{\equal{\draftposition}{bottom}}
-%    {\renewcommand\draftnodeanchor{\paperheight-\voffset}} %Bottom
-%    {\ifthenelse{\equal{\draftposition}{top}}
-%      {\renewcommand\draftnodeanchor{1in+\voffset-\topmargin}} %Top
-%      {\ClassWarning{PDThesisPSnPDF}{Unrecognised draft position
-%          using default value of top}
-%        \renewcommand\draftnodeanchor{1in+\voffset-\topmargin}}} %Top
-%    
-%    \AddEverypageHook{%
-%    \begin{textblock*}{\paperwidth}[0.,2.5](0\paperwidth,\draftnodeanchor)
-%      \DraftContent
-%    \end{textblock*}
-%  }
-%}
 
 % If NOT Draft Mode
 \else 
@@ -550,15 +500,6 @@
 \renewcommand\SetDraftVersion[1]{\ClassWarning{beamerPhD}{DraftMode is
     inactive, to use SetDraftVersion include `draftmode' in the document
     class options.}}
-% Draft Content
-\renewcommand\SetDraftWMPosition[1]{\ClassWarning{beamerPhD}{DraftMode
-    is inactive, to use SetDraftWMPosition include `draftmode' in the document
-    class options.}}
-
-\renewcommand\SetDraftGrayScale[1]{\ClassWarning{beamerPhD}{DraftMode is
-    inactive, to use SetDraftWMPosition include `draftmode' in the document
-    class options.}}
-
 \fi 
 
 % ***************************** Define info variables **************************
