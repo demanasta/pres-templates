@@ -602,6 +602,14 @@
 \newcommand{\@thankutext}{}
 \newcommand{\thankutext}[1]{\renewcommand{\@thankutext}{#1}}
 
+% Homepage Url
+\newcommand{\@urlhome}{}
+\newcommand{\urlhome}[1]{\renewcommand{\@urlhome}{#1}}
+
+% Contact mail
+\newcommand{\@contmail}{}
+\newcommand{\contmail}[1]{\renewcommand{\@contmail}{#1}}
+
 % LinkedIn url
 \newcommand{\@urlin}{}
 \newcommand{\urlin}[1]{\renewcommand{\@urlin}{#1}}
@@ -623,6 +631,7 @@
 \definecolor{lava}{rgb}{0.81, 0.06, 0.13}
 \definecolor{auburn}{rgb}{0.43, 0.21, 0.1}
 \setbeamercolor{coursebox}{fg=auburn, bg=goldenyellow}
+
 \renewcommand{\maketitle}{
 \begin{frame}[plain]
   \begin{minipage}[t]{0.10\textwidth}
@@ -656,8 +665,15 @@
 
 \begin{flushleft}
   \normalsize\textbf{\@authorname}\par
-  \footnotesize{\@authortitle}\par\vfill
-\end{flushleft}
+  \footnotesize{\@authortitle}\par
+\end{flushleft} 
+\vspace*{-1cm}
+\begin{flushright}
+  \scriptsize\href{\@urlhome}{\@urlhome \space \faHome}\vskip-.15cm
+  \color{red!90!blue}\rule{0.08\textwidth}{1pt}\par
+  \scriptsize\href{\@contmail}{\@contmail \space \faEnvelope}\par
+\end{flushright}\vfill
+  
   \centering
   {\footnotesize\textbf{\@city, \@degreedate}}%\vfill
 \end{frame}
@@ -693,7 +709,7 @@
 \href{\@urlin}{\faLinkedin}\\
 \href{\@urlgh}{\faGithub}\\
 \href{\@urlgp}{\faGooglePlus}\\
-\href{\@urltw}{\faTwitter} \hfill \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
+\href{\@urltw}{\faTwitter} \hspace*{.1cm} \href{\@urlhome}{\faHome} \hspace*{.1cm} \href{\@contmail}{\faEnvelope} \hfill  \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
 \vfill
 \end{frame}
 }
@@ -708,7 +724,9 @@
 %\vskip-2cm
 
 \begin{flushright}
-\hfill\href{\@urlin}{\faLinkedin}
+\hfill\href{\@urlhome}{\faHome}
+\href{\@contmail}{\faEnvelope}
+\href{\@urlin}{\faLinkedin}
 \href{\@urlgh}{\faGithub}
 \href{\@urlgp}{\faGooglePlus}
 \href{\@urltw}{\faTwitter}
