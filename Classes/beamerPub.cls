@@ -674,7 +674,7 @@
   {\footnotesize{\@presorgn}}\par 
 
   \vfill
-  {\hfill \scriptsize\href{\@urlhome}{\faHome \@urlhome} \hfill  \href{\@contmail}{\faEnvelope \@contmail} \hfill}
+  {\hfill \scriptsize\href{\@urlhome}{\faHome \@urlhome} \hfill  \href{mailto:\@contmail}{\faEnvelope \@contmail} \hfill}
   \begin{block}{}
     \begin{center}
       \ifPRES@conflogo%
@@ -720,7 +720,7 @@
 %\href{\@urlgh}{\faGithub}\\
 %\href{\@urlgp}{\faGooglePlus}\\
 %\href{\@urltw}{\faTwitter} 
-\href{\@urlhome}{\faHome} \hspace*{.1cm} \href{\@contmail}{\faEnvelope} \hfill \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
+\href{\@urlhome}{\faHome} \hspace*{.1cm} \href{mailto:\@contmail}{\faEnvelope} \hfill \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
 \vfill
 \end{frame}
 }
@@ -778,3 +778,129 @@
 
 
 % \RequirePackage[backend=biber, style=authoryear, citestyle=alphabetic, sorting=nty, natbib=true]{biblatex}
+
+
+% ********************* Progress Bar option ************************************
+\newif\ifdefineProgrbar\defineProgrbarfalse %To enable Separate abstract
+
+\newif\ifPRES@progrbar\PRES@progrbarfalse % Enable Separate Abstract
+\DeclareOption{progrbar}{
+  \PRES@progrbartrue
+  \ClassWarning{beamerLct}{Υou have chosen an option that generates Progress bar
+    in all frames of the presentation, if this was intentional, ignore this
+    warning. If not, please remove the option `progrbar' from the document class
+    and recompile. Good luck with your writing!}
+}
+
+\ProcessOptions\relax%
+
+\ifPRES@progrbar
+    \defineProgrbartrue
+
+\makeatletter
+    \newcommand{\Progressbar@LabelColor}{black}
+    \newcommand{\Progressbar@LabelText}{Label}
+    \newcommand{\Progressbar@LabelWidth}{5}
+%   Farbe, Text, Breite des Labels
+
+    \newcommand{\Progressbar@BarWidth}{10}
+    \newcommand{\Progressbar@BarHeight}{1}
+    \newcommand{\Progressbar@BarColor}{yellow}
+    \newcommand{\Progressbar@BarBorder}{black}
+%   Breite, Höhe, Schriftfarbe des Prozentsatzes, Rahmenfarbe des Fortschrittbalkens
+
+    \newcommand{\Progressbar@TodoA}{gray}
+    \newcommand{\Progressbar@TodoB}{black}
+%   Farbe 1 und 2 für den unerledigten Teil 
+
+    \newcommand{\Progressbar@DoneA}{red}
+    \newcommand{\Progressbar@DoneB}{blue}
+%   Farbe 1 und 2 für den erledigten Teil   
+
+    \newcommand{\Progressbar@Direction}{LTR}
+%   Modus links nach rechts oder umgekehrt; umgekehrt ist buggy (no support yet)    
+
+    \newcommand{\Progressbar@Completion}{50}
+%   Fertigstellung in Prozent   
+
+    \define@key{Progressbar}{LabelColor}[\Progressbar@LabelColor]{\renewcommand{\Progressbar@LabelColor}{#1}}
+    \define@key{Progressbar}{LabelText}[\Progressbar@LabelText]{\renewcommand{\Progressbar@LabelText}{#1}}
+    \define@key{Progressbar}{LabelWidth}[\Progressbar@LabelWidth]{\renewcommand{\Progressbar@LabelWidth}{#1}}
+
+    \define@key{Progressbar}{BarWidth}[\Progressbar@BarWidth]{\renewcommand{\Progressbar@BarWidth}{#1}}
+    \define@key{Progressbar}{BarHeight}[\Progressbar@BarHeight]{\renewcommand{\Progressbar@BarHeight}{#1}}
+    \define@key{Progressbar}{BarColor}[\Progressbar@BarColor]{\renewcommand{\Progressbar@BarColor}{#1}}
+
+    \define@key{Progressbar}{BarBorder}[\Progressbar@BarBorder]{\renewcommand{\Progressbar@BarBorder}{#1}}
+    \define@key{Progressbar}{TodoA}[\Progressbar@TodoA]{\renewcommand{\Progressbar@TodoA}{#1}}
+    \define@key{Progressbar}{TodoB}[\Progressbar@TodoB]{\renewcommand{\Progressbar@TodoB}{#1}}
+
+    \define@key{Progressbar}{DoneA}[\Progressbar@DoneA]{\renewcommand{\Progressbar@DoneA}{#1}}
+    \define@key{Progressbar}{DoneB}[\Progressbar@DoneB]{\renewcommand{\Progressbar@DoneB}{#1}}
+    \define@key{Progressbar}{Direction}[\Progressbar@Direction]{\renewcommand{\Progressbar@Direction}{#1}}
+
+    \define@key{Progressbar}{Completion}[\Progressbar@Completion]{\renewcommand{\Progressbar@Completion}{#1}}
+
+    \newcommand{\Progressbar}[1]%
+    {   \setkeys{Progressbar}{#1}
+        % Progress Bars --------------------------------------------------
+        \begin{tikzpicture}[overlay, remember picture,shift={($(current page.south west)+(0,0.05)$)}]
+
+            \ifthenelse{ \( \Progressbar@Completion = 0 \) or \( \Progressbar@Completion = 100 \) }
+                {   \newcommand{\TCA}{\Progressbar@TodoA}
+                    \newcommand{\TCB}{\Progressbar@TodoB}
+                    \newcommand{\DCA}{\Progressbar@DoneA}
+                    \newcommand{\DCB}{\Progressbar@DoneB}
+                }
+                {   \newcommand{\TCA}{\Progressbar@TodoB !\Progressbar@Completion !\Progressbar@TodoA}
+                    \newcommand{\TCB}{\Progressbar@TodoB}
+                    \newcommand{\DCA}{\Progressbar@DoneA}
+                    \newcommand{\DCB}{\Progressbar@DoneB !\Progressbar@Completion !\Progressbar@DoneA}
+                }
+            \ifthenelse{\equal{\Progressbar@Direction}{LTR}}
+                {   \shade[left color=\DCA,right color=\DCB]%
+                        (0,0) rectangle (\Progressbar@Completion * \Progressbar@BarWidth / 100,\Progressbar@BarHeight);
+                    \shade[left color=\TCA,right color=\TCB]%
+                        (\Progressbar@Completion * \Progressbar@BarWidth / 100,0)%
+                        rectangle (\Progressbar@BarWidth,\Progressbar@BarHeight);
+                }
+                {   \shade[left color=\TCB,right color=\TCA]%
+                        (0,0) rectangle (\Progressbar@Completion * \Progressbar@BarWidth / 100,\Progressbar@BarHeight);
+                    \shade[left color=\DCB,right color=\DCA]%
+                        (\Progressbar@Completion * \Progressbar@BarWidth / 100,0)%
+                        rectangle (\Progressbar@BarWidth,\Progressbar@BarHeight);               
+                }
+            \draw (0,0) rectangle (\Progressbar@BarWidth,\Progressbar@BarHeight);
+            \node[color=\Progressbar@BarColor] at%
+                (\Progressbar@BarWidth / 10,\Progressbar@BarHeight / 2) {\Progressbar@Completion \%};
+            \draw[color=white] (- \Progressbar@LabelWidth,0) -- %
+                node[anchor=west,color=\Progressbar@LabelColor,text width=\Progressbar@LabelWidth]%
+                {\Progressbar@LabelText} (- \Progressbar@LabelWidth,\Progressbar@BarHeight) ;
+%               \typeout{todo c1 = \TCA}
+%               \typeout{todo c2 = \TCB}
+%               \typeout{done c1 = \DCA}
+%               \typeout{done c2 = \DCB}
+        \end{tikzpicture}
+    }
+\makeatother
+
+\logo   {   \pgfmathsetmacro{\wid}{\the\paperwidth/28.45276-1}
+                \pgfmathtruncatemacro{\prog}{100*\insertpagenumber/\insertdocumentendpage}
+                \Progressbar{   LabelColor=yellow,%
+                                            LabelText=,%
+                                            LabelWidth=0,%
+                                            BarWidth=\wid,%
+                                            BarHeight=0.18,%
+                                            BarColor=green,%
+                                            BarBorder=black,%
+                                            TodoA=gray!10!white,%
+                                            TodoB=gray!50!white,%
+                                            DoneA=blue!50!white,%
+                                            DoneB=blue!30!white,%
+                                            Completion=\prog%
+                                        }
+            }
+
+\else
+    \defineProgrbarfalse
+\fi

@@ -671,7 +671,7 @@
 \begin{flushright}
   \scriptsize\href{\@urlhome}{\@urlhome \space \faHome}\vskip-.15cm
   \color{red!90!blue}\rule{0.08\textwidth}{1pt}\par
-  \scriptsize\href{\@contmail}{\@contmail \space \faEnvelope}\par
+  \scriptsize\href{mailto:\@contmail}{\@contmail \space \faEnvelope}\par
 \end{flushright}\vfill
   
   \centering
@@ -709,7 +709,7 @@
 \href{\@urlin}{\faLinkedin}\\
 \href{\@urlgh}{\faGithub}\\
 \href{\@urlgp}{\faGooglePlus}\\
-\href{\@urltw}{\faTwitter} \hspace*{.1cm} \href{\@urlhome}{\faHome} \hspace*{.1cm} \href{\@contmail}{\faEnvelope} \hfill  \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
+\href{\@urltw}{\faTwitter} \hspace*{.1cm} \href{\@urlhome}{\faHome} \hspace*{.1cm} \href{mailto:\@contmail}{\faEnvelope} \hfill  \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
 \vfill
 \end{frame}
 }
@@ -725,7 +725,7 @@
 
 \begin{flushright}
 \hfill\href{\@urlhome}{\faHome}
-\href{\@contmail}{\faEnvelope}
+\href{mailto:\@contmail}{\faEnvelope}
 \href{\@urlin}{\faLinkedin}
 \href{\@urlgh}{\faGithub}
 \href{\@urlgp}{\faGooglePlus}
@@ -892,7 +892,7 @@
     }
 \makeatother
 
-\logo   {   \pgfmathsetmacro{\wid}{\the\paperwidth/28.45276}
+\logo   {   \pgfmathsetmacro{\wid}{\the\paperwidth/28.45276-1}
                 \pgfmathtruncatemacro{\prog}{100*\insertpagenumber/\insertdocumentendpage}
                 \Progressbar{   LabelColor=yellow,%
                                             LabelText=,%

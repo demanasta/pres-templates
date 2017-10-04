@@ -678,7 +678,7 @@
 \href{\@urlin}{\faLinkedin}\\
 \href{\@urlgh}{\faGithub}\\
 \href{\@urlgp}{\faGooglePlus}\\
-\href{\@urltw}{\faTwitter} \hspace*{.1cm} \href{\@urlhome}{\faHome} \hspace*{.1cm} \href{\@contmail}{\faEnvelope} \hfill  \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
+\href{\@urltw}{\faTwitter} \hspace*{.1cm} \href{\@urlhome}{\faHome} \hspace*{.1cm} \href{mailto:\@contmail}{\faEnvelope} \hfill  \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
 \vfill
 \end{frame}
 }
@@ -841,7 +841,7 @@
     }
 \makeatother
 
-\logo   {   \pgfmathsetmacro{\wid}{\the\paperwidth/28.45276}
+\logo   {   \pgfmathsetmacro{\wid}{\the\paperwidth/28.45276-1}
                 \pgfmathtruncatemacro{\prog}{100*\insertpagenumber/\insertdocumentendpage}
                 \Progressbar{   LabelColor=yellow,%
                                             LabelText=,%
@@ -850,10 +850,10 @@
                                             BarHeight=0.18,%
                                             BarColor=green,%
                                             BarBorder=black,%
-                                            TodoA=red!20!white,%
-                                            TodoB=red!70!gray,%
-                                            DoneA=blue!70!cyan,%
-                                            DoneB=blue!20!white,%
+                                            TodoA=gray!10!white,%
+                                            TodoB=gray!50!white,%
+                                            DoneA=blue!50!white,%
+                                            DoneB=blue!30!white,%
                                             Completion=\prog%
                                         }
             }

@@ -2,7 +2,7 @@
 % Please have a look at the README.md file for info on how to use the template
 \PassOptionsToPackage{table}{xcolor} % <-μονο εδω δουλεύει!!
 
-\documentclass[printbib]{Classes/beamerPhD}%%  
+\documentclass[printbib,progrbar]{Classes/beamerPhD}%%  
 % ******************************************************************************
 % ******************************* Class Options ********************************
 % *********************** See README for more details **************************
@@ -22,10 +22,13 @@
 % `notes=only`: Prints only notes of each frame
 %
 % `printbib`: Include bibliography at the end of the presentation 
+%
+% `progrbar`: Enable progress bar in the frame. Chose this option after your 
+% first compilation
 
 % ********************************** Preamble **********************************
 % Preamble: Contains packages and user-defined commands and settings
-\include{Preample/preample}
+\include{Preample/preamplePhD}
 
 % ************************ Thesis Information & Meta-data **********************
 % Thesis title and author information, refernce file for biblatex
@@ -33,7 +36,7 @@
 
 % ***************************** Chapter Mode ***********************************
 \ifdefineChapter
-% \includeonly{Chapter1/ch1pres}
+% \includeonly{Chapter1/ch1presPhD}
 \includeonly{Chapter2/ch2pres}
 % \includeonly{Chapter3/ch3pres}
 % \includeonly{Chapter4/ch4pres}
@@ -58,7 +61,7 @@
 
 
 % ************************  Include Chapters  *************************************
-\include{Chapter1/ch1pres}
+\include{Chapter1/ch1presPhD}
 \include{Chapter2/ch2pres}
 \include{Chapter3/ch3pres}
 \include{Chapter4/ch4pres}
