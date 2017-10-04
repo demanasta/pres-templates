@@ -38,6 +38,7 @@ Templates for academic presentations -- pre-released
     
     * `Lct`: Academic presentation for university courses, lecture.
     
+    
   * Special pre-defined frames for each style (thanku, Q&A)
 
 --------------------------------------------------------------------------------

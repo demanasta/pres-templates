@@ -417,7 +417,9 @@
 %%------------------------------------------------------------------------------
 %% Options added on BeamerPhD Class file
 %%------------------------------------------------------------------------------
-
+\RequirePackage{tikz}
+%\usetikzlibrary{calc}
+\RequirePackage{xifthen}
 % ******************************* Time Stamp ***********************************
 % Compute the timestamp based on an idea of
 % Tim Piessens \texttt{<Tim.Piessens@esat.kuleuven.ac.be>}.
@@ -683,6 +685,7 @@
 \end{frame}
 }
 
+
 % ****************** Chapter Mode - To print only selected chapters ************
 \newif \ifdefineChapter\defineChapterfalse %To enable Separate abstract
 
@@ -696,22 +699,6 @@
 }
 
 \ProcessOptions\relax%
-
-% ***************************** Chapter Mode ***********************************
-% The chapter mode allows user to only print particular chapters with references
-% All other options are disabled by default
-% To include only specific chapters without TOC, LOF, Title and Front Matter
-% To send it to supervisior for changes
-
-\ifPRES@chapter
-  \defineChaptertrue
-  % Disable the table of contents, figures, tables, index and nomenclature
-     \renewcommand{\maketitle}{}
-%     \renewcommand{\tableofcontents}{}
-    \renewcommand{\makethanku}{}
-\else
-    \defineChapterfalse
-\fi
 
 % ****************** Print Bibliography option *********************************
 \newif \ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
@@ -860,4 +847,22 @@
 
 \else
     \defineProgrbarfalse
+\fi
+
+
+% ***************************** Chapter Mode ***********************************
+% The chapter mode allows user to only print particular chapters with references
+% All other options are disabled by default
+% To include only specific chapters without TOC, LOF, Title and Front Matter
+% To send it to supervisior for changes
+
+\ifPRES@chapter
+  \defineChaptertrue
+  \defineProgrbarfalse
+  % Disable the table of contents, figures, tables, index and nomenclature
+     \renewcommand{\maketitle}{}
+%     \renewcommand{\tableofcontents}{}
+    \renewcommand{\makethanku}{}
+\else
+    \defineChapterfalse
 \fi
