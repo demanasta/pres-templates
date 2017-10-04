@@ -1,14 +1,17 @@
 % ******************* PhD Thesis Presentation Template *************************
 % Please have a look at the README.md file for info on how to use the template
-%\PassOptionsToPackage{table}{xcolor} % <-μονο εδω δουλεύει!!
+\PassOptionsToPackage{table}{xcolor} % <-μονο εδω δουλεύει!!
 
-\documentclass[printbib.progrbar,chapter]{Classes/beamerPhD}%%  
+\documentclass[printbib]{Classes/beamerPhD}%%  
 % ******************************************************************************
 % ******************************* Class Options ********************************
 % *********************** See README for more details **************************
 % ******************************************************************************
 %
 % `aspectratio=169`: reduce ratio to 16:9
+%
+% `customfont`: Pre-defined font is "Arial". This option enable custom fonts .
+% Config custom fonts at `preamble.tex`.
 %
 % `draft`: Special draft mode with line numbers, images, and water mark with 
 % timestamp and custom text. Position of the text can also be modified. To 
@@ -28,7 +31,7 @@
 
 % ********************************** Preamble **********************************
 % Preamble: Contains packages and user-defined commands and settings
-\include{Preample/preamplePhD}
+\include{Preamble/preamblePhD}
 
 % ************************ Thesis Information & Meta-data **********************
 % Thesis title and author information, refernce file for biblatex

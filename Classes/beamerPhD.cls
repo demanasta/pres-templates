@@ -417,6 +417,27 @@
 %%------------------------------------------------------------------------------
 %% Options added on BeamerPhD Class file
 %%------------------------------------------------------------------------------
+
+% ******************************* Font Option **********************************
+\newif \ifdefineCustomFont\defineCustomFontfalse %To enable Separate abstract
+
+\newif\ifPRES@customfont\PRES@customfontfalse % Enable Separate Abstract
+\DeclareOption{customfont}{
+  \PRES@customfonttrue
+  \ClassWarning{beamerPhD}{You have chosen an option that generates custom 
+    fonts. Configure fonts on `preample.tex' file. If not, please remove 
+    the option `customfont' from the document class and recompile. 
+    Good luck with your writing!}
+}
+
+\ProcessOptions\relax%
+
+\ifPRES@customfont
+    \defineCustomFonttrue
+\else
+    \defineCustomFontfalse
+\fi
+
 \RequirePackage{tikz}
 %\usetikzlibrary{calc}
 \RequirePackage{xifthen}
@@ -692,7 +713,7 @@
 \newif\ifPRES@chapter\PRES@chapterfalse % Enable Separate Abstract
 \DeclareOption{chapter}{
   \PRES@chaptertrue
-  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
+  \ClassWarning{beamerPhD}{You have chosen an option that generates only 
     selected chapters with references, if this was intentional, ignore this
     warning. If not, please remove the option `chapter' from the document class
     and recompile. Good luck with your writing!}
@@ -706,7 +727,7 @@
 \newif\ifPRES@printbib\PRES@printbibfalse % Enable Separate Abstract
 \DeclareOption{printbib}{
   \PRES@printbibtrue
-  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
+  \ClassWarning{beamerPhD}{You have chosen an option that generates only 
     selected chapters with references, if this was intentional, ignore this
     warning. If not, please remove the option `chapter' from the document class
     and recompile. Good luck with your writing!}

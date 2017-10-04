@@ -110,7 +110,7 @@ All style files `.sty` placed at `sty` directory.
 
 Otherwise you can place `.sty` file at the same directory with `.tex` file.
 
-Then select you presentation style on `preample.tex` file
+Then select you presentation style on `preamble.tex` file
  
 ### Class files
 
@@ -123,6 +123,8 @@ Then select you presentation style on `preample.tex` file
 ### Class options
 
 * `aspectratio=169`: reduce ratio to 16:9
+
+* `customfont`: Pre-defined font is "Arial". This option enable custom fonts . Config custom fonts at `preamble.tex`.
 
 * `draft`: Special draft mode with line numbers, images, and water mark with timestamp and custom text. Position of the text can also be modified. To disable figures see on `preample.tex` the Draftmode section.
 
