@@ -126,7 +126,7 @@ Then select you presentation style on `preample.tex` file
 
 * `draft`: Special draft mode with line numbers, images, and water mark with timestamp and custom text. Position of the text can also be modified. To disable figures see on `preample.tex` the Draftmode section.
 
-* `chapter`: This option enables only the specified chapter and it's references. Useful for review and corrections.
+* `chapter`: This option enables only the specified chapter and it's references. Useful for review and corrections. 
 
 * `notes`: Prints frames and notes 
 
@@ -134,7 +134,7 @@ Then select you presentation style on `preample.tex` file
 
 * `printbib`: Include bibliography at the end of the presentation (__bug__: not working with makefile!)
 
-* `progrbar`: Enable progress bar in the frame. Chose this option after your  first compilation.
+* `progrbar`: Enable progress bar in the frame. Chose this option after your  first compilation. Disable on *chapter* mode.
 
 ## Contributing
 
