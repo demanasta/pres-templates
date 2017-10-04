@@ -621,9 +621,18 @@
 \newcommand{\@presteam}{}
 \newcommand{\presteam}[1]{\renewcommand{\@presteam}{#1}}
 
-% The team prepare this presentation
+% The organization team prepare this presentation
 \newcommand{\@presorgn}{}
 \newcommand{\presorgn}[1]{\renewcommand{\@presorgn}{#1}}
+
+% Homepage Url
+\newcommand{\@urlhome}{}
+\newcommand{\urlhome}[1]{\renewcommand{\@urlhome}{#1}}
+
+% Contact mail
+\newcommand{\@contmail}{}
+\newcommand{\contmail}[1]{\renewcommand{\@contmail}{#1}}
+
 
 % Webpage of presenters
 \newcommand{\@presweb}{}
@@ -665,7 +674,7 @@
   {\footnotesize{\@presorgn}}\par 
 
   \vfill
-  {\hfill \scriptsize\href{\@presweb}{\faHome \@presweb} \hfill  \href{\@presmail}{\faEnvelope \@presmail} \hfill}
+  {\hfill \scriptsize\href{\@urlhome}{\faHome \@urlhome} \hfill  \href{\@contmail}{\faEnvelope \@contmail} \hfill}
   \begin{block}{}
     \begin{center}
       \ifPRES@conflogo%
@@ -711,7 +720,7 @@
 %\href{\@urlgh}{\faGithub}\\
 %\href{\@urlgp}{\faGooglePlus}\\
 %\href{\@urltw}{\faTwitter} 
-\hfill \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
+\href{\@urlhome}{\faHome} \hspace*{.1cm} \href{\@contmail}{\faEnvelope} \hfill \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
 \vfill
 \end{frame}
 }
