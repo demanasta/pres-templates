@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                            %%
-%% Class ``beamerPhD''                                                        %%
+%% Class ``beamerLct''                                                        %%
 %%                                                                            %%
-%% A beamer template for thesis presentations                                 %%
+%% A beamer template for Lecture presentations                                %%
 %%                                                                            %%
 %% Version: v1.0                                                              %%
 %% Authors: Demitris G. Anastasiou                                            %%
@@ -14,13 +14,13 @@
 \newcommand\fileversion{1.0}
 \newcommand\filedate{2017/06/25}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{Classes/beamerPhD}[\filedate\space A beamer template for thesis presentations by D. G. Anastasiou (v\fileversion)]
+\ProvidesClass{Classes/beamerLct}[\filedate\space A beamer template for lecture presentations by D. G. Anastasiou (v\fileversion)]
 \typeout{https://github.com/demanasta/pres-template/}
 
 % Copyright 2003--2007 by Till Tantau
 % Copyright 2010 by Vedran Mileti\'c
 % Copyright 2011 by Vedran Mileti\'c, Joseph Wright,
-% Copyright 2017 Demitris G. Anastasiou for PhD version
+% Copyright 2017 Demitris G. Anastasiou for Lecture version
 %
 % This file may be distributed and/or modified
 %
@@ -424,7 +424,7 @@
 \newif\ifPRES@customfont\PRES@customfontfalse % Enable Separate Abstract
 \DeclareOption{customfont}{
   \PRES@customfonttrue
-  \ClassWarning{beamerPhD}{You have chosen an option that generates custom 
+  \ClassWarning{beamerPub}{You have chosen an option that generates custom 
     fonts. Configure fonts on `preample.tex' file. If not, please remove 
     the option `customfont' from the document class and recompile. 
     Good luck with your writing!}
@@ -490,7 +490,6 @@
 }
 
 
-
 % If NOT Draft Mode
 \else 
 
@@ -517,8 +516,16 @@
 \newcommand{\lab}[1]{\renewcommand{\@lab}{#1}}
 % 
 % The name of your Title in Greek
-\newcommand{\@eltitle}{}
-\newcommand{\eltitle}[1]{\renewcommand{\@eltitle}{#1}}
+\newcommand{\@lcttitle}{}
+\newcommand{\lcttitle}[1]{\renewcommand{\@lcttitle}{#1}}
+
+% The name of your Title in Greek
+\newcommand{\@coursetitle}{}
+\newcommand{\coursetitle}[1]{\renewcommand{\@coursetitle}{#1}}
+
+% The name of your Title in Greek
+\newcommand{\@courseinfo}{}
+\newcommand{\courseinfo}[1]{\renewcommand{\@courseinfo}{#1}}
 
 % The name of your degree title
 \newcommand{\@degreetitle}{}
@@ -532,17 +539,13 @@
 \newcommand{\@authortitle}{}
 \newcommand{\authortitle}[1]{\renewcommand{\@authortitle}{#1}}
 
-% The name of your supervisor
-\newcommand{\@supervisor}{}
-\newcommand{\supervisor}[1]{\renewcommand{\@supervisor}{#1}}
-
 % The city of your University
 \newcommand{\@city}{}
 \newcommand{\city}[1]{\renewcommand{\@city}{#1}}
 
 % The date
-\newcommand{\@degreedate}{}
-\newcommand{\degreedate}[1]{\renewcommand{\@degreedate}{#1}}
+\newcommand{\@coursedate}{}
+\newcommand{\coursedate}[1]{\renewcommand{\@coursedate}{#1}}
 
 % University Crest
 \newcommand{\@crestleft}{}
@@ -581,6 +584,11 @@
 \newcommand{\urltw}[1]{\renewcommand{\@urltw}{#1}}
 
 % ******************************** Title Page **********************************
+\definecolor{goldenyellow}{rgb}{1.0, 0.87, 0.0}
+\definecolor{lava}{rgb}{0.81, 0.06, 0.13}
+\definecolor{auburn}{rgb}{0.43, 0.21, 0.1}
+\setbeamercolor{coursebox}{fg=auburn, bg=goldenyellow}
+
 \renewcommand{\maketitle}{
 \begin{frame}[plain]
   \begin{minipage}[t]{0.10\textwidth}
@@ -595,21 +603,36 @@
     \centering\raisebox{\dimexpr \topskip-\height}{\@crestright}
   \end{minipage}\hfill
   \vfill
+
+  \hfill \begin{beamercolorbox}[wd=.5\paperwidth,leftskip=2cm,sep=1.5pt,center,rounded=false]{coursebox}
+     \@coursetitle \par
+     
+     \footnotesize{\@courseinfo}
+  \end{beamercolorbox}
+  
+  \centering
+  \vspace*{.3cm}
+  \Large\textbf{\textcolor{red!90!blue}{\@lcttitle}}\par\vfill
+  %\small{\@degreetitle}\par\vfill
   \ifsetDraft
     \DraftContent
-    \vspace*{-1cm}
+    \vspace*{-.5cm}
   \fi
   \vfill
-  \centering
-  \vspace*{1cm}
-  \large\textbf{\textcolor{blue!90}{\@eltitle}}\par\vfill
-  \small{\@degreetitle}\par\vfill
 
+\begin{flushleft}
   \normalsize\textbf{\@authorname}\par
-  \footnotesize{\@authortitle}\par\vfill
-  \flushleft{\footnotesize{\textbf{ΕΠΙΒΛΕΠΩΝ:}\\ \@supervisor}}\par\vspace*{.3cm}
+  \footnotesize{\@authortitle}\par
+\end{flushleft} 
+\vspace*{-1cm}
+\begin{flushright}
+  \scriptsize\href{\@urlhome}{\@urlhome \space \faHome}\vskip-.15cm
+  \color{red!90!blue}\rule{0.08\textwidth}{1pt}\par
+  \scriptsize\href{mailto:\@contmail}{\@contmail \space \faEnvelope}\par
+\end{flushright}\vfill
+  
   \centering
-  {\footnotesize\textbf{\@city, \@degreedate}}%\vfill
+  {\footnotesize\textbf{\@city, \@coursedate}}%\vfill
 \end{frame}
 }
 
@@ -648,21 +671,41 @@
 \end{frame}
 }
 
+% ****************************** Q&A section ***********************************
+\newcommand{\makeqahour}{
+\begin{frame}[plain,b]\frametitle{}\framesubtitle{}
+\vfill
+  \begin{center}
+    \includegraphics[height=.8\paperheight,draft=false]{Figs/darktableQA1.jpg}
+  \end{center}
+%\vskip-2cm
 
+\begin{flushright}
+\hfill\href{\@urlhome}{\faHome}
+\href{mailto:\@contmail}{\faEnvelope}
+\href{\@urlin}{\faLinkedin}
+\href{\@urlgh}{\faGithub}
+\href{\@urlgp}{\faGooglePlus}
+\href{\@urltw}{\faTwitter}
+\end{flushright}
+
+%\textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
+\vfill
+\end{frame}
+}
 % ****************** Chapter Mode - To print only selected chapters ************
 \newif\ifdefineChapter\defineChapterfalse %To enable Separate abstract
 
 \newif\ifPRES@chapter\PRES@chapterfalse % Enable Separate Abstract
 \DeclareOption{chapter}{
   \PRES@chaptertrue
-  \ClassWarning{beamerPhD}{You have chosen an option that generates only 
+  \ClassWarning{beamerLct}{You have chosen an option that generates only 
     selected chapters with references, if this was intentional, ignore this
     warning. If not, please remove the option `chapter' from the document class
     and recompile. Good luck with your writing!}
 }
 
 \ProcessOptions\relax%
-
 
 % ***************************** Chapter Mode ***********************************
 % The chapter mode allows user to only print particular chapters with references
@@ -686,8 +729,8 @@
 \newif\ifPRES@printbib\PRES@printbibfalse % Enable Separate Abstract
 \DeclareOption{printbib}{
   \PRES@printbibtrue
-  \ClassWarning{beamerPhD}{You have chosen an option that generates bibliography 
-    at the end of the presentation, if this was intentional, ignore this
+  \ClassWarning{beamerLct}{You have chosen an option that generates only 
+    selected chapters with references, if this was intentional, ignore this
     warning. If not, please remove the option `printbib' from the document class
     and recompile. Good luck with your writing!}
 }
@@ -700,8 +743,6 @@
     \definePrintbibfalse
 \fi
 
-
-
 % \RequirePackage[backend=biber, style=authoryear, citestyle=alphabetic, sorting=nty, natbib=true]{biblatex}
 
 % ********************* Progress Bar option ************************************
@@ -710,7 +751,7 @@
 \newif\ifPRES@progrbar\PRES@progrbarfalse % Enable Separate Abstract
 \DeclareOption{progrbar}{
   \PRES@progrbartrue
-  \ClassWarning{beamerPhD}{Υou have chosen an option that generates Progress bar
+  \ClassWarning{beamerLct}{Υou have chosen an option that generates Progress bar
     in all frames of the presentation, if this was intentional, ignore this
     warning. If not, please remove the option `progrbar' from the document class
     and recompile. Good luck with your writing!}
@@ -720,7 +761,7 @@
 
 \ifPRES@progrbar
   \ifPRES@chapter
-    % Disable progrbar in chapter mode
+    % Disable progrbar on chapter mode
     \defineProgrbarfalse
   \else
     \defineProgrbartrue
@@ -821,14 +862,15 @@
                                             BarHeight=0.18,%
                                             BarColor=green,%
                                             BarBorder=black,%
-                                            TodoA=gray!10!white,%
-                                            TodoB=gray!50!white,%
-                                            DoneA=blue!50!white,%
-                                            DoneB=blue!30!white,%
+                                            TodoA=red!20!white,%
+                                            TodoB=red!70!gray,%
+                                            DoneA=blue!70!cyan,%
+                                            DoneB=blue!20!white,%
                                             Completion=\prog%
                                         }
             }
-  \fi %<disable on chapter mode
+
+  \fi %< disable progrbar on chapter mode
 \else
     \defineProgrbarfalse
 \fi

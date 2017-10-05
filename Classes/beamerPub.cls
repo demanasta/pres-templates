@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                            %%
-%% Class ``beamerPhD''                                                        %%
+%% Class ``beamerPub''                                                        %%
 %%                                                                            %%
-%% A beamer template for thesis presentations                                 %%
+%% A beamer template for Conference presentations                             %%
 %%                                                                            %%
 %% Version: v1.0                                                              %%
 %% Authors: Demitris G. Anastasiou                                            %%
@@ -12,15 +12,15 @@
 
 % ************************** Class Identification ******************************
 \newcommand\fileversion{1.0}
-\newcommand\filedate{2017/06/25}
+\newcommand\filedate{2017/09/28}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{Classes/beamerPhD}[\filedate\space A beamer template for thesis presentations by D. G. Anastasiou (v\fileversion)]
+\ProvidesClass{Classes/beamerPub}[\filedate\space A beamer template for Conference presentations by D. G. Anastasiou (v\fileversion)]
 \typeout{https://github.com/demanasta/pres-template/}
 
 % Copyright 2003--2007 by Till Tantau
 % Copyright 2010 by Vedran Mileti\'c
 % Copyright 2011 by Vedran Mileti\'c, Joseph Wright,
-% Copyright 2017 Demitris G. Anastasiou for PhD version
+% Copyright 2017 Demitris G. Anastasiou for Pub version
 %
 % This file may be distributed and/or modified
 %
@@ -424,7 +424,7 @@
 \newif\ifPRES@customfont\PRES@customfontfalse % Enable Separate Abstract
 \DeclareOption{customfont}{
   \PRES@customfonttrue
-  \ClassWarning{beamerPhD}{You have chosen an option that generates custom 
+  \ClassWarning{beamerPub}{You have chosen an option that generates custom 
     fonts. Configure fonts on `preample.tex' file. If not, please remove 
     the option `customfont' from the document class and recompile. 
     Good luck with your writing!}
@@ -437,6 +437,7 @@
 \else
     \defineCustomFontfalse
 \fi
+
 
 \RequirePackage{tikz}
 %\usetikzlibrary{calc}
@@ -489,8 +490,6 @@
   }
 }
 
-
-
 % If NOT Draft Mode
 \else 
 
@@ -504,65 +503,33 @@
 \fi 
 
 % ***************************** Define info variables **************************
-% The name of your University
-\newcommand{\@university}{}
-\newcommand{\university}[1]{\renewcommand{\@university}{#1}}
-
-% The name of your Department
-\newcommand{\@dept}{}
-\newcommand{\dept}[1]{\renewcommand{\@dept}{#1}}
-
-% The name of your Laboratory
-\newcommand{\@lab}{}
-\newcommand{\lab}[1]{\renewcommand{\@lab}{#1}}
+%% The name of your University
+%\newcommand{\@university}{}
+%\newcommand{\university}[1]{\renewcommand{\@university}{#1}}
+%
+%% The name of your Department
+%\newcommand{\@dept}{}
+%\newcommand{\dept}[1]{\renewcommand{\@dept}{#1}}
+%
+%% The name of your Laboratory
+%\newcommand{\@lab}{}
+%\newcommand{\lab}[1]{\renewcommand{\@lab}{#1}}
 % 
 % The name of your Title in Greek
-\newcommand{\@eltitle}{}
-\newcommand{\eltitle}[1]{\renewcommand{\@eltitle}{#1}}
+\newcommand{\@prestitle}{}
+\newcommand{\prestitle}[1]{\renewcommand{\@prestitle}{#1}}
 
-% The name of your degree title
-\newcommand{\@degreetitle}{}
-\newcommand{\degreetitle}[1]{\renewcommand{\@degreetitle}{#1}}
-
-% The name of the author
-\newcommand{\@authorname}{}
-\newcommand{\authorname}[1]{\renewcommand{\@authorname}{#1}}
-
-% The thesis of the author
-\newcommand{\@authortitle}{}
-\newcommand{\authortitle}[1]{\renewcommand{\@authortitle}{#1}}
-
-% The name of your supervisor
-\newcommand{\@supervisor}{}
-\newcommand{\supervisor}[1]{\renewcommand{\@supervisor}{#1}}
-
-% The city of your University
-\newcommand{\@city}{}
-\newcommand{\city}[1]{\renewcommand{\@city}{#1}}
-
-% The date
-\newcommand{\@degreedate}{}
-\newcommand{\degreedate}[1]{\renewcommand{\@degreedate}{#1}}
-
-% University Crest
-\newcommand{\@crestleft}{}
-\newcommand{\crestleft}[1]{\renewcommand{\@crestleft}{#1}}
-
-% Department Crest
-\newcommand{\@crestright}{}
-\newcommand{\crestright}[1]{\renewcommand{\@crestright}{#1}}
+%% University Crest
+%\newcommand{\@crestleft}{}
+%\newcommand{\crestleft}[1]{\renewcommand{\@crestleft}{#1}}
+%
+%% Department Crest
+%\newcommand{\@crestright}{}
+%\newcommand{\crestright}[1]{\renewcommand{\@crestright}{#1}}
 
 % Thank u text
 \newcommand{\@thankutext}{}
 \newcommand{\thankutext}[1]{\renewcommand{\@thankutext}{#1}}
-
-% Homepage Url
-\newcommand{\@urlhome}{}
-\newcommand{\urlhome}[1]{\renewcommand{\@urlhome}{#1}}
-
-% Contact mail
-\newcommand{\@contmail}{}
-\newcommand{\contmail}[1]{\renewcommand{\@contmail}{#1}}
 
 % LinkedIn url
 \newcommand{\@urlin}{}
@@ -580,36 +547,85 @@
 \newcommand{\@urltw}{}
 \newcommand{\urltw}[1]{\renewcommand{\@urltw}{#1}}
 
+% Conference details text
+\newcommand{\@confname}{}
+\newcommand{\confname}[1]{\renewcommand{\@confname}{#1}}
+\newcommand{\@confdetail}{}
+\newcommand{\confdetail}[1]{\renewcommand{\@confdetail}{#1}}
+% Conference logo
+\newif\ifPRES@conflogo\PRES@conflogofalse
+\newcommand{\@conflogo}{}
+\newcommand{\conflogo}[1]{\renewcommand{\@conflogo}{#1}\PRES@conflogotrue}
+
+% The team prepare this presentation
+\newcommand{\@presteam}{}
+\newcommand{\presteam}[1]{\renewcommand{\@presteam}{#1}}
+
+% The organization team prepare this presentation
+\newcommand{\@presorgn}{}
+\newcommand{\presorgn}[1]{\renewcommand{\@presorgn}{#1}}
+
+% Homepage Url
+\newcommand{\@urlhome}{}
+\newcommand{\urlhome}[1]{\renewcommand{\@urlhome}{#1}}
+
+% Contact mail
+\newcommand{\@contmail}{}
+\newcommand{\contmail}[1]{\renewcommand{\@contmail}{#1}}
+
+
+% Webpage of presenters
+\newcommand{\@presweb}{}
+\newcommand{\presweb}[1]{\renewcommand{\@presweb}{#1}}
+
+% Contact mail
+\newcommand{\@presmail}{}
+\newcommand{\presmail}[1]{\renewcommand{\@presmail}{#1}}
+
+
 % ******************************** Title Page **********************************
 \renewcommand{\maketitle}{
-\begin{frame}[plain]
-  \begin{minipage}[t]{0.10\textwidth}
-    \centering\raisebox{\dimexpr \topskip-\height}{\@crestleft}
-  \end{minipage}\hfill
-  \begin{minipage}[t]{0.79\textwidth}
-    \centering \vspace*{-0.4cm}{\large \textbf{\@university} \par}
-    \vspace*{0.1cm}  {\small \@dept \par}
-    \vspace*{0.1cm}  {\small \@lab  \par}
-  \end{minipage}
-  \begin{minipage}[t]{0.10\textwidth}
-    \centering\raisebox{\dimexpr \topskip-\height}{\@crestright}
-  \end{minipage}\hfill
+\begin{frame}[plain,b]
+%  \begin{minipage}[t]{0.10\textwidth}
+%    \centering\raisebox{\dimexpr \topskip-\height}{\@crestleft}
+%  \end{minipage}\hfill
+%  \begin{minipage}[t]{0.79\textwidth}
+%    \centering \vspace*{-0.4cm}{\large \textbf{\@university} \par}
+%    \vspace*{0.1cm}  {\small \@dept \par}
+%    \vspace*{0.1cm}  {\small \@lab  \par}
+%  \end{minipage}
+%  \begin{minipage}[t]{0.10\textwidth}
+%    \centering\raisebox{\dimexpr \topskip-\height}{\@crestright}
+%  \end{minipage}\hfill
+
+  \centering
+  %\vspace*{.7cm}
+  {\Large\textbf{\textcolor{blue!70}{\@prestitle}}}\par
   \vfill
+%  \small{\@degreetitle}\par\vfill  
   \ifsetDraft
     \DraftContent
-    \vspace*{-1cm}
+    \vspace*{-.2cm}
+    \vfill
   \fi
-  \vfill
-  \centering
-  \vspace*{1cm}
-  \large\textbf{\textcolor{blue!90}{\@eltitle}}\par\vfill
-  \small{\@degreetitle}\par\vfill
 
-  \normalsize\textbf{\@authorname}\par
-  \footnotesize{\@authortitle}\par\vfill
-  \flushleft{\footnotesize{\textbf{ΕΠΙΒΛΕΠΩΝ:}\\ \@supervisor}}\par\vspace*{.3cm}
-  \centering
-  {\footnotesize\textbf{\@city, \@degreedate}}%\vfill
+  {\normalsize{\@presteam}}\par  
+  \vspace*{.2cm}
+  {\footnotesize{\@presorgn}}\par 
+
+  \vfill
+  {\hfill \scriptsize\href{\@urlhome}{\faHome \@urlhome} \hfill  \href{mailto:\@contmail}{\faEnvelope \@contmail} \hfill}
+  \begin{block}{}
+    \begin{center}
+      \ifPRES@conflogo%
+        \@conflogo \\
+      \else
+        \textbf{\@confname}\\
+        \@confdetail \\
+      \fi
+    \end{center}
+\end{block}
+\vspace*{.2cm}
 \end{frame}
 }
 
@@ -639,15 +655,15 @@
     \color{blue!85}\rule{0.05\textwidth}{1pt}\par
     \color{blue!90}\rule{0.02\textwidth}{1pt}\par
   \end{center}
-\vskip-2cm
-\href{\@urlin}{\faLinkedin}\\
-\href{\@urlgh}{\faGithub}\\
-\href{\@urlgp}{\faGooglePlus}\\
-\href{\@urltw}{\faTwitter} \hspace*{.1cm} \href{\@urlhome}{\faHome} \hspace*{.1cm} \href{mailto:\@contmail}{\faEnvelope} \hfill  \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
+\vskip-.7cm
+%\href{\@urlin}{\faLinkedin}\\
+%\href{\@urlgh}{\faGithub}\\
+%\href{\@urlgp}{\faGooglePlus}\\
+%\href{\@urltw}{\faTwitter} 
+\href{\@urlhome}{\faHome} \hspace*{.1cm} \href{mailto:\@contmail}{\faEnvelope} \hfill \textcolor{red!80}{\scriptsize  \textit{compiled via \XeLaTeX}}\\
 \vfill
 \end{frame}
 }
-
 
 % ****************** Chapter Mode - To print only selected chapters ************
 \newif\ifdefineChapter\defineChapterfalse %To enable Separate abstract
@@ -655,14 +671,13 @@
 \newif\ifPRES@chapter\PRES@chapterfalse % Enable Separate Abstract
 \DeclareOption{chapter}{
   \PRES@chaptertrue
-  \ClassWarning{beamerPhD}{You have chosen an option that generates only 
+  \ClassWarning{beamerPub}{You have chosen an option that generates only 
     selected chapters with references, if this was intentional, ignore this
     warning. If not, please remove the option `chapter' from the document class
     and recompile. Good luck with your writing!}
 }
 
 \ProcessOptions\relax%
-
 
 % ***************************** Chapter Mode ***********************************
 % The chapter mode allows user to only print particular chapters with references
@@ -681,14 +696,14 @@
 \fi
 
 % ****************** Print Bibliography option *********************************
-\newif\ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
+\newif \ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
 
 \newif\ifPRES@printbib\PRES@printbibfalse % Enable Separate Abstract
 \DeclareOption{printbib}{
   \PRES@printbibtrue
-  \ClassWarning{beamerPhD}{You have chosen an option that generates bibliography 
-    at the end of the presentation, if this was intentional, ignore this
-    warning. If not, please remove the option `printbib' from the document class
+  \ClassWarning{PRESThesisPSnPDF}{You have chosen an option that generates only 
+    selected chapters with references, if this was intentional, ignore this
+    warning. If not, please remove the option `chapter' from the document class
     and recompile. Good luck with your writing!}
 }
 
@@ -704,13 +719,14 @@
 
 % \RequirePackage[backend=biber, style=authoryear, citestyle=alphabetic, sorting=nty, natbib=true]{biblatex}
 
+
 % ********************* Progress Bar option ************************************
 \newif\ifdefineProgrbar\defineProgrbarfalse %To enable Separate abstract
 
 \newif\ifPRES@progrbar\PRES@progrbarfalse % Enable Separate Abstract
 \DeclareOption{progrbar}{
   \PRES@progrbartrue
-  \ClassWarning{beamerPhD}{Υou have chosen an option that generates Progress bar
+  \ClassWarning{beamerLct}{Υou have chosen an option that generates Progress bar
     in all frames of the presentation, if this was intentional, ignore this
     warning. If not, please remove the option `progrbar' from the document class
     and recompile. Good luck with your writing!}
@@ -720,7 +736,7 @@
 
 \ifPRES@progrbar
   \ifPRES@chapter
-    % Disable progrbar in chapter mode
+    %Disable progrbar on chaptermode
     \defineProgrbarfalse
   \else
     \defineProgrbartrue
@@ -828,7 +844,7 @@
                                             Completion=\prog%
                                         }
             }
-  \fi %<disable on chapter mode
+  \fi %< disable on chapter mode
 \else
     \defineProgrbarfalse
 \fi

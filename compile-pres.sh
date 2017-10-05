@@ -35,6 +35,7 @@ if [ $1 = $clean ]; then
 	rm -rf *.nav
 	rm -rf *.run.xml
 	rm -rf *.snm
+        rm -rf *.xwm
 	rm -rf $filename.pdf
 	rm -rf $filename.ps
 	rm -rf $filename.dvi
@@ -78,6 +79,7 @@ if [ $1 = $clean ]; then
         rm -rf *.nav
         rm -rf *.run.xml
         rm -rf *.snm
+        rm -rf *.xwm
         rm -rf $filename.pdf
         rm -rf $filename.ps
         rm -rf $filename.dvi

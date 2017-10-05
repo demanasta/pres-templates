@@ -4,7 +4,7 @@ Templates for academic presentations -- pre-released
 > Beamer - LaTeX \ XeLaTeX templates for professional presentations
 
 [![Build Status](https://api.travis-ci.org/demanasta/pres-templates.svg)](https://travis-ci.org/demanasta/pres-templates)
-[![License MIT](http://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENCE)
+[![License MIT](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/demanasta/pres-templates/blob/master/LICENSE)
 [![](https://img.shields.io/github/release/demanasta/pres-templates.svg)](https://github.com/demanasta/pres-templates/releases/latest)
 [![](https://img.shields.io/github/tag/demanasta/pres-templates.svg)](https://github.com/demanasta/pres-templates/tags)
 
@@ -34,9 +34,12 @@ Templates for academic presentations -- pre-released
 * Different styles and Classfiles:
     * `PhD`: A professional presentation for your thesis (PhD, Diploma etc)
 
-    * `~~Pub~~`:  Available soon!!
+    * `Pub`: Professional presentaions for your research work on conferences, meetings etc.
     
-    * `~~Lecture~~`: Available Soon!!
+    * `Lct`: Academic presentation for university courses, lecture.
+    
+    
+  * Special pre-defined frames for each style (thanku, Q&A)
 
 --------------------------------------------------------------------------------
 
@@ -90,6 +93,18 @@ __Note__: the `Makefile` itself is take from and maintained at
 
 Thesis information such as title, author, year, degree, etc., and other meta-data can be modified in `pres-info.tex`
 
+###Information file
+All available informations can be modified in `pres-info.tex`
+
+This file includes all available informations and meta-data for your presentation
+in four sections:
+1. General & contact informations, for all styles.
+2. PhD: Use this section with PhD style.
+3. Pub: Use this section with publication style.
+4. Lct: Usethis section with lecture style.
+
+Uncomment only one section of 2,3 or 4 each time.
+
 ### Style file
 All style files `.sty` placed at `sty` directory.
 > Install Beamer custom style:
@@ -102,29 +117,35 @@ All style files `.sty` placed at `sty` directory.
 
 Otherwise you can place `.sty` file at the same directory with `.tex` file.
 
-Then select you presentation style on `preample.tex` file
+Then select you presentation style on `preamble.tex` file
  
 ### Class files
 
 * `beamerPhD`: Class file for thesis presentations
 
-* `~~beamerPub~~`: under development!
+* `beamerPub`: Class file for conference presentations!
 
-* `~~beamer Lecture~~`: under development!
+* `beamerLct`: Class file for conference presentation!
 
 ### Class options
 
 * `aspectratio=169`: reduce ratio to 16:9
 
+* `customfont`: Pre-defined font is "Arial". This option enable custom fonts . Config custom fonts at `preamble.tex`.
+
+* `11pt`(default) or `12pt`: Recommended font size. Smaller (`8pt`,`9pt`,`10pt`) or huge (`14pt`,`17pt`,`20pt`) font size are NOT recommended except special cases.
+
 * `draft`: Special draft mode with line numbers, images, and water mark with timestamp and custom text. Position of the text can also be modified. To disable figures see on `preample.tex` the Draftmode section.
 
-* `chapter`: This option enables only the specified chapter and it's references. Useful for review and corrections.
+* `chapter`: This option enables only the specified chapter and it's references. Useful for review and corrections. 
 
 * `notes`: Prints frames and notes 
 
 * `notes=only`: Prints only notes of each frame
 
 * `printbib`: Include bibliography at the end of the presentation (__bug__: not working with makefile!)
+
+* `progrbar`: Enable progress bar in the frame. Chose this option after your  first compilation. Disable on *chapter* mode.
 
 ## Contributing
 
