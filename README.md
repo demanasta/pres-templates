@@ -96,7 +96,14 @@ Thesis information such as title, author, year, degree, etc., and other meta-dat
 ###Information file
 All available informations can be modified in `pres-info.tex`
 
-For each presentation (PhD, Pub, Lecture) there is a specific section in this file.
+This file includes all available informations and meta-data for your presentation
+in four sections:
+1. General & contact informations, for all styles.
+2. PhD: Use this section with PhD style.
+3. Pub: Use this section with publication style.
+4. Lct: Usethis section with lecture style.
+
+Uncomment only one section of 2,3 or 4 each time.
 
 ### Style file
 All style files `.sty` placed at `sty` directory.

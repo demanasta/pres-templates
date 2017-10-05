@@ -650,7 +650,7 @@
 
 
 % ****************** Chapter Mode - To print only selected chapters ************
-\newif \ifdefineChapter\defineChapterfalse %To enable Separate abstract
+\newif\ifdefineChapter\defineChapterfalse %To enable Separate abstract
 
 \newif\ifPRES@chapter\PRES@chapterfalse % Enable Separate Abstract
 \DeclareOption{chapter}{
@@ -663,15 +663,32 @@
 
 \ProcessOptions\relax%
 
+
+% ***************************** Chapter Mode ***********************************
+% The chapter mode allows user to only print particular chapters with references
+% All other options are disabled by default
+% To include only specific chapters without TOC, LOF, Title and Front Matter
+% To send it to supervisior for changes
+
+\ifPRES@chapter
+  \defineChaptertrue
+  % Disable the table of contents, figures, tables, index and nomenclature
+     \renewcommand{\maketitle}{}
+%     \renewcommand{\tableofcontents}{}
+    \renewcommand{\makethanku}{}
+\else
+    \defineChapterfalse
+\fi
+
 % ****************** Print Bibliography option *********************************
-\newif \ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
+\newif\ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
 
 \newif\ifPRES@printbib\PRES@printbibfalse % Enable Separate Abstract
 \DeclareOption{printbib}{
   \PRES@printbibtrue
-  \ClassWarning{beamerPhD}{You have chosen an option that generates only 
-    selected chapters with references, if this was intentional, ignore this
-    warning. If not, please remove the option `chapter' from the document class
+  \ClassWarning{beamerPhD}{You have chosen an option that generates bibliography 
+    at the end of the presentation, if this was intentional, ignore this
+    warning. If not, please remove the option `printbib' from the document class
     and recompile. Good luck with your writing!}
 }
 
@@ -693,7 +710,7 @@
 \newif\ifPRES@progrbar\PRES@progrbarfalse % Enable Separate Abstract
 \DeclareOption{progrbar}{
   \PRES@progrbartrue
-  \ClassWarning{beamerLct}{Υou have chosen an option that generates Progress bar
+  \ClassWarning{beamerPhD}{Υou have chosen an option that generates Progress bar
     in all frames of the presentation, if this was intentional, ignore this
     warning. If not, please remove the option `progrbar' from the document class
     and recompile. Good luck with your writing!}
@@ -702,6 +719,10 @@
 \ProcessOptions\relax%
 
 \ifPRES@progrbar
+  \ifPRES@chapter
+    % Disable progrbar in chapter mode
+    \defineProgrbarfalse
+  \else
     \defineProgrbartrue
 
 \makeatletter
@@ -807,25 +828,8 @@
                                             Completion=\prog%
                                         }
             }
-
+  \fi %<disable on chapter mode
 \else
     \defineProgrbarfalse
 \fi
 
-
-% ***************************** Chapter Mode ***********************************
-% The chapter mode allows user to only print particular chapters with references
-% All other options are disabled by default
-% To include only specific chapters without TOC, LOF, Title and Front Matter
-% To send it to supervisior for changes
-
-\ifPRES@chapter
-  \defineChaptertrue
-  \defineProgrbarfalse
-  % Disable the table of contents, figures, tables, index and nomenclature
-     \renewcommand{\maketitle}{}
-%     \renewcommand{\tableofcontents}{}
-    \renewcommand{\makethanku}{}
-\else
-    \defineChapterfalse
-\fi

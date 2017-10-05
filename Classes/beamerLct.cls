@@ -711,7 +711,21 @@
 
 \ProcessOptions\relax%
 
+% ***************************** Chapter Mode ***********************************
+% The chapter mode allows user to only print particular chapters with references
+% All other options are disabled by default
+% To include only specific chapters without TOC, LOF, Title and Front Matter
+% To send it to supervisior for changes
 
+\ifPRES@chapter
+  \defineChaptertrue
+  % Disable the table of contents, figures, tables, index and nomenclature
+     \renewcommand{\maketitle}{}
+%     \renewcommand{\tableofcontents}{}
+    \renewcommand{\makethanku}{}
+\else
+    \defineChapterfalse
+\fi
 
 % ****************** Print Bibliography option *********************************
 \newif\ifdefinePrintbib\definePrintbibfalse %To enable Separate abstract
@@ -750,6 +764,10 @@
 \ProcessOptions\relax%
 
 \ifPRES@progrbar
+  \ifPRES@chapter
+    % Disable progrbar on chapter mode
+    \defineProgrbarfalse
+  \else
     \defineProgrbartrue
 
 \makeatletter
@@ -856,22 +874,8 @@
                                         }
             }
 
+  \fi %< disable progrbar on chapter mode
 \else
     \defineProgrbarfalse
 \fi
 
-% ***************************** Chapter Mode ***********************************
-% The chapter mode allows user to only print particular chapters with references
-% All other options are disabled by default
-% To include only specific chapters without TOC, LOF, Title and Front Matter
-% To send it to supervisior for changes
-
-\ifPRES@chapter
-  \defineChaptertrue
-  % Disable the table of contents, figures, tables, index and nomenclature
-     \renewcommand{\maketitle}{}
-%     \renewcommand{\tableofcontents}{}
-    \renewcommand{\makethanku}{}
-\else
-    \defineChapterfalse
-\fi
