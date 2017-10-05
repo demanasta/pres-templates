@@ -4,7 +4,7 @@ Templates for academic presentations -- pre-released
 > Beamer - LaTeX \ XeLaTeX templates for professional presentations
 
 [![Build Status](https://api.travis-ci.org/demanasta/pres-templates.svg)](https://travis-ci.org/demanasta/pres-templates)
-[![License MIT](http://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENCE)
+[![License MIT](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/demanasta/pres-templates/blob/master/LICENSE)
 [![](https://img.shields.io/github/release/demanasta/pres-templates.svg)](https://github.com/demanasta/pres-templates/releases/latest)
 [![](https://img.shields.io/github/tag/demanasta/pres-templates.svg)](https://github.com/demanasta/pres-templates/tags)
 
