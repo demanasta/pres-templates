@@ -503,53 +503,29 @@
 \fi 
 
 % ***************************** Define info variables **************************
-% The name of your University
-\newcommand{\@university}{}
-\newcommand{\university}[1]{\renewcommand{\@university}{#1}}
-
-% The name of your Department
-\newcommand{\@dept}{}
-\newcommand{\dept}[1]{\renewcommand{\@dept}{#1}}
-
-% The name of your Laboratory
-\newcommand{\@lab}{}
-\newcommand{\lab}[1]{\renewcommand{\@lab}{#1}}
+%% The name of your University
+%\newcommand{\@university}{}
+%\newcommand{\university}[1]{\renewcommand{\@university}{#1}}
+%
+%% The name of your Department
+%\newcommand{\@dept}{}
+%\newcommand{\dept}[1]{\renewcommand{\@dept}{#1}}
+%
+%% The name of your Laboratory
+%\newcommand{\@lab}{}
+%\newcommand{\lab}[1]{\renewcommand{\@lab}{#1}}
 % 
 % The name of your Title in Greek
 \newcommand{\@prestitle}{}
 \newcommand{\prestitle}[1]{\renewcommand{\@prestitle}{#1}}
 
-% The name of your degree title
-\newcommand{\@degreetitle}{}
-\newcommand{\degreetitle}[1]{\renewcommand{\@degreetitle}{#1}}
-
-% The name of the author
-\newcommand{\@authorname}{}
-\newcommand{\authorname}[1]{\renewcommand{\@authorname}{#1}}
-
-% The thesis of the author
-\newcommand{\@authortitle}{}
-\newcommand{\authortitle}[1]{\renewcommand{\@authortitle}{#1}}
-
-% The name of your supervisor
-\newcommand{\@supervisor}{}
-\newcommand{\supervisor}[1]{\renewcommand{\@supervisor}{#1}}
-
-% The city of your University
-\newcommand{\@city}{}
-\newcommand{\city}[1]{\renewcommand{\@city}{#1}}
-
-% The date
-\newcommand{\@degreedate}{}
-\newcommand{\degreedate}[1]{\renewcommand{\@degreedate}{#1}}
-
-% University Crest
-\newcommand{\@crestleft}{}
-\newcommand{\crestleft}[1]{\renewcommand{\@crestleft}{#1}}
-
-% Department Crest
-\newcommand{\@crestright}{}
-\newcommand{\crestright}[1]{\renewcommand{\@crestright}{#1}}
+%% University Crest
+%\newcommand{\@crestleft}{}
+%\newcommand{\crestleft}[1]{\renewcommand{\@crestleft}{#1}}
+%
+%% Department Crest
+%\newcommand{\@crestright}{}
+%\newcommand{\crestright}[1]{\renewcommand{\@crestright}{#1}}
 
 % Thank u text
 \newcommand{\@thankutext}{}

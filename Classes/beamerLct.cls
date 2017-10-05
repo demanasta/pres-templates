@@ -539,17 +539,13 @@
 \newcommand{\@authortitle}{}
 \newcommand{\authortitle}[1]{\renewcommand{\@authortitle}{#1}}
 
-% The name of your supervisor
-\newcommand{\@supervisor}{}
-\newcommand{\supervisor}[1]{\renewcommand{\@supervisor}{#1}}
-
 % The city of your University
 \newcommand{\@city}{}
 \newcommand{\city}[1]{\renewcommand{\@city}{#1}}
 
 % The date
-\newcommand{\@degreedate}{}
-\newcommand{\degreedate}[1]{\renewcommand{\@degreedate}{#1}}
+\newcommand{\@coursedate}{}
+\newcommand{\coursedate}[1]{\renewcommand{\@coursedate}{#1}}
 
 % University Crest
 \newcommand{\@crestleft}{}
@@ -636,7 +632,7 @@
 \end{flushright}\vfill
   
   \centering
-  {\footnotesize\textbf{\@city, \@degreedate}}%\vfill
+  {\footnotesize\textbf{\@city, \@coursedate}}%\vfill
 \end{frame}
 }
 

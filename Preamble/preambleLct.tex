@@ -1,8 +1,8 @@
 % ********************************** Preamble **********************************
 % Preamble: Contains packages and user-defined commands and settings
-%\usepackage{../sty/beamerthemesimpledso}
+
 %%-----------------------------------------------------------------------------
-% % USE THEME
+%% USE THEME
 %%-----------------------------------------------------------------------------
 \usetheme{RedLecture}
 % \usetheme{PaloAlto} 
@@ -31,7 +31,7 @@
 \usepackage[scale=2]{ccicons}
 
 %%-----------------------------------------------------------------------------
-% %  double slides left presentation // right notes NOT WORK WELL!!!
+%%  double slides left presentation // right notes NOT WORK WELL!!!
 %%-----------------------------------------------------------------------------
 % \usepackage{pgfpages}
 % \setbeameroption{show notes on second screen=right}
@@ -41,23 +41,15 @@
 %%-----------------------------------------------------------------------------
 \setbeamersize{text margin left=0.4cm}  % <- like this
 \setbeamersize{text margin right=0.4cm} % <- like this
-% \setbeamersize{text margin top=0.2cm} % <- like this
-% \setbeamersize{text margin bottom=0.2cm} % <- like this
 
 %%-----------------------------------------------------------------------------
-% %  SET RATIO TO 16:9 uncoment next line
-%%-----------------------------------------------------------------------------
-% \usepackage[orientation=landscape,size=custom,width=16,height=9,scale=0.5,debug]{beamerposter} % reduce ratio to 16:9 IUGG defaults!
-% Better to use class option!!
-
-%%-----------------------------------------------------------------------------
-% % Set background for simpledso theme
+%% Set background for simpledso theme
 %%-----------------------------------------------------------------------------
 %\graphicspath{{Chapter3/Figs/Vector/}{Chapter3/Figs/}}
 \setwatermark{\includegraphics[height=8cm,draft=false]{Figs/backgr01.png}}
 
 %%-----------------------------------------------------------------------------
-% Languages
+%% Languages
 %%-----------------------------------------------------------------------------
 % \usepackage[english, greek]{babel}
 \usepackage{xgreek}
@@ -69,40 +61,29 @@
 % \usepackage{tabu}
 
 %%-----------------------------------------------------------------------------
-% Tables
+%% Tables
 %%-----------------------------------------------------------------------------
 \usepackage{booktabs,tabularx}
 \usepackage{tabu}
 \usepackage{multirow}
 
 %%-----------------------------------------------------------------------------
-% Fonts - many bugs
-%-----------------------------------------------------------------------------
-% % To use system fonts uncomment the next two lines
-% \usefonttheme{professionalfonts} % using non standard fonts for beamer
-% \usefonttheme{serif} % default family is serif
-
+%% Fonts
+%%-----------------------------------------------------------------------------
 \usepackage{fontspec}
-\setsansfont{Arial}
-
-% \setmainfont{Liberation Serif}
-% ******************* Fonts (like different typewriter fonts etc.)*************
 
 % Add `customfont' in the document class option to use this section
-
-%\ifsetCustomFont
-  % Set your custom font here and use `customfont' in options. Leave empty to
-  % load computer modern font (default LaTeX font).
-%   \RequirePackage{helvet}
-
-% \setmainfont[Mapping=tex-text]{GFS Didot}
-% \setmainfont[Mapping=tex-text]{GFS Bodoni}
-% \setmainfont[Mapping=tex-text]{GFS Olga} % ότι να ναι αυτή!!πλάγια NOT support English
-% \setmainfont[Mapping=tex-text]{GFS Neohellenic}
-% \setmainfont[Mapping=tex-text]{GFS Artemisia}
-% \setmainfont[Mapping=tex-text]{GFS Elpis} %low resolution printing
-% \setmainfont[Mapping=tex-text]{Linux Libertine T}
-% \setmainfont[Mapping=tex-text]{Linux Libertine O}
+\ifdefineCustomFont
+  \usefonttheme{professionalfonts} % using non standard fonts for beamer
+  \usefonttheme{serif} % default family is serif
+  \setmainfont[Mapping=tex-text]{GFS Didot}
+%  \setmainfont[Mapping=tex-text]{GFS Bodoni}
+%  \setmainfont[Mapping=tex-text]{GFS Olga} % ότι να ναι αυτή!!πλάγια NOT support English
+%  \setmainfont[Mapping=tex-text]{GFS Neohellenic}
+%  \setmainfont[Mapping=tex-text]{GFS Artemisia}
+%  \setmainfont[Mapping=tex-text]{GFS Elpis} %low resolution printing
+%  \setmainfont[Mapping=tex-text]{Linux Libertine T}
+%  \setmainfont[Mapping=tex-text]{Linux Libertine O}
 
 %  % For use with XeLaTeX
 %    \setmainfont[
@@ -117,24 +98,14 @@
 %  %  % load font from system font
 %     \newfontfamily\libertinesystemfont{Linux Libertine O}
 
-% \fi % custom font class
+\else
+\setsansfont{Arial}
 
-% \setmainfont{TeX Gyre Pagella}
-% \setsansfont{TeX Gyre Heros}
-% \setmonofont{Inconsolata}
-% \setmainfont{Times New Roman}
-% \setmainfont{Augie}
-% \setsansfont{Arial}
-% \setsansfont{Tapir}
-% \newfontfamily\greekfont[Script=Greek]{Linux Libertine O}
-% \setmainfont{Minion Pro} % substitute with any font that exists on your system
-% \setsansfont{Myriad Pro} % substitute with any font that exists on your system
-% \setmonofont{Consolas} % substitute with any font that exists on your system
-% \usefonttheme[onlymath]{serif}
+\fi % custom font class
 
 %%-----------------------------------------------------------------------------
-% REQUIRED PACKAGES
-%-----------------------------------------------------------------------------
+%% REQUIRED PACKAGES
+%%-----------------------------------------------------------------------------
 \usepackage{graphicx}  % Required for including images
 \usepackage{fancybox}
 % \usepackage{xcolor}
@@ -185,9 +156,9 @@
 % \definecolor{lightblue}{rgb}{.90,.95,1}
 % \sethlcolor{lightblue}
 % \renewcommand<>{\hl}[1]{\only#2{\beameroriginal{\hl}}{#1}}
-% -----------------------------------------------------------------------------
-% CAPTIONS
-%-----------------------------------------------------------------------------
+%% -----------------------------------------------------------------------------
+%% CAPTIONS
+%%-----------------------------------------------------------------------------
 \usepackage{caption}
 \usepackage{subcaption}
 \captionsetup[figure]{font=footnotesize,labelfont=footnotesize,skip=0pt,belowskip=0pt}
@@ -195,9 +166,9 @@
 
 \setbeamerfont{caption}{size=\scriptsize}
 
-% -----------------------------------------------------------------------------
-% Four Quad
-%-----------------------------------------------------------------------------
+%%-----------------------------------------------------------------------------
+%% Four Quad
+%%-----------------------------------------------------------------------------
 \newcommand\FourQuad[4]{
     \begin{minipage}[b][.45\textheight][t]{.50\textwidth}\centering#1\end{minipage}\hfill%
     \begin{minipage}[b][.45\textheight][t]{.50\textwidth}\centering#2\end{minipage}\\[0.1cm]
@@ -205,26 +176,26 @@
     \begin{minipage}[b][.45\textheight][t]{.50\textwidth}\centering#4\end{minipage}%
 }
 
-% -----------------------------------------------------------------------------
-% Custom symbols for itemize
-%-----------------------------------------------------------------------------
+%%-----------------------------------------------------------------------------
+%% Custom symbols for itemize
+%%-----------------------------------------------------------------------------
 
 \newenvironment{proenv}{\only{\setbeamercolor{local structure}{fg=green}}}{}
 \newenvironment{conenv}{\only{\setbeamercolor{local structure}{fg=red}}}{}
  \usepackage{fontawesome}
 
-% -----------------------------------------------------------------------------
-% Rotate text
-%-----------------------------------------------------------------------------
+%%-----------------------------------------------------------------------------
+%% Rotate text
+%%-----------------------------------------------------------------------------
 \usepackage{rotating}
 %\begin{turn}{45} 
 % ...
 % \end{turn}
 
 
-% -----------------------------------------------------------------------------
-% BIBLATEX
-%-----------------------------------------------------------------------------
+%%-----------------------------------------------------------------------------
+%% BIBLATEX
+%%-----------------------------------------------------------------------------
 \usepackage{hyperref}
 \usepackage[backend=biber,
             style=authoryear,
@@ -291,13 +262,12 @@
 \renewcommand*{\bibfont}{\tiny}
 
 
-% -----------------------------------------------------------------------------
-% Insert frame after new section
-%-----------------------------------------------------------------------------
-% comment next lines if you don't like to use this
+%%-----------------------------------------------------------------------------
+%% Insert frame after new section
+%%-----------------------------------------------------------------------------
+%% comment next lines if you don't like to use this
 \AtBeginSection[]{
   \begin{frame}[b]
-%   \vfill
   \vspace{\fill}
   \centering
   \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
@@ -313,19 +283,18 @@
     {\color{blue!90}\rule{0.04\textwidth}{1pt}}\par
   \end{flushleft}
   \vspace{.5cm}
-%   \vfill
   \end{frame}
 }
 
-% -----------------------------------------------------------------------------
-% Configure Draft mode
-%-----------------------------------------------------------------------------
+%%-----------------------------------------------------------------------------
+%% Configure Draft mode
+%%-----------------------------------------------------------------------------
 % *********************** Configure Draft Mode **********************************
 \ifsetDraft
   \usepackage[printwatermark]{xwatermark}
-  % Bottom
+  %% Bottom
 %  \newwatermark*[pages=2-,color=red!60,textalign=center,angle=0,scale=.37,xpos=-.2cm,ypos=-.437\paperheight]{\makebox[.9\textwidth]{{\drafttext}\space-\space{\draftVersion}\space{\timestamp}}}
-  %Flush right
+  %%Flush right
   \newwatermark*[pages=2-,color=red!60,textalign=center,angle=90,scale=.35,xpos=.45\paperwidth, ypos=-.7cm]{\makebox[.9\textwidth]{{\drafttext}\space-\space{\draftVersion}\space{\timestamp}}}
   
 \fi 
