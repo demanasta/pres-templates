@@ -14,8 +14,15 @@ install:
    - sudo apt-get install latexmk
 #   - curl -L https://github.com/holgern/travis-texlive/releases/download/2017-09-18_02/texlive.tar.xz | tar -JxC ~
    - PATH=$HOME/texlive/bin/x86_64-linux:$PATH
+   - mkdir $HOME/texmf/
+   - mkdir $HOME/texmf/tex/
+   - mkdir $HOME/texmf/tex/latex/
+   - mkdir $HOME/texmf/tex/latex/beamer/
+   - mkdir $HOME/texmf/tex/latex/beamer/themes/
+   - cp sty/beamerthemeBluePhD.sty $HOME/texmf/tex/latex/beamer/themes/.
+   - sudo texhash
 script:
    - make clean
-   - make BUILD_STRATEGY=xelatex
-   - make clean
+#   - make BUILD_STRATEGY=xelatex
+#   - make clean
    - make
