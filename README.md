@@ -133,7 +133,7 @@ Then select you presentation style on `preamble.tex` file
 
 * `customfont`: Pre-defined font is "Arial". This option enable custom fonts . Config custom fonts at `preamble.tex`.
 
-* `11pt`(default) or `12pt`: Recommended font size. Smaller (`8pt`,`9pt`,`10pt`) or huge (`14pt`,`17pt`,120pt`) font size are NOT recommended except special cases.
+* `11pt`(default) or `12pt`: Recommended font size. Smaller (`8pt`,`9pt`,`10pt`) or huge (`14pt`,`17pt`,`20pt`) font size are NOT recommended except special cases.
 
 * `draft`: Special draft mode with line numbers, images, and water mark with timestamp and custom text. Position of the text can also be modified. To disable figures see on `preample.tex` the Draftmode section.
 
