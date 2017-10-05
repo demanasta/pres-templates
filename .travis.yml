@@ -8,12 +8,13 @@ install:
 #   - sudo apt-get install -y texlive-fonts-recommended texlive-fonts-extra
 #   - sudo apt-get install -y psutils
    - sudo apt-get install ghostscript
-   - sudo apt-get install texlive-full
-   - sudo apt-get install texlive-xetex
+#   - sudo apt-get install texlive-full
+#   - sudo apt-get install texlive-xetex
    - sudo apt-get install biber
-   - sudo apt-get install latexmk
-#   - curl -L https://github.com/holgern/travis-texlive/releases/download/2017-09-18_02/texlive.tar.xz | tar -JxC ~
+#   - sudo apt-get install latexmk
+   - curl -L https://github.com/holgern/travis-texlive/releases/download/2017-09-18_02/texlive.tar.xz | tar -JxC ~
    - PATH=$HOME/texlive/bin/x86_64-linux:$PATH
+# install custom files
    - mkdir $HOME/texmf/
    - mkdir $HOME/texmf/tex/
    - mkdir $HOME/texmf/tex/latex/
