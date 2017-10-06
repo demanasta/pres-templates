@@ -69,16 +69,16 @@
 %%-----------------------------------------------------------------------------
 %% Fonts
 %%-----------------------------------------------------------------------------
-\usepackage{fontspec}
 
 % Add `customfont' in the document class option to use this section
 \ifdefineCustomFont
+  \usepackage{fontspec}
   \usefonttheme{professionalfonts} % using non standard fonts for beamer
   \usefonttheme{serif} % default family is serif
-  \setmainfont[Mapping=tex-text]{GFS Didot}
+%  \setmainfont[Mapping=tex-text]{GFS Didot}
 %  \setmainfont[Mapping=tex-text]{GFS Bodoni}
 %  \setmainfont[Mapping=tex-text]{GFS Olga} % ότι να ναι αυτή!!πλάγια NOT support English
-%  \setmainfont[Mapping=tex-text]{GFS Neohellenic}
+  \setmainfont[Mapping=tex-text]{GFS Neohellenic}
 %  \setmainfont[Mapping=tex-text]{GFS Artemisia}
 %  \setmainfont[Mapping=tex-text]{GFS Elpis} %low resolution printing
 %  \setmainfont[Mapping=tex-text]{Linux Libertine T}
@@ -96,10 +96,29 @@
 %    {LGR}
 %  %  % load font from system font
 %     \newfontfamily\libertinesystemfont{Linux Libertine O}
+%%************* Latin Modern, not support greek*****************************
+%  \usepackage{lmodern}
+%  \usepackage[T1]{fontenc}
 
 \else
-\setsansfont{Arial}
+  \usepackage{fontspec}
+  \usefonttheme{professionalfonts} % using non standard fonts for beamer
+  \usefonttheme{serif} % default family is serif
 
+  %% use xetex, enable Biolinum Fonts
+  \setmainfont[
+      Path              = /usr/share/texlive/texmf-dist/fonts/opentype/public/libertine/, %./libertine/opentype/,
+      Extension         = .otf,
+      UprightFont = LinBiolinum_R,
+      BoldFont = LinBiolinum_RB, % Linux Libertine O Regular Semibold
+      ItalicFont = LinBiolinum_RI,
+      %BoldItalicFont = LinBiolinum_RZI, % Linux Libertine O Regular Semibold Italic
+    ]
+    {LGR}
+  %  % load font from system font
+     \newfontfamily\libertinesystemfont{Linux Biolinum O}
+     
+     
 \fi % custom font class
 
 %%-----------------------------------------------------------------------------

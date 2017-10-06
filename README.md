@@ -25,7 +25,7 @@ Templates for academic presentations -- pre-released
 
 * Adaptive Title Page: Title page adapts to title length
 
-* Pre-defined and custom fonts (Arial / Professional fonts) with math support
+* Pre-defined and custom fonts (Biolinum O / Professional fonts) with math support
 
 * Option to generate only specific chapters and references without the frontmatter and title page. Useful for review and corrections.
 
@@ -131,7 +131,7 @@ Then select you presentation style on `preamble.tex` file
 
 * `aspectratio=169`: reduce ratio to 16:9
 
-* `customfont`: Pre-defined font is "Arial". This option enable custom fonts . Config custom fonts at `preamble.tex`.
+* `customfont`: Pre-defined font is "Biolinum O". This option enable custom fonts . Config custom fonts at `preamble.tex`. Custom font include GFS package (GFS Neohellenic).
 
 * `10pt` or `11pt`(default) : Recommended font size. Smaller (`8pt`,`9pt`) or huge (`14pt`,`17pt`,`20pt`) font size are NOT recommended except special cases.
 

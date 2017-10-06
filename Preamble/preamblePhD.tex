@@ -101,23 +101,24 @@
 %  \usepackage[T1]{fontenc}
 
 \else
-\usepackage{fontspec}
-\usefonttheme{professionalfonts} % using non standard fonts for beamer
-\usefonttheme{serif} % default family is serif
+  \usepackage{fontspec}
+  \usefonttheme{professionalfonts} % using non standard fonts for beamer
+  \usefonttheme{serif} % default family is serif
 
-%\setmainfont{DejaVu Serif}
-
-    \setmainfont[
+  %% use xetex, enable Biolinum Fonts
+  \setmainfont[
       Path              = /usr/share/texlive/texmf-dist/fonts/opentype/public/libertine/, %./libertine/opentype/,
       Extension         = .otf,
-      UprightFont = LinLibertine_R,
-      BoldFont = LinLibertine_RZ, % Linux Libertine O Regular Semibold
-      ItalicFont = LinLibertine_RI,
-      BoldItalicFont = LinLibertine_RZI, % Linux Libertine O Regular Semibold Italic
+      UprightFont = LinBiolinum_R,
+      BoldFont = LinBiolinum_RB, % Linux Libertine O Regular Semibold
+      ItalicFont = LinBiolinum_RI,
+      %BoldItalicFont = LinBiolinum_RZI, % Linux Libertine O Regular Semibold Italic
     ]
     {LGR}
   %  % load font from system font
-     \newfontfamily\libertinesystemfont{Linux Libertine O}
+     \newfontfamily\libertinesystemfont{Linux Biolinum O}
+     
+     
 \fi % custom font class
 
 
