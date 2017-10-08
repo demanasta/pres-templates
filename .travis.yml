@@ -11,6 +11,7 @@ install:
    - sudo apt-get install texlive-full
 #   - sudo apt-get install texlive-xetex
    - sudo apt-get install biber
+   - sudo apt-get install fonts-cmu
 #   - sudo apt-get install latexmk
 #   - curl -L https://github.com/holgern/travis-texlive/releases/download/2017-09-18_02/texlive.tar.xz | tar -JxC ~
 #   - PATH=$HOME/texlive/bin/x86_64-linux:$PATH
