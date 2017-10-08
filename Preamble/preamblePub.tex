@@ -81,10 +81,9 @@
   \setmainfont[Mapping=tex-text]{GFS Neohellenic}
 %  \setmainfont[Mapping=tex-text]{GFS Artemisia}
 %  \setmainfont[Mapping=tex-text]{GFS Elpis} %low resolution printing
-%  \setmainfont[Mapping=tex-text]{Linux Libertine T}
-%  \setmainfont[Mapping=tex-text]{Linux Libertine O}
 
-%  % For use with XeLaTeX
+
+%%  % For use with XeLaTeX, enable Libertine
 %    \setmainfont[
 %      Path              = /usr/share/texlive/texmf-dist/fonts/opentype/public/libertine/, %./libertine/opentype/,
 %      Extension         = .otf,
@@ -96,28 +95,34 @@
 %    {LGR}
 %  %  % load font from system font
 %     \newfontfamily\libertinesystemfont{Linux Libertine O}
-%%************* Latin Modern, not support greek*****************************
-%  \usepackage{lmodern}
-%  \usepackage[T1]{fontenc}
+
+%  %% use xetex, enable Biolinum Fonts
+%  \setmainfont[
+%      Path              = /usr/share/texlive/texmf-dist/fonts/opentype/public/libertine/, %./libertine/opentype/,
+%      Extension         = .otf,
+%      UprightFont = LinBiolinum_R,
+%      BoldFont = LinBiolinum_RB, % Linux Libertine O Regular Semibold
+%      ItalicFont = LinBiolinum_RI,
+%      %BoldItalicFont = LinBiolinum_RZI, % Linux Libertine O Regular Semibold Italic
+%    ]
+%    {LGR}
+%  %  % load font from system font
+%     \newfontfamily\libertinesystemfont{Linux Biolinum O}
+
 
 \else
   \usepackage{fontspec}
   \usefonttheme{professionalfonts} % using non standard fonts for beamer
   \usefonttheme{serif} % default family is serif
 
-  %% use xetex, enable Biolinum Fonts
-  \setmainfont[
-      Path              = /usr/share/texlive/texmf-dist/fonts/opentype/public/libertine/, %./libertine/opentype/,
-      Extension         = .otf,
-      UprightFont = LinBiolinum_R,
-      BoldFont = LinBiolinum_RB, % Linux Libertine O Regular Semibold
-      ItalicFont = LinBiolinum_RI,
-      %BoldItalicFont = LinBiolinum_RZI, % Linux Libertine O Regular Semibold Italic
-    ]
-    {LGR}
-  %  % load font from system font
-     \newfontfamily\libertinesystemfont{Linux Biolinum O}
-     
+  %% Use Computer Modern Unicode Fonts, Support Greek Font
+  \setmainfont[Mapping=tex-text, Scale=0.90]{CMU Serif}
+  \setsansfont[Mapping=tex-text, Scale=0.90]{CMU Sans Serif}
+  \setmonofont{CMU Typewriter Text}
+ 
+%%************* Latin Modern, not support greek*****************************
+%  \usepackage{lmodern}
+%  \usepackage[T1]{fontenc}
      
 \fi % custom font class
 
