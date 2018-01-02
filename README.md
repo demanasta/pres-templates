@@ -19,13 +19,13 @@ Templates for academic presentations -- pre-released
 --------------------------------------------------------------------------------
 ## Features
 
-* Supports LaTeX, XeLaTeX and LuaLaTeX
+* Supports XeLaTeX and LuaLaTeX
 
-* Support Greek Language and Fonts (GFS)
+* Support Greek Language and Fonts (GFS, CMU, Libertine)
 
 * Adaptive Title Page: Title page adapts to title length
 
-* Pre-defined and custom fonts (Biolinum O / Professional fonts) with math support
+* Pre-defined and custom fonts (CMU serif / Professional fonts) with math support
 
 * Option to generate only specific chapters and references without the frontmatter and title page. Useful for review and corrections.
 
@@ -62,7 +62,7 @@ Usage: `sh ./compile-thesis.sh [OPTIONS] [filename]`
 
 [option]  clean: removes temporary files no filename required
 
-### Using the make file (Unix/Linux)  still some bugs
+### Using the make file (Unix/Linux)
 
 The template supports PDF, DVI and PS formats. All three formats can be generated
 with the provided `Makefile`.
@@ -143,9 +143,18 @@ Then select you presentation style on `preamble.tex` file
 
 * `notes=only`: Prints only notes of each frame
 
-* `printbib`: Include bibliography at the end of the presentation (__bug__: not working with makefile!)
+* `printbib`: Include bibliography at the end of the presentation.
 
 * `progrbar`: Enable progress bar in the frame. Chose this option after your  first compilation. Disable on *chapter* mode.
+
+### Choosing Fonts
+
+All three style support different fonts, configured in `preamble***.tex` file:
+
+* `default (empty)` : When no font is specified, `Computer Modern Unicode - CMU` is used as the default font with Math Support. CMU font is alternative to `Latin Modern` but it support Greek language. To install cmu-fonts in debian destribution run: `$ sudo apt-get install fonts-cmu`
+
+* `customfont` :  Any custom font can be set in preamble using this option. Some fonts had already set. Default custom font is `GFS Neohellenic` with math support.
+
 
 ## Contributing
 
