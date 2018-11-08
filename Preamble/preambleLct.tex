@@ -10,7 +10,7 @@
 % \usetheme{Szeged}
 % \usetheme{CambridgeUS}
 % \usetheme{Montpellier}
-% \usetheme{Pittsburgh} <---
+% \usetheme{Pittsburgh} %<---
 % \usetheme{Warsaw}
 % \usetheme{Rochester}
 % \usetheme{Marburg}
@@ -18,7 +18,7 @@
 % \usetheme{Madrid}
 % \usetheme{Luebeck}
 % \usetheme{Ilmenau}
-% \usetheme{Hannover} <---
+% \usetheme{Hannover} %<---
 % \usetheme{Goettingen}
 % \usetheme{Dresden}
 % \usetheme{boxes}
@@ -29,6 +29,13 @@
 
 \usepackage{lmodern}
 \usepackage[scale=2]{ccicons}
+
+%%-----------------------------------------------------------------------------
+%%  remove dots from miniframe theme
+%%-----------------------------------------------------------------------------
+\makeatletter
+\def\beamer@writeslidentry{\clearpage\beamer@notesactions}
+\makeatother
 
 %%-----------------------------------------------------------------------------
 %%  double slides left presentation // right notes NOT WORK WELL!!!
