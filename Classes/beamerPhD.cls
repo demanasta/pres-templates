@@ -5,22 +5,25 @@
 %% A beamer template for thesis presentations                                 %%
 %%                                                                            %%
 %% Version: v1.0                                                              %%
-%% Authors: Demitris G. Anastasiou                                            %%
-%% License: MIT License (c) 2017 Demitris G. Anastasiou                       %%
+%% Authors: Dimitris G. Anastasiou                                            %%
+%% License: MIT License (c) 2018 Dimitris G. Anastasiou                       %%
 %% GitHub Repo: https://github.com/demanasta/pres-templates/                  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ************************** Class Identification ******************************
 \newcommand\fileversion{1.0}
-\newcommand\filedate{2017/06/25}
+\newcommand\filedate{2018/11/08}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{Classes/beamerPhD}[\filedate\space A beamer template for thesis presentations by D. G. Anastasiou (v\fileversion)]
 \typeout{https://github.com/demanasta/pres-template/}
 
 % Copyright 2003--2007 by Till Tantau
 % Copyright 2010 by Vedran Mileti\'c
-% Copyright 2011 by Vedran Mileti\'c, Joseph Wright,
-% Copyright 2017 Demitris G. Anastasiou for PhD version
+% Copyright 2011--2013,2015 by Vedran Mileti\'c, Joseph Wright
+% Copyright 2016 by Joseph Wright
+% Copyright 2017 Dimitris G. Anastasiou for PhD version
+% Copyright 2017,2018 by Louis Stuart, Joseph Wright
+% Copyright 2018 Dimitris G. Anastasiou for PhD version
 %
 % This file may be distributed and/or modified
 %
@@ -29,7 +32,9 @@
 %
 % See the file doc/licenses/LICENSE for more details.
 
-\RequirePackage{beamerbasercs}
+% \RequirePackage{beamerbasemodes} % Update 181108 remove rcs paackages
+
+% \RequirePackage{beamerbasercs}
 %\ProvidesClassRCS $Header: /Users/joseph/Documents/LaTeX/beamer/base/beamer.cls,v 332bfd3ce558 2013/12/02 16:41:31 joseph $
 %[\beamer@version\space A class for typesetting presentations]
 
@@ -37,10 +42,9 @@
 \RequirePackage{beamerbasemodes}
 % Setup modes and check for article option
 
-\beamer@transferifnecessary
+% \beamer@transferifnecessary
 
 \RequirePackage{ifpdf}
-
 %
 %
 % Declarations used by beamer
@@ -48,7 +52,6 @@
 %
 
 % Public
-\newdimen\headheight    % Total height of the headline (including depth)
 \newdimen\headdp        % Depth of the headline
 \newdimen\footheight    % Height of the footline
 \newdimen\sidebarheight % Height of the sidebars
@@ -90,12 +93,12 @@
 \newcount\beamer@animationtempb
 \newcount\beamer@xpos
 \newcount\beamer@ypos
+\newcount\beamer@ypos@offset
 \newcount\beamer@showpartnumber
 \newcount\beamer@currentsubsection
 \newcount\beamer@coveringdepth
 \newcount\beamer@sectionadjust
 \newcount\beamer@tocsectionnumber
-
 
 \newif\ifbeamer@sansmath
 \newif\ifbeamer@altmode
@@ -109,9 +112,8 @@
 \newif\ifbeamer@ignorenonframe
 \newif\ifbeamer@autopdfinfo
 
+% Option management
 \RequirePackage{beamerbaseoptions}
-% For option management
-
 
 
 %
@@ -139,7 +141,6 @@
 
 \DeclareOptionBeamer{t}{\beamer@centeredfalse}
 \DeclareOptionBeamer{c}{\beamer@centeredtrue}
-
 
 \DeclareOptionBeamer{leqno}{\input{leqno.clo}}
 \DeclareOptionBeamer{fleqn}{\input{fleqn.clo}}
@@ -175,7 +176,7 @@
 \DeclareOptionBeamer{20pt}{\def\beamer@size{{size20.clo}}}
 
 \newif\ifsetDraft\setDraftfalse
-\DeclareOptionBeamer{draft}{\setDrafttrue}
+\DeclareOptionBeamer{draft}{\beamer@draftmodetrue}
 \pagenumbering{arabic}
 \def\insertpagenumber{\thepage}
 
@@ -183,22 +184,16 @@
 \def\beamer@hypercjk{}
 
 \DeclareOptionBeamer{CJK}{\ExecuteOptionsBeamer{cjk}}
-\DeclareOptionBeamer{cjk}{
+\DeclareOptionBeamer{cjk}{%
   \def\beamer@hypercjk{\hypersetup{CJKbookmarks=true}}
-
-  \def\beamer@activecjk{
+  \def\beamer@activecjk{%
     % Activate all >=128 characters.
-    \count@=127
+    \count@=127 %
     \@whilenum\count@<254 \do{%
-      \advance\count@ by 1
+      \advance\count@ by 1 %
       \lccode`\~=\count@
       \catcode\count@=\active
-      \lowercase{\def~{\kern1ex}}
-    }
-  }
-}
-
-
+      \lowercase{\def~{\kern1ex}}}}}
 
 % obsolete options
 \DeclareOptionBeamer{notes}[show]{\csname beamer@notesaction@#1\endcsname}
@@ -218,36 +213,36 @@
   \nofiles
 }
 \def\beamer@notesaction@onlyslideswithnotes{%
-  \beamer@notestrue%
-  \beamer@frameswithnotesonlytrue%
+  \beamer@notestrue
+  \beamer@frameswithnotesonlytrue
   \nofiles
 }
-\DeclareOptionBeamer{inrow}{
+\DeclareOptionBeamer{inrow}{%
   \ClassError{beamer}{``inrow'' no longer supported. Use ``compress'' instead.}{}}
 \DeclareOptionBeamer{compressnotes}{%
   \ClassWarning{beamer}{``compressnotes'' is obsolete. Use
     \noexpand\setbeamertemplate{note page}[compressed] instead}
   \AtBeginDocument{\beamertemplatenotecompress}}
-\DeclareOptionBeamer{notesonly}{
+\DeclareOptionBeamer{notesonly}{%
   \ClassWarning{beamer}{``notesonly'' is obsolete. Use beamer option
     ``show only notes'' instead.}
   \beamer@notesaction@only}
-\DeclareOptionBeamer{blue}{
+\DeclareOptionBeamer{blue}{%
   \ClassWarning{beamer}{``blue'' is obsolete. Use color theme structure instead}
   \def\beamer@loadlater{\usecolortheme[rgb={0.2,0.2,0.7}]{structure}}}
-\DeclareOptionBeamer{red}{
+\DeclareOptionBeamer{red}{%
   \ClassWarning{beamer}{``red'' is obsolete. Use color theme structure instead}
   \def\beamer@loadlater{\usecolortheme[rgb={0.7,0.2,0.2}]{structure}}}
-\DeclareOptionBeamer{blackandwhite}{
+\DeclareOptionBeamer{blackandwhite}{%
   \ClassWarning{beamer}{``blackandwhite'' is obsolete. Use color theme structure instead}
   \def\beamer@loadlater{\usecolortheme[rgb={0.2,0.2,0.2}]{structure}}}
-\DeclareOptionBeamer{brown}{
+\DeclareOptionBeamer{brown}{%
   \ClassWarning{beamer}{``brown'' is obsolete. Use color theme structure instead}
   \def\beamer@loadlater{\usecolortheme[rgb={0.66,0.4,0.166}]{structure}}}
-\DeclareOptionBeamer{slidescentered}{
+\DeclareOptionBeamer{slidescentered}{%
   \ClassWarning{beamer}{``slidescentered'' is obsolete. Use ``c'' instead}
   \beamer@centeredtrue}
-\DeclareOptionBeamer{slidestop}{
+\DeclareOptionBeamer{slidestop}{%
   \ClassWarning{beamer}{``slidestop'' is obsolete. Use ``t'' instead}
   \beamer@centeredfalse}
 \DeclareOptionBeamer{sans}{%
@@ -262,13 +257,13 @@
   \def\mathfamilydefault{\rmdefault}
   \beamer@sansmathfalse
 }
-\DeclareOptionBeamer{mathsans}{
-  \ClassWarning{beamer}{``mathsans'' is obsolete. Use font theme ``serif'' with option ``butsansserifmath''}
+\DeclareOptionBeamer{mathsans}{%
+  \ClassWarning{beamer}{``mathsans'' is obsolete. Use font theme ``serif'' with option ``stillsansserifmath''}
   \def\mathfamilydefault{\sfdefault}\beamer@sansmathtrue}
-\DeclareOptionBeamer{mathserif}{
+\DeclareOptionBeamer{mathserif}{%
   \ClassWarning{beamer}{``mathserif'' is obsolete. Use font theme ``serif'' with option ``onlymath''}
   \def\mathfamilydefault{\rmdefault}\beamer@sansmathfalse}
-\DeclareOptionBeamer{professionalfont}{
+\DeclareOptionBeamer{professionalfont}{%
   \ClassWarning{beamer}{``professionalfont'' is obsolete. Use font theme ``professionalfonts'' instead}
   \beamer@suppressreplacementstrue}
 
@@ -276,8 +271,6 @@
 \def\familydefault{\sfdefault}
 \def\mathfamilydefault{\sfdefault}
 \beamer@sansmathtrue
-
-
 
 \PassOptionsToPackage{bookmarks=true,%
   bookmarksopen=true,%
@@ -295,13 +288,13 @@
 \DeclareOptionBeamer{ucs}{%
   \ifpdf
     \PassOptionsToPackage{pdftex,unicode}{hyperref}
-    \def\beamer@loaducs{
+    \def\beamer@loaducs{%
       \RequirePackage[hyperref]{ucs}%
       \AtBeginDocument{\PreloadUnicodePage{0}}%
       \AtBeginDocument{\PreloadUnicodePage{1}}%
     }
   \else    
-    \def\beamer@loaducs{
+    \def\beamer@loaducs{%
       \RequirePackage{ucs}%
       \AtBeginDocument{\PreloadUnicodePage{0}}%
       \AtBeginDocument{\PreloadUnicodePage{1}}%
@@ -311,10 +304,10 @@
 \DeclareOptionBeamer{utf8x}{\ExecuteOptionsBeamer{ucs}%
   \g@addto@macro\beamer@loaducs{\RequirePackage[utf8x]{inputenc}}%
 }
-\DeclareOptionBeamer{utf8}{
-  \ClassWarning{beamer}{This option works no longer loads ucs.}
-  \RequirePackage[utf8]{inputenc}
-  \PassOptionsToPackage{unicode}{hyperref}
+\DeclareOptionBeamer{utf8}{%
+  \ClassWarning{beamer}{This option works no longer loads ucs.}%
+  \RequirePackage[utf8]{inputenc}%
+  \PassOptionsToPackage{unicode}{hyperref}%
 }
 
 %
@@ -322,34 +315,34 @@
 % Default value is set right after declaring width and height
 % because it doesn't work otherwise.
 %
-\newlength\beamer@paperwidth%
-\beamer@paperwidth 12.80cm%
-\newlength\beamer@paperheight%
-\beamer@paperheight 9.60cm%
+\newlength\beamer@paperwidth
+\setlength\beamer@paperwidth{12.80cm}
+\newlength\beamer@paperheight
+\setlength\beamer@paperheight{9.60cm}
 
 \DeclareOptionBeamer{aspectratio}[43]{%
-  \ifnum#1=1610%
-    \beamer@paperwidth 16.00cm%
-    \beamer@paperheight 10.00cm%
-  \else\ifnum#1=169%
-    \beamer@paperwidth 16.00cm%
-    \beamer@paperheight 9.00cm%
-  \else\ifnum#1=149%
-    \beamer@paperwidth 14.00cm%
-    \beamer@paperheight 9.00cm%
-  \else\ifnum#1=54%
-    \beamer@paperwidth 12.50cm%
-    \beamer@paperheight 10.00cm%
-  \else\ifnum#1=43%
-    \beamer@paperwidth 12.80cm%
-    \beamer@paperheight 9.60cm%
-  \else\ifnum#1=32%
-    \beamer@paperwidth 13.50cm%
-    \beamer@paperheight 9.00cm%
-  \else\ifnum#1=141%
-    \beamer@paperwidth 14.85cm%
-    \beamer@paperheight 10.50cm%
-  \fi\fi\fi\fi\fi\fi\fi%
+  \ifnum#1=1610 %
+    \setlength\beamer@paperwidth{16.00cm}%
+    \setlength\beamer@paperheight{10.00cm}%
+  \else\ifnum#1=169 %
+    \setlength\beamer@paperwidth{16.00cm}%
+    \setlength\beamer@paperheight{9.00cm}%
+  \else\ifnum#1=149 %
+    \setlength\beamer@paperwidth{14.00cm}%
+    \setlength\beamer@paperheight{9.00cm}%
+  \else\ifnum#1=54 %
+    \setlength\beamer@paperwidth{12.50cm}%
+    \setlength\beamer@paperheight{10.00cm}%
+  \else\ifnum#1=43 %
+    \setlength\beamer@paperwidth{12.80cm}%
+    \setlength\beamer@paperheight{9.60cm}%
+  \else\ifnum#1=32 %
+    \setlength\beamer@paperwidth{13.50cm}%
+    \setlength\beamer@paperheight{9.00cm}%
+  \else\ifnum#1=141 %
+    \setlength\beamer@paperwidth{14.85cm}%
+    \setlength\beamer@paperheight{10.50cm}%
+  \fi\fi\fi\fi\fi\fi\fi
 }
 
 \RequirePackage[%
@@ -374,41 +367,29 @@
 % Filter class option list
 \beamer@filterclassoptions
 
-
+% Low-level graphic drawing and advanced color support.
 \RequirePackage{pgfcore}
-% We need only the core stuff.
-
 \RequirePackage{xxcolor}
-% For color management (comes with pgf).
 
-\RequirePackage{atbegshi}
 % Normally loaded by hyperref but to be on the safe side ...
+\RequirePackage{atbegshi}
 
-\RequirePackage[implicit=falsem, draft=false]{hyperref}
-% For hyperlinks
+\RequirePackage[implicit=false, draft=false]{hyperref}
 
-\hypersetup{pdfcreator={LaTeX with Beamer class version \beamer@version}}
+\hypersetup{pdfcreator={LaTeX with Beamer class}}
 
-% Coding stuff
+% Encoding stuff
 \beamer@loaducs
 \beamer@hypercjk
 
-
-\RequirePackage{beamerbaserequires}
 % Beamer packages required both by presentation and article modes
+\RequirePackage{beamerbaserequires}
 
 % Defaults
 \normalfont
 \raggedright
 
-\AtBeginDocument
-{
-  \addtocontents{toc}{\protect\beamer@endinputifotherversion{\beamer@version pt}}
-  \addtocontents{nav}{\protect\beamer@endinputifotherversion{\beamer@version pt}}
-}
-
 \usetheme{default}
-
 
 % Compatibility stuff
 \csname beamer@loadlater\endcsname

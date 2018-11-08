@@ -5,14 +5,14 @@
 %% A beamer template for Lecture presentations                                %%
 %%                                                                            %%
 %% Version: v1.0                                                              %%
-%% Authors: Demitris G. Anastasiou                                            %%
-%% License: MIT License (c) 2017 Demitris G. Anastasiou                       %%
+%% Authors: Dimitris G. Anastasiou                                            %%
+%% License: MIT License (c) 2018 Dimitris G. Anastasiou                       %%
 %% GitHub Repo: https://github.com/demanasta/pres-templates/                  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ************************** Class Identification ******************************
 \newcommand\fileversion{1.0}
-\newcommand\filedate{2017/06/25}
+\newcommand\filedate{2018/11/08}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{Classes/beamerLct}[\filedate\space A beamer template for lecture presentations by D. G. Anastasiou (v\fileversion)]
 \typeout{https://github.com/demanasta/pres-template/}
@@ -21,9 +21,9 @@
 % Copyright 2010 by Vedran Mileti\'c
 % Copyright 2011--2013,2015 by Vedran Mileti\'c, Joseph Wright
 % Copyright 2016 by Joseph Wright
-% Copyright 2017 Demitris G. Anastasiou for Lecture version
+% Copyright 2017 Dimitris G. Anastasiou for Lecture version
 % Copyright 2017,2018 by Louis Stuart, Joseph Wright
-% Copyright 2018 Demitris G. Anastasiou for Lecture version
+% Copyright 2018 Dimitris G. Anastasiou for Lecture version
 %
 % This file may be distributed and/or modified
 %
@@ -396,7 +396,7 @@
 
 
 %%------------------------------------------------------------------------------
-%% Options added on BeamerPhD Class file
+%% Options added on BeamerLct Class file
 %%------------------------------------------------------------------------------
 
 % ******************************* Font Option **********************************

@@ -21,6 +21,7 @@ install:
    - mkdir $HOME/texmf/tex/latex/
    - mkdir $HOME/texmf/tex/latex/beamer/
    - mkdir $HOME/texmf/tex/latex/beamer/themes/
+   - cp sty/beamerbasemodes.sty $HOME/texmf/tex/latex/beamer/themes/.
    - cp sty/beamerthemeBluePhD.sty $HOME/texmf/tex/latex/beamer/themes/.
    - sudo texhash
 script:
